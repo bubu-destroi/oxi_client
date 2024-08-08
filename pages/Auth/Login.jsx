@@ -53,7 +53,7 @@ function Login() {
       </form>
       {errorMessage && <p>{errorMessage}</p> }
       <p>don't have an account?</p>
-      <Link to='/signup'>create your account here :> </Link>
+      <Link to='/signup'>create your account here</Link>
     </div>
   );
 }

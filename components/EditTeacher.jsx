@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate, useParams } from 'react-router-dom';
 
-function AddTeacher() {
+function EditTeacher() {
   const [name, setName] = useState('');
   const [bio, setBio] = useState('');
   const [socialMedia, setSocialMedia] = useState('');
   const [email, setEmail] = useState('');
   //const [errorMessage, setErrorMessage] = useState('');
+  const { teacherID } = useParams();
+  const navigate = useNavigate();
 
   const handleName = (e) => {
     setName(e.target.value);
@@ -24,27 +27,52 @@ function AddTeacher() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const newTeacher = {
+      const updatedTeacher = {
         name,
         email,
         bio,
         socialMedia,
       };
-      await axios.post(`${import.meta.env.VITE_API_URL}/api/teachers`, newTeacher);
+      console.log(updatedTeacher)
+      await axios.put(
+        `${import.meta.env.VITE_API_URL}/api/teachers/${teacherID}`,
+        updatedTeacher
+      );
       setName('');
       setEmail('');
       setBio('');
       setSocialMedia('');
-     // setErrorMessage('')
+
+      navigate('/teachers/new');
+      // setErrorMessage('')
     } catch (error) {
       //setErrorMessage(error.errorMessage);
       console.log(error);
     }
   };
 
+  const getSingleTeacher = async (id) => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/teachers/${id}`
+      );
+      setName(response.data.name);
+      setBio(response.data.bio);
+      setEmail(response.data.email);
+      setSocialMedia(response.data.socialMedia);
+      //setPrevious_workshops(response.data.previous_workshops);
+    } catch (error) {
+      console.log('error', error);
+    }
+  };
+
+  useEffect(() => {
+    getSingleTeacher(teacherID);
+  }, [teacherID]);
+
   return (
     <>
-      <h3>Create a Teacher Profile</h3>
+      <h3>Edit a Teacher Profile</h3>
       <form onSubmit={handleSubmit}>
         <label htmlFor='name'>Name</label>
         <input
@@ -61,7 +89,7 @@ function AddTeacher() {
           value={bio}
           onChange={handleBio}
         />
-        <label htmlFor='email'>Email</label>
+        <label htmlFor='email'>Email - this will remain private</label>
         <input
           type='text'
           name='email'
@@ -77,11 +105,10 @@ function AddTeacher() {
           value={socialMedia}
           onChange={handleSocialMedia}
         />
-        <button type='submit'>create</button>
+        <button type='submit'>ok, done!</button>
       </form>
-      
     </>
   );
 }
 
-export default AddTeacher;
+export default EditTeacher;

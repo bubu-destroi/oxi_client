@@ -43,13 +43,23 @@ function EditTeacher() {
       setBio('');
       setSocialMedia('');
 
-      navigate('/teachers/new');
+      navigate(`/teachers/${teacherID}`);
       // setErrorMessage('')
     } catch (error) {
       //setErrorMessage(error.errorMessage);
       console.log(error);
     }
   };
+
+  const handleDelete = async (teacherID) => {
+    try {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/teachers/${teacherID}`)
+      navigate('/teachers')
+      
+    } catch (error) {
+      console.log('error deleting teacher profile', error)
+    }
+  }
 
   const getSingleTeacher = async (id) => {
     try {
@@ -107,6 +117,7 @@ function EditTeacher() {
         />
         <button type='submit'>ok, done!</button>
       </form>
+        <button type='submit' onClick={handleDelete} >erase this teacher profile</button>
     </>
   );
 }

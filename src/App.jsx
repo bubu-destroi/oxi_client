@@ -2,14 +2,15 @@
 import './App.css';
 
 //import { useContext } from 'react';
-import {  Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 //import Homepage from '../pages/Homepage';
 import AddTeacher from '../components/AddTeacher';
 import EditTeacher from '../components/EditTeacher';
 //import Private from '../components/Private';
 //import TeacherDetail from '../components/TeacherDetail';
-import Teachers from '../pages/Teachers'
+import Teachers from '../pages/Teachers';
 import TeacherDetail from '../components/TeacherDetail';
+import SignUp from '../pages/Auth/SignUp';
 //import { AuthContext } from '../context/auth.context';
 
 function App() {
@@ -17,34 +18,34 @@ function App() {
 
   return (
     <>
-      
-        <Routes>
-          <Route
-            path='/teachers'
-            element={<Teachers />}
-          />
-          <Route
-            path='/teachers/new'
-            element={<AddTeacher />}
-          />
-          <Route
-            path='/teachers/:teacherID'
-            element={<TeacherDetail />}
-          />
-          <Route
-            path='/teachers/:teacherID/edit'
-            element={
-              //<Private>
-              <EditTeacher />
-              //</Private>
-            }
-          />
-          {/*   <Route
+      <Routes>
+        <Route
+          path='/signup'
+          element={<SignUp />}
+        />
+        <Route
+          //falta adicionar o context para fazer pesquisa
+          path='/teachers'
+          element={<Teachers />}
+        />
+        <Route
+          path='/teachers/new'
+          element={<AddTeacher />}
+        />
+        <Route
           path='/teachers/:teacherID'
           element={<TeacherDetail />}
-        /> */}
-        </Routes>
-      
+        />
+        <Route
+          //nesta rota edita e apaga perfil
+          path='/teachers/:teacherID/edit'
+          element={
+            //<Private>
+            <EditTeacher />
+            //</Private>
+          }
+        />
+      </Routes>
     </>
   );
 }

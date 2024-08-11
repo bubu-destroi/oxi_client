@@ -1,9 +1,11 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 //import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { AuthContext } from '../context/auth.context';
 
 function TeacherDetail() {
+  const { user } = useContext(AuthContext);
 
   const [teacher, setTeacher] = useState(null);
   //const navigate = useNavigate();
@@ -16,7 +18,7 @@ function TeacherDetail() {
       );
       setTeacher(response.data);
       console.log(response.data);
-     // console.log(teacher);
+      // console.log(teacher);
     } catch (error) {
       console.log('error', error);
     }
@@ -40,6 +42,12 @@ function TeacherDetail() {
             ))}
           </ul>
         </div>
+      )}
+      {user?.admin && (
+        <Link
+          to={`/teachers/${teacherID}/edit`}>
+          <button type='submit'>edit</button>
+        </Link>
       )}
     </>
   );

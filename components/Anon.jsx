@@ -6,7 +6,7 @@ function Anon({ children }) {
   const { loading, user } = useContext(AuthContext);
   if (loading) return <p>looooooaaading.....</p>;
   if (user) {
-    return <Navigate to='/' />;
+    return <Navigate to='/teachers' />;
   } else {
     return children;
   }

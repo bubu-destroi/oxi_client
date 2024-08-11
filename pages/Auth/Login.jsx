@@ -7,7 +7,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
-  const { storeToken, authenticateUser } = useContext(AuthContext);
+  const {logout, storeToken, authenticateUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ function Login() {
       storeToken(response.data.authToken);
       console.log(response.data.authToken);
       authenticateUser();
-      navigate('/');
+      navigate('/teachers');
     } catch (error) {
       setErrorMessage(error.response.data.message);
     }
@@ -52,8 +52,10 @@ function Login() {
         <button type='submit'>lets go!</button>
       </form>
       {errorMessage && <p>{errorMessage}</p> }
-      <p>don't have an account?</p>
+      <p>you do not own an account yet?</p>
       <Link to='/signup'>create your account here</Link>
+      <p>or log out!</p>
+      <button type='submit' onClick={logout} >logout</button>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-//import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function SignUp() {
@@ -17,6 +17,8 @@ function SignUp() {
   const userWaitingList = [];
   const courses_taken = [];
   const [loading, setLoading] = useState(false);
+
+  const navigate =  useNavigate()
 
   const handleParent_name = (e) => {
     setParent_name(e.target.value);
@@ -41,6 +43,7 @@ function SignUp() {
       setLoading(false);
       setId_card_picture(response.data.fileUrl);
     } catch (error) {
+      console.log(loading);
       console.error(error);
     }
   };
@@ -69,7 +72,7 @@ function SignUp() {
   };
   const handleDate_of_birth = (e) => {
     setDate_of_birth(e.target.value);
-    handleAge()
+    handleAge();
   };
 
   const handleSubmit = async (e) => {
@@ -90,11 +93,12 @@ function SignUp() {
         userWaitingList,
         courses_taken,
       };
-      console.log(newUserProfile)
+      console.log(newUserProfile);
       await axios.post(
         `${import.meta.env.VITE_API_URL}/auth/signup`,
         newUserProfile
       );
+      navigate('/login')
     } catch (error) {
       console.log('error', error);
     }
@@ -106,6 +110,7 @@ function SignUp() {
         create an account to sign up for workshops and tell us what you want to
         learn about!
       </h2>
+      <h5>do you already own an account? <Link to='/login'> log in here!</Link>  </h5>
       <form
         action=''
         onSubmit={handleSubmit}>
@@ -181,7 +186,7 @@ function SignUp() {
           name='date_of_birth'
           id='date_of_birth'
           value={date_of_birth}
-          onChange={ handleDate_of_birth}
+          onChange={handleDate_of_birth}
         />
         <br />
         <label htmlFor=''>what is your date of birth?</label>

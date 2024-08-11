@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import {AuthContext} from '../context/auth.context';
 
 function Teachers() {
+  const {logout} = useContext(AuthContext)
   const [teachers, setTeachers] = useState([]);
 
   const getAllTeachers = async () => {
@@ -21,6 +23,8 @@ function Teachers() {
 
   return (
     <>
+    <p>logout</p>
+    <button type='submit' onClick={logout}>logout</button>
       <h2>Check out our Teachers!</h2>
       <div>
         {teachers.map((teacher) => {
@@ -34,7 +38,6 @@ function Teachers() {
           </div>;
         })}
       </div>
-      {}
     </>
   );
 }

@@ -7,7 +7,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
-  const {logout, storeToken, authenticateUser } = useContext(AuthContext);
+  const {logout, storeToken, authenticateUser, user } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ function Login() {
       storeToken(response.data.authToken);
       console.log(response.data.authToken);
       authenticateUser();
-      navigate('/teachers');
+      navigate(`/profile/${user._id}`);
     } catch (error) {
       setErrorMessage(error.response.data.message);
     }

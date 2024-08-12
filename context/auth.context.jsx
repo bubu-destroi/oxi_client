@@ -25,6 +25,8 @@ function AuthProviderWrapper(props) {
           }
         );
         setUser(response.data);
+        console.log('Authenticated user:', response.data); // Check what data is being set
+      
         setLoading(false);
       } catch (error) {
         setUser(null);

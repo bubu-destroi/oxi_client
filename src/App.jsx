@@ -5,7 +5,6 @@ import { Routes, Route } from 'react-router-dom';
 import AddTeacher from '../components/AddTeacher';
 import EditTeacher from '../components/EditTeacher';
 //import Private from '../components/Private';
-//import TeacherDetail from '../components/TeacherDetail';
 import Teachers from '../pages/Teachers';
 import TeacherDetail from '../components/TeacherDetail';
 import SignUp from '../pages/Auth/SignUp';
@@ -13,12 +12,25 @@ import Login from '../pages/Auth/Login';
 import Anon from '../components/Anon';
 import { AuthProviderWrapper } from '../context/auth.context';
 import Admin from '../components/Admin';
+import ProfilePage from '../pages/Auth/ProfilePage';
+import Private from '../components/Private';
 
 function App() {
   return (
     <>
       <AuthProviderWrapper>
+
         <Routes>
+
+          <Route
+            path='/profile/:userID'
+            element={
+              <Private>
+                <ProfilePage />
+              </Private>
+            }
+          />
+          
           <Route
             path='/signup'
             element={

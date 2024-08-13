@@ -1,45 +1,71 @@
 import { Link } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
-import {AuthContext} from '../context/auth.context';
 
-function Teachers() {
-  const {logout} = useContext(AuthContext)
-  const [teachers, setTeachers] = useState([]);
+function Workshops() {
+  const [allWorkshops, setAllWorkshops] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredWorkshops, setFilteredWorkshops] = useState([]);
 
-  const getAllTeachers = async () => {
+  const getAllWorkshops = async () => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/teachers`
+        `${import.meta.env.VITE_API_URL}/api/workshops`
       );
-      setTeachers(response.data);
+      setAllWorkshops(response.data);
+      setFilteredWorkshops(response.data);
     } catch (error) {
       console.log('error', error);
     }
   };
   useEffect(() => {
-    getAllTeachers();
+    getAllWorkshops();
   }, []);
+
+  useEffect(() => {
+    if (!searchQuery/* .trim() === '' */) {
+      setFilteredWorkshops(allWorkshops);
+    } else {
+      const lowerCaseQuery = searchQuery.toLowerCase();
+      const filtered = allWorkshops.filter(
+        (workshop) =>
+          workshop.title.toLowerCase().includes(lowerCaseQuery) ||
+          workshop.description.toLowerCase().includes(lowerCaseQuery) ||
+          workshop.teacher.toLowerCase().includes(lowerCaseQuery) ||
+          workshop.category.toLowerCase().includes(lowerCaseQuery) ||
+          workshop.place.toLowerCase().includes(lowerCaseQuery) ||
+          workshop.date.includes(searchQuery) ||
+          workshop.subcategory.toLowerCase().includes(lowerCaseQuery)
+      );
+      console.log(searchQuery);
+      setFilteredWorkshops(filtered);
+    }
+  }, [searchQuery, allWorkshops]);
 
   return (
     <>
-    <p>logout</p>
-    <button type='submit' onClick={logout}>logout</button>
-      <h2>Check out our Teachers!</h2>
+      <h2>Check out our Workshops!</h2>
       <div>
-        {teachers.map((teacher) => {
-          return <div key={teacher._id}>
-            <Link to={`/teachers/${teacher._id}`}>
-                <h3>{teacher.name}</h3>
-                <h5>{teacher.bio}</h5>
-                <h5>{teacher.socialMedia}</h5>
-                <h5>{teacher.previous_workshops}</h5>
-            </Link>
-          </div>;
-        })}
+        <input
+          type='text'
+          placeholder='search for any word...'
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        {filteredWorkshops.length > 0
+          ? filteredWorkshops.map((workshop) => (
+              <div key={workshop._id}>
+                <Link to={`/workshops/${workshop._id}`}>
+                  <h3>{workshop.title}</h3>
+                  <h5>{workshop.description}</h5>
+                  <h6>lectured by {workshop.teacher}</h6>
+                </Link>
+              </div>
+            ))
+          : (filteredWorkshops.length === 0 && <p>No workshops found</p>)}
       </div>
     </>
   );
 }
 
-export default Teachers;
+export default Workshops;

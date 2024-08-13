@@ -14,13 +14,21 @@ import { AuthProviderWrapper } from '../context/auth.context';
 import Admin from '../components/Admin';
 import ProfilePage from '../pages/Auth/ProfilePage';
 import Private from '../components/Private';
+import Workshops from '../pages/Workshops';
 
 function App() {
   return (
     <>
       <AuthProviderWrapper>
-
         <Routes>
+          <Route
+            path='/workshops'
+            element={
+              <Anon>
+                <Workshops />
+              </Anon>
+            }
+          />
 
           <Route
             path='/profile/:userID'
@@ -30,7 +38,7 @@ function App() {
               </Private>
             }
           />
-          
+
           <Route
             path='/signup'
             element={

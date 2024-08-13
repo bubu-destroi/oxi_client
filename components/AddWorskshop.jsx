@@ -1,0 +1,282 @@
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
+function AddWorkshop() {
+  const [title, setTitle] = useState('');
+  //const [errorMessage, setErrorMessage] = useState('');
+  const [description, setDescription] = useState('');
+  const [image, setImage] = useState('');
+  const [duration, setDuration] = useState('');
+  const [price, setPrice] = useState(null);
+  const [category, setCategory] = useState('');
+  const [subcategory, setSubcategory] = useState('');
+  const [remote, setRemote] = useState(false);
+  const [place, setPlace] = useState('');
+  const [date, setDate] = useState('');
+  const [teachers, setTeachers] = useState([]);
+  const [selectedTeacher, setSelectedTeacher] = useState('');
+  const [selectedTeachers, setSelectedTeachers] = useState([]);
+  const [minimum_age, setMinimum_age] = useState(null);
+  const [maximum_age, setMaximum_age] = useState('');
+  const [maxParticipants, setMaxParticipants] = useState(null);
+  const [minParticipants, setMinParticipants] = useState(1);
+  const [loading, setLoading] = useState(false);
+
+  const fetchTeachers = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/teachers`
+      );
+      setTeachers(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTeachers();
+  }, []);
+
+  const handleTeacherChange = (e) => {
+    setSelectedTeacher(e.target.value);
+  };
+  const addTeacher = () => {
+    if (selectedTeacher && !selectedTeachers.includes(selectedTeacher)) {
+      setSelectedTeachers([...selectedTeachers, selectedTeacher]);
+    }
+  };
+  const removeTeacher = (teacherId) => {
+    setSelectedTeachers(selectedTeachers.filter((id) => id !== teacherId));
+  };
+
+  /* const handleTeachersChange = (event) => {
+    const selectedOptions = Array.from(
+      event.target.selectedOptions,
+      (option) => option.value
+    );
+    setSelectedTeachers(selectedOptions);
+  };
+ */
+  const handleTitle = (e) => {
+    setTitle(e.target.value);
+  };
+  const handleDescription = (e) => {
+    setDescription(e.target.value);
+  };
+  const handleImage = async (e) => {
+    const uploadData = new FormData();
+    uploadData.append('imgUrl', e.target.files[0]);
+    try {
+      setLoading(true);
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/upload`,
+        uploadData
+      );
+      setLoading(false);
+      setImage(response.data.fileUrl);
+    } catch (error) {
+      console.log(loading);
+      console.error(error);
+    }
+  };
+  const handlePrice = (e) => {
+    setPrice(e.target.value);
+  };
+  const handleDuration = (e) => {
+    setDuration(e.target.value);
+  };
+  const handleCategory = (e) => {
+    setCategory(e.target.value);
+  };
+  const handleSubcategory = (e) => {
+    setSubcategory(e.target.value);
+  };
+  const handleRemote = (e) => {
+    setRemote(e.target.value);
+  };
+  const handlePlace = (e) => {
+    setPlace(e.target.value);
+  };
+  const handleDate = (e) => {
+    setDate(e.target.value);
+  };
+  const handleTeacher = (e) => {
+    setTeachers(e.target.value);
+  };
+  const handleMinimum_age = (e) => {
+    setMinimum_age(e.target.value);
+  };
+  const handleMaximum_age = (e) => {
+    setMaximum_age(e.target.value);
+  };
+  const handleMaxParticipants = (e) => {
+    setMaxParticipants(e.target.value);
+  };
+  const handleMinParticipants = (e) => {
+    setMinParticipants(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const newWorkshop = {
+        title,
+        description,
+        image,
+        duration,
+        price,
+        category,
+        subcategory,
+        remote,
+        place,
+        date,
+        teachers: selectedTeachers,
+        minimum_age,
+        maximum_age,
+        maxParticipants,
+        minParticipants,
+      };
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/workshops`,
+        newWorkshop
+      );
+      setTitle('');
+      setDescription('');
+      // setErrorMessage('')
+    } catch (error) {
+      //setErrorMessage(error.errorMessage);
+      console.log(error);
+    }
+  };
+
+  return (
+    <>
+      <h3>Create a Workshop</h3>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor='title'>Title</label>
+        <input
+          type='text'
+          name='title'
+          id='title'
+          value={title}
+          onChange={handleTitle}
+        />
+        <label htmlFor='description'>Description</label>
+        <textarea
+          name='description'
+          id='description'
+          value={description}
+          onChange={handleDescription}
+        />
+        <label htmlFor='image'>Upload an image</label>
+        <input
+          type='file'
+          name='image'
+          id='image'
+          value={image}
+          onChange={handleImage}
+        />
+        <label htmlFor='duration'>Duration - hours, days, weeks...?</label>
+        <input
+          type='text'
+          name='duration'
+          id='duration'
+          value={duration}
+          onChange={handleDuration}
+        />
+        <label htmlFor='price'>an estime price to charge per participant</label>
+        <input
+          type='number'
+          name='price'
+          id='price'
+          value={price}
+          onChange={handlePrice}
+        />
+        <label htmlFor='category'>Select a category</label>
+        <input
+          type='text'
+          name='category'
+          id='category'
+          value={category}
+          onChange={handleCategory}
+        />
+        <label htmlFor='subcategory'>Type a subcategory</label>
+        <input
+          type='text'
+          name='subcategory'
+          id='subcategory'
+          value={subcategory}
+          onChange={handleSubcategory}
+        />
+        <label htmlFor='date'>Input a date</label>
+        <input
+          type='date'
+          name='date'
+          id='date'
+          value={date}
+          onChange={handleDate}
+        />
+       {/*  <label htmlFor='teachers'>Input Teachers</label>
+        <select
+          name='teachers'
+          id='teachers'
+          multiple
+          value={selectedTeachers}
+          onChange={handleTeachersChange}>
+          {teachers.map((teacher) => (
+            <option
+              key={teacher._id}
+              value={teacher._id}>
+              {teacher.name}
+            </option>
+          ))}
+        </select> */}
+        <label htmlFor="teacher">Select a Teacher</label>
+      <select
+        name="teacher"
+        id="teacher"
+        value={selectedTeacher}
+        onChange={handleTeacherChange}
+      >
+        <option value="">-- Select a Teacher --</option>
+        {teachers.map((teacher) => (
+          <option key={teacher._id} value={teacher._id}>
+            {teacher.name}
+          </option>
+        ))}
+      </select>
+      <button type="button" onClick={addTeacher}>
+        Add Teacher
+      </button>
+
+      <div>
+        <h4>Selected Teachers:</h4>
+        <ul>
+          {selectedTeachers.map((teacherId) => {
+            const teacher = teachers.find((t) => t._id === teacherId);
+            return (
+              <li key={teacherId}>
+                {teacher?.name}
+                <button type="button" onClick={() => removeTeacher(teacherId)}>
+                  Remove
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+        <label htmlFor='duration'>Duration - hours, days, weeks...?</label>
+        <input
+          type='text'
+          name='duration'
+          id='duration'
+          value={duration}
+          onChange={handleDuration}
+        />
+        <button type='submit'>create</button>
+      </form>
+    </>
+  );
+}
+
+export default AddWorkshop;

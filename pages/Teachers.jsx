@@ -23,7 +23,15 @@ function Teachers() {
 
   return (
     <>
-    <p>logout</p>
+    
+      <div className='logo-div'>
+        <Link to={'/'}>
+          <img
+            src='../src/assets/oxito.png'
+            alt='oxitoficina-logo'
+          />
+        </Link>
+      </div>
     <button type='submit' onClick={logout}>logout</button>
       <h2>Check out our Teachers!</h2>
       <div>

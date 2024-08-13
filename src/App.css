@@ -1,3 +1,7 @@
+*{
+  display: flexbox;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -39,4 +43,37 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* .homepage-bigdiv{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 0;
+  width: auto;
+  
+} */
+
+.homepage-bigdiv {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.logo-div{
+  height: 10px;
+  left: 0;
+  transform: scale(0.25); 
+  transform-origin: top left;
+  position: fixed;
+}
+
+.about-homepage{
+  margin: auto;
+  width: 50vmax;
+}
+
+.about-wishes{
+  margin: auto;
+  width: 50vmax;
 }

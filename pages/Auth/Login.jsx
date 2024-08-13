@@ -7,7 +7,8 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
-  const {logout, storeToken, authenticateUser, user } = useContext(AuthContext);
+  const { logout, storeToken, authenticateUser, user } =
+    useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -31,6 +32,14 @@ function Login() {
   };
   return (
     <div className='loginPage'>
+      <div className='logo-div'>
+        <Link to={'/'}>
+          <img
+            src='../src/assets/oxito.png'
+            alt='oxitoficina-logo'
+          />
+        </Link>
+      </div>
       <h2>please log in to start learning!</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor='email'>your email</label>
@@ -51,13 +60,17 @@ function Login() {
         />
         <button type='submit'>lets go!</button>
       </form>
-      {errorMessage && <p>{errorMessage}</p> }
+      {errorMessage && <p>{errorMessage}</p>}
       <p>you do not own an account yet?</p>
       <Link to='/signup'>create your account here</Link>
       <p>or log out!</p>
-      <button type='submit' onClick={logout} >logout</button>
+      <button
+        type='submit'
+        onClick={logout}>
+        logout
+      </button>
     </div>
   );
 }
 
-export default Login
+export default Login;

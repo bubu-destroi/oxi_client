@@ -23,27 +23,44 @@ function Workshops() {
   }, []);
 
   useEffect(() => {
-    if (!searchQuery/* .trim() === '' */) {
+    if (!searchQuery /* .trim() === '' */) {
       setFilteredWorkshops(allWorkshops);
     } else {
       const lowerCaseQuery = searchQuery.toLowerCase();
       const filtered = allWorkshops.filter(
         (workshop) =>
-          workshop.title.toLowerCase().includes(lowerCaseQuery) ||
-          workshop.description.toLowerCase().includes(lowerCaseQuery) ||
-          workshop.teacher.toLowerCase().includes(lowerCaseQuery) ||
-          workshop.category.toLowerCase().includes(lowerCaseQuery) ||
-          workshop.place.toLowerCase().includes(lowerCaseQuery) ||
-          workshop.date.includes(searchQuery) ||
-          workshop.subcategory.toLowerCase().includes(lowerCaseQuery)
+          (workshop.title &&
+            workshop.title.toLowerCase().includes(lowerCaseQuery)) ||
+          (workshop.description &&
+            workshop.description.toLowerCase().includes(lowerCaseQuery)) ||
+          (workshop.teacher &&
+            workshop.teacher.some((teacher) =>
+              teacher.name.toLowerCase().includes(lowerCaseQuery)
+            )) ||
+          (workshop.category &&
+            workshop.category.toLowerCase().includes(lowerCaseQuery)) ||
+          (workshop.place &&
+            workshop.place.toLowerCase().includes(lowerCaseQuery)) ||
+          (workshop.date && workshop.date.includes(searchQuery)) ||
+          (workshop.subcategory &&
+            workshop.subcategory.toLowerCase().includes(lowerCaseQuery))
       );
       console.log(searchQuery);
+      console.log(filtered);
       setFilteredWorkshops(filtered);
     }
   }, [searchQuery, allWorkshops]);
 
   return (
     <>
+      <div className='logo-div'>
+        <Link to={'/'}>
+          <img
+            src='../src/assets/oxito.png'
+            alt='oxitoficina-logo'
+          />
+        </Link>
+      </div>
       <h2>Check out our Workshops!</h2>
       <div>
         <input
@@ -58,11 +75,13 @@ function Workshops() {
                 <Link to={`/workshops/${workshop._id}`}>
                   <h3>{workshop.title}</h3>
                   <h5>{workshop.description}</h5>
-                  <h6>lectured by {workshop.teacher}</h6>
+                  <h6>
+                    lectured by {workshop.teacher.map((t) => t.name).join(', ')}
+                  </h6>
                 </Link>
               </div>
             ))
-          : (filteredWorkshops.length === 0 && <p>No workshops found</p>)}
+          : filteredWorkshops.length === 0 && <p>No workshops found</p>}
       </div>
     </>
   );

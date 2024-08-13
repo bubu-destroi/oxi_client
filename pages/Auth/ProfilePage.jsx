@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { AuthContext } from '../../context/auth.context';
+import { Link } from 'react-router-dom';
 
 function ProfilePage() {
   const { user, logout } = useContext(AuthContext);
@@ -8,6 +9,14 @@ function ProfilePage() {
 
   return (
     <>
+      <div className='logo-div'>
+        <Link to={'/'}>
+          <img
+            src='../src/assets/oxito.png'
+            alt='oxitoficina-logo'
+          />
+        </Link>
+      </div>
       <h1>hello {user.learner_username}!</h1>
       <h3>these are the wishes you requested</h3>
       <div>
@@ -46,7 +55,6 @@ function ProfilePage() {
           <p>You are not listed for any workshops waiting list.</p>
         )}
       </div>
-      
 
       <button onClick={logout}>Logout</button>
     </>

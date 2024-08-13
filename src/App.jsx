@@ -15,12 +15,31 @@ import Admin from '../components/Admin';
 import ProfilePage from '../pages/Auth/ProfilePage';
 import Private from '../components/Private';
 import Workshops from '../pages/Workshops';
+import Wishlist from '../pages/Wishlist';
+import Homepage from '../pages/Homepage';
+import AddWorkshop from '../components/AddWorskshop';
 
 function App() {
   return (
     <>
       <AuthProviderWrapper>
         <Routes>
+          <Route
+            path='/'
+            element={
+              <Anon>
+                <Homepage />
+              </Anon>
+            }
+          />
+          <Route
+            path='/create-workshop'
+            element={
+              <Admin>
+                <AddWorkshop />
+              </Admin>
+            }
+          />
           <Route
             path='/workshops'
             element={
@@ -30,6 +49,12 @@ function App() {
             }
           />
 
+          <Route
+            path='/wishlist'
+            element={
+                <Wishlist />
+            }
+          />
           <Route
             path='/profile/:userID'
             element={
@@ -58,7 +83,7 @@ function App() {
           />
 
           <Route
-            //falta adicionar o context para fazer pesquisa
+            //falta adicionar o context para fazer pesquisa 
             path='/teachers'
             element={<Teachers />}
           />

@@ -18,7 +18,7 @@ function SignUp() {
   const courses_taken = [];
   const [loading, setLoading] = useState(false);
 
-  const navigate =  useNavigate()
+  const navigate = useNavigate();
 
   const handleParent_name = (e) => {
     setParent_name(e.target.value);
@@ -98,7 +98,7 @@ function SignUp() {
         `${import.meta.env.VITE_API_URL}/auth/signup`,
         newUserProfile
       );
-      navigate('/login')
+      navigate('/login');
     } catch (error) {
       console.log('error', error);
     }
@@ -106,11 +106,21 @@ function SignUp() {
 
   return (
     <>
+      <div className='logo-div'>
+        <Link to={'/'}>
+          <img
+            src='../src/assets/oxito.png'
+            alt='oxitoficina-logo'
+          />
+        </Link>
+      </div>
       <h2>
         create an account to sign up for workshops and tell us what you want to
         learn about!
       </h2>
-      <h5>do you already own an account? <Link to='/login'> log in here!</Link>  </h5>
+      <h5>
+        do you already own an account? <Link to='/login'> log in here!</Link>{' '}
+      </h5>
       <form
         action=''
         onSubmit={handleSubmit}>

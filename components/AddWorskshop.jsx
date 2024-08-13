@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function AddWorkshop() {
   const [title, setTitle] = useState('');
@@ -72,6 +73,7 @@ function AddWorkshop() {
         `${import.meta.env.VITE_API_URL}/api/upload`,
         uploadData
       );
+      console.log(response.data.fileUrl);
       setLoading(false);
       setImage(response.data.fileUrl);
     } catch (error) {
@@ -91,17 +93,14 @@ function AddWorkshop() {
   const handleSubcategory = (e) => {
     setSubcategory(e.target.value);
   };
-  const handleRemote = (e) => {
-    setRemote(e.target.value);
+  const handleRemote = () => {
+   console.log(remote);
   };
   const handlePlace = (e) => {
     setPlace(e.target.value);
   };
   const handleDate = (e) => {
     setDate(e.target.value);
-  };
-  const handleTeacher = (e) => {
-    setTeachers(e.target.value);
   };
   const handleMinimum_age = (e) => {
     setMinimum_age(e.target.value);
@@ -142,6 +141,19 @@ function AddWorkshop() {
       );
       setTitle('');
       setDescription('');
+      setImage('')
+      setDuration('')
+      setPrice(null)
+      setCategory('')
+      setSubcategory('')
+      setRemote(false)
+      setPlace('')
+      setDate(null)
+      setTeachers([])
+      setMinimum_age(null)
+      setMaximum_age(null)
+      setMinParticipants(1)
+      setMaxParticipants(null)
       // setErrorMessage('')
     } catch (error) {
       //setErrorMessage(error.errorMessage);
@@ -151,6 +163,14 @@ function AddWorkshop() {
 
   return (
     <>
+    <div className='logo-div'>
+        <Link to={'/'}>
+          <img
+            src='../src/assets/oxito.png'
+            alt='oxitoficina-logo'
+          />
+        </Link>
+      </div>
       <h3>Create a Workshop</h3>
       <form onSubmit={handleSubmit}>
         <label htmlFor='title'>Title</label>
@@ -161,6 +181,7 @@ function AddWorkshop() {
           value={title}
           onChange={handleTitle}
         />
+        <br />
         <label htmlFor='description'>Description</label>
         <textarea
           name='description'
@@ -168,14 +189,15 @@ function AddWorkshop() {
           value={description}
           onChange={handleDescription}
         />
+        <br />
         <label htmlFor='image'>Upload an image</label>
         <input
           type='file'
           name='image'
           id='image'
-          value={image}
           onChange={handleImage}
         />
+        <br />
         <label htmlFor='duration'>Duration - hours, days, weeks...?</label>
         <input
           type='text'
@@ -184,7 +206,8 @@ function AddWorkshop() {
           value={duration}
           onChange={handleDuration}
         />
-        <label htmlFor='price'>an estime price to charge per participant</label>
+        <br />
+        <label htmlFor='price'>an estime price, in Euros, to charge per participant</label>
         <input
           type='number'
           name='price'
@@ -192,6 +215,7 @@ function AddWorkshop() {
           value={price}
           onChange={handlePrice}
         />
+        <br />
         <label htmlFor='category'>Select a category</label>
         <input
           type='text'
@@ -200,6 +224,7 @@ function AddWorkshop() {
           value={category}
           onChange={handleCategory}
         />
+        <br />
         <label htmlFor='subcategory'>Type a subcategory</label>
         <input
           type='text'
@@ -208,6 +233,7 @@ function AddWorkshop() {
           value={subcategory}
           onChange={handleSubcategory}
         />
+        <br />
         <label htmlFor='date'>Input a date</label>
         <input
           type='date'
@@ -216,7 +242,8 @@ function AddWorkshop() {
           value={date}
           onChange={handleDate}
         />
-       {/*  <label htmlFor='teachers'>Input Teachers</label>
+        <br />
+        {/*  <label htmlFor='teachers'>Input Teachers</label>
         <select
           name='teachers'
           id='teachers'
@@ -231,48 +258,100 @@ function AddWorkshop() {
             </option>
           ))}
         </select> */}
-        <label htmlFor="teacher">Select a Teacher</label>
-      <select
-        name="teacher"
-        id="teacher"
-        value={selectedTeacher}
-        onChange={handleTeacherChange}
-      >
-        <option value="">-- Select a Teacher --</option>
-        {teachers.map((teacher) => (
-          <option key={teacher._id} value={teacher._id}>
-            {teacher.name}
-          </option>
-        ))}
-      </select>
-      <button type="button" onClick={addTeacher}>
-        Add Teacher
-      </button>
+        <label htmlFor='teacher'>Select a Teacher</label>
+        <select
+          name='teacher'
+          id='teacher'
+          value={selectedTeacher}
+          onChange={handleTeacherChange}>
+          <option value=''>Select a Teacher</option>
+          {teachers.map((teacher) => (
+            <option
+              key={teacher._id}
+              value={teacher._id}>
+              {teacher.name}
+            </option>
+          ))}
+        </select>
+        <button
+          type='button'
+          onClick={addTeacher}>
+          Add another Teacher
+        </button>
 
-      <div>
-        <h4>Selected Teachers:</h4>
-        <ul>
-          {selectedTeachers.map((teacherId) => {
-            const teacher = teachers.find((t) => t._id === teacherId);
-            return (
-              <li key={teacherId}>
-                {teacher?.name}
-                <button type="button" onClick={() => removeTeacher(teacherId)}>
-                  Remove
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-        <label htmlFor='duration'>Duration - hours, days, weeks...?</label>
+        <div>
+          <h4>Selected Teachers:</h4>
+          <ul>
+            {selectedTeachers.map((teacherId) => {
+              const teacher = teachers.find((t) => t._id === teacherId);
+              return (
+                <li key={teacherId}>
+                  {teacher?.name}
+                  <button
+                    type='button'
+                    onClick={() => removeTeacher(teacherId)}>
+                    Remove
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <br />
+        <label htmlFor='remote'>Remote?</label>
+        <input
+          name='remote'
+          type='checkbox'
+          checked={!remote} 
+          onChange={(e) => (setRemote(!e.target.checked),handleRemote())} 
+        />
+
+        <br />
+        <label htmlFor='place'>Place</label>
         <input
           type='text'
-          name='duration'
-          id='duration'
-          value={duration}
-          onChange={handleDuration}
+          name='place'
+          id='place'
+          value={place}
+          onChange={handlePlace}
         />
+        <br />
+        <label htmlFor='minimum_age'>Mininmum age of participants</label>
+        <input
+          type='number'
+          name='minimum_age'
+          id='minimum_age'
+          value={minimum_age}
+          onChange={handleMinimum_age}
+        />
+        <br />
+        <label htmlFor='maximum_age'>Maximum age of participants</label>
+        <input
+          type='number'
+          name='maximum_age'
+          id='maximum_age'
+          value={maximum_age}
+          onChange={handleMaximum_age}
+        />
+        <br />
+        <label htmlFor='minParticipants'>Minimum number of participants</label>
+        <input
+          type='number'
+          name='minParticipants'
+          id='minParticipants'
+          value={minParticipants}
+          onChange={handleMinParticipants}
+        />
+        <br />
+        <label htmlFor='maxParticipants'>Maximum number of participants</label>
+        <input
+          type='number'
+          name='maxParticipants'
+          id='maxParticipants'
+          value={maxParticipants}
+          onChange={handleMaxParticipants}
+        />
+        <br />
         <button type='submit'>create</button>
       </form>
     </>

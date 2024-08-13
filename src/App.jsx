@@ -18,6 +18,7 @@ import Workshops from '../pages/Workshops';
 import Wishlist from '../pages/Wishlist';
 import Homepage from '../pages/Homepage';
 import AddWorkshop from '../components/AddWorskshop';
+import AddWish from '../components/AddWish';
 
 function App() {
   return (
@@ -30,6 +31,12 @@ function App() {
               <Anon>
                 <Homepage />
               </Anon>
+            }
+          />
+          <Route
+            path='/create-wish'
+            element={
+                <AddWish />
             }
           />
           <Route

@@ -33,8 +33,8 @@ function Workshops() {
             workshop.title.toLowerCase().includes(lowerCaseQuery)) ||
           (workshop.description &&
             workshop.description.toLowerCase().includes(lowerCaseQuery)) ||
-          (workshop.teacher &&
-            workshop.teacher.some((teacher) =>
+          (workshop.teachers &&
+            workshop.teachers.some((teacher) =>
               teacher.name.toLowerCase().includes(lowerCaseQuery)
             )) ||
           (workshop.category &&
@@ -76,7 +76,7 @@ function Workshops() {
                   <h3>{workshop.title}</h3>
                   <h5>{workshop.description}</h5>
                   <h6>
-                    lectured by {workshop.teacher.map((t) => t.name).join(', ')}
+                    lectured by {workshop.teachers.map((t) => t.name).join(', ')}
                   </h6>
                 </Link>
               </div>

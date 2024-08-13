@@ -199,7 +199,6 @@ function SignUp() {
           onChange={handleDate_of_birth}
         />
         <br />
-        <label htmlFor=''>what is your date of birth?</label>
         <button type='submit'>CREATE!</button>
       </form>
     </>

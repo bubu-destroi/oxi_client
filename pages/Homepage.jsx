@@ -30,7 +30,7 @@ function Homepage() {
           <Link to={`/login`}>
             <h3>Log in</h3>
           </Link>
-          {user && (<Link to='/profile/:userID'>
+          {user && (<Link to={`/profile/${user._id}`}>
           <h3>Your profile</h3>
           </Link> )  }
         </div>

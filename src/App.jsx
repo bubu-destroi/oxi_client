@@ -35,9 +35,7 @@ function App() {
           />
           <Route
             path='/create-wish'
-            element={
-                <AddWish />
-            }
+            element={<AddWish />}
           />
           <Route
             path='/create-workshop'
@@ -58,9 +56,7 @@ function App() {
 
           <Route
             path='/wishlist'
-            element={
-                <Wishlist />
-            }
+            element={<Wishlist />}
           />
           <Route
             path='/profile/:userID'
@@ -90,7 +86,7 @@ function App() {
           />
 
           <Route
-            //falta adicionar o context para fazer pesquisa 
+            //falta adicionar o context para fazer pesquisa
             path='/teachers'
             element={<Teachers />}
           />

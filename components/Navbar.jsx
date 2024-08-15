@@ -1,28 +1,28 @@
-import { Link , useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../context/auth.context';
 
 function Navbar() {
   const { user, logout } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const handLogoClick = ((e) => {
-    e.preventDefault()
-    if(user){
-      navigate(`/profile/${user._id}`)
-    }else{
-      navigate('/signup')
+  const handLogoClick = (e) => {
+    e.preventDefault();
+    if (user) {
+      navigate(`/profile/${user._id}`);
+    } else {
+      navigate('/signup');
     }
-  })
+  };
 
   return (
     <>
-  
+      <div
+        className='user-logo-menu'
+        onClick={handLogoClick}>
+        <img src='/user-logo.png' />
+      </div>
 
-        <div className='user-logo-menu' onClick={handLogoClick}>
-          <img src='../src/assets/user-logo.png' />
-        </div>
-    
       <div className='menu-right'>
         {/* 
         <Link to={`/login`}>
@@ -39,7 +39,7 @@ function Navbar() {
           </Link>
         )}
         {user && (
-          <Link to={"/create-wish"}>
+          <Link to={'/create-wish'}>
             <h3>Add Wish</h3>
           </Link>
         )}

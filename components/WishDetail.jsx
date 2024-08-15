@@ -18,18 +18,47 @@ const WishDetail = () => {
       );
       setSingleWish(response.data);
       console.log(response.data);
-      console.log('user id', user._id, 'created_by', singleWish.created_by);
+      //console.log('user id', user._id, 'created_by', singleWish.created_by);
     } catch (error) {
       console.log('error', error);
     }
   };
 
+  //const creatorID = singleWish.created_by
+  //console.log('creator ID is ',creatorID)
+
   useEffect(() => {
     getSingleWish(wishID);
   }, [wishID]);
 
-  const handleEditDeleteWish = () => {
-    navigate('/');
+  useEffect(() => {
+    if (singleWish) {
+      //console.log('singleWish:', singleWish);
+      // console.log('user id:', user._id, 'created_by:', singleWish.created_by);
+    }
+  }, [singleWish]);
+
+  console.log('singlewish ', singleWish);
+  /*   const handleEditDeleteWish = async (e) => {
+    e.preventDefault()
+    try {
+      await axios
+      navigate('/')
+    } catch (error) {
+      
+    };
+  }; */
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.delete(
+        `${import.meta.env.VITE_API_URL}/api/wishlist/${wishID}`
+      );
+      navigate(`/profile/${user._id}`);
+    } catch (error) {
+      console.log('could not delete wish');
+    }
   };
 
   const handleWantToJoinWish = async (e) => {
@@ -50,7 +79,7 @@ const WishDetail = () => {
       <div className='logo-div'>
         <Link to={'/'}>
           <img
-            src='../src/assets/oxito.png'
+            src='/oxito.png'
             alt='oxitoficina-logo'
           />
         </Link>
@@ -66,15 +95,22 @@ const WishDetail = () => {
         </div>
       )}
       <Link to='/new-proposal'>I can to teach this!</Link>
-      {user._id != singleWish.created_by && (<button
-        type='button'
-        onClick={handleWantToJoinWish}>
-        I also want to learn about this!
-      </button>)}
-      
-      {user._id === user.created_by && (
-        <button type='button' onClick={handleEditDeleteWish} >Edit or Delete</button>
-      )}
+      {/*   {user._id !== singleWish.created_by && (
+        <button
+          type='button'
+          onClick={handleWantToJoinWish}>
+          I also want to learn about this!
+        </button>
+      )}  */}
+      {/* {user.userWishWaitingList.includes(singleWish._id && (<p>You have already shown interest in joining this workshop!</p> ))}
+       */}
+      {/*  {user._id === singleWish.created_by && (
+        <button
+          type='button'
+          onClick={handleDelete}>
+          Delete your Wish
+        </button>
+      )}  */}
     </>
   );
 };

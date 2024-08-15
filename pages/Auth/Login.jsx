@@ -1,4 +1,4 @@
-import {useEffect, useState, useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/auth.context';
@@ -44,7 +44,7 @@ function Login() {
       <div className='logo-div'>
         <Link to='/'>
           <img
-            src='../src/assets/oxito.png'
+            src='/oxito.png'
             alt='oxitoficina-logo'
           />
         </Link>

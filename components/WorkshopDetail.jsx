@@ -50,7 +50,7 @@ function WorkshopDetail() {
       <div className='logo-div'>
         <Link to={'/'}>
           <img
-            src='../src/assets/oxito.png'
+            src='/oxito.png'
             alt='oxitoficina-logo'
           />
         </Link>

@@ -56,7 +56,7 @@ function Workshops() {
       <div className='logo-div'>
         <Link to={'/'}>
           <img
-            src='../src/assets/oxito.png'
+            src='/oxito.png'
             alt='oxitoficina-logo'
           />
         </Link>
@@ -76,7 +76,8 @@ function Workshops() {
                   <h3>{workshop.title}</h3>
                   <h5>{workshop.description}</h5>
                   <h6>
-                    lectured by {workshop.teachers.map((t) => t.name).join(', ')}
+                    lectured by{' '}
+                    {workshop.teachers.map((t) => t.name).join(', ')}
                   </h6>
                 </Link>
               </div>

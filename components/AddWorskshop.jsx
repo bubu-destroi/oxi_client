@@ -94,7 +94,7 @@ function AddWorkshop() {
     setSubcategory(e.target.value);
   };
   const handleRemote = () => {
-   console.log(remote);
+    console.log(remote);
   };
   const handlePlace = (e) => {
     setPlace(e.target.value);
@@ -141,19 +141,19 @@ function AddWorkshop() {
       );
       setTitle('');
       setDescription('');
-      setImage('')
-      setDuration('')
-      setPrice(null)
-      setCategory('')
-      setSubcategory('')
-      setRemote(false)
-      setPlace('')
-      setDate(null)
-      setTeachers([])
-      setMinimum_age(null)
-      setMaximum_age(null)
-      setMinParticipants(1)
-      setMaxParticipants(null)
+      setImage('');
+      setDuration('');
+      setPrice(null);
+      setCategory('');
+      setSubcategory('');
+      setRemote(false);
+      setPlace('');
+      setDate(null);
+      setTeachers([]);
+      setMinimum_age(null);
+      setMaximum_age(null);
+      setMinParticipants(1);
+      setMaxParticipants(null);
       // setErrorMessage('')
     } catch (error) {
       //setErrorMessage(error.errorMessage);
@@ -163,10 +163,10 @@ function AddWorkshop() {
 
   return (
     <>
-    <div className='logo-div'>
+      <div className='logo-div'>
         <Link to={'/'}>
           <img
-            src='../src/assets/oxito.png'
+            src='/oxito.png'
             alt='oxitoficina-logo'
           />
         </Link>
@@ -207,7 +207,9 @@ function AddWorkshop() {
           onChange={handleDuration}
         />
         <br />
-        <label htmlFor='price'>an estime price, in Euros, to charge per participant</label>
+        <label htmlFor='price'>
+          an estime price, in Euros, to charge per participant
+        </label>
         <input
           type='number'
           name='price'
@@ -302,8 +304,8 @@ function AddWorkshop() {
         <input
           name='remote'
           type='checkbox'
-          checked={!remote} 
-          onChange={(e) => (setRemote(!e.target.checked),handleRemote())} 
+          checked={!remote}
+          onChange={(e) => (setRemote(!e.target.checked), handleRemote())}
         />
 
         <br />

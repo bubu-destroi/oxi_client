@@ -40,14 +40,14 @@ function AddWish() {
           remote,
           age_of_wisher: user.age,
           userID: user._id,
-          created_by : user._id,
+          created_by: user._id,
         };
         console.log(newWish);
         await axios.post(
           `${import.meta.env.VITE_API_URL}/api/wishlist`,
           newWish
         );
-        navigate(`/profile/${user._id}`)
+        navigate(`/profile/${user._id}`);
         console.log('Wish successfully posted');
       } catch (error) {
         console.log('error', error);
@@ -62,7 +62,7 @@ function AddWish() {
       <div className='logo-div'>
         <Link to={'/'}>
           <img
-            src='../src/assets/oxito.png'
+            src='/oxito.png'
             alt='oxitoficina-logo'
           />
         </Link>
@@ -107,7 +107,7 @@ function AddWish() {
           <br />
           <label htmlFor='remote'>Remote?</label>
           <input
-            name='remote' 
+            name='remote'
             id='remote'
             type='checkbox'
             checked={remote}

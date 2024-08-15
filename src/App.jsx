@@ -19,6 +19,7 @@ import Wishlist from '../pages/Wishlist';
 import Homepage from '../pages/Homepage';
 import AddWorkshop from '../components/AddWorskshop';
 import AddWish from '../components/AddWish';
+import WishDetail from '../components/WishDetail';
 
 function App() {
   return (
@@ -30,6 +31,14 @@ function App() {
             element={
               <Anon>
                 <Homepage />
+              </Anon>
+            }
+          />
+          <Route
+            path='/wishlist/:wishID'
+            element={
+              <Anon>
+                <WishDetail />
               </Anon>
             }
           />

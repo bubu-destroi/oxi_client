@@ -58,7 +58,11 @@ function Wishlist() {
         interest to prepare a workshop in response to one of these requests,
         click the button -I Can Teach You!- and fill the form
       </h3>
-      <div><Link to='/create-wish'><h6>click here to ask for a workshop</h6></Link></div>
+      <div>
+        <Link to='/create-wish'>
+          <h6>click here to ask for a workshop</h6>
+        </Link>
+      </div>
       <div>
         <input
           type='text'
@@ -73,6 +77,11 @@ function Wishlist() {
                   <h3>{wish.title}</h3>
                   <h5>{wish.description}</h5>
                   <h6>age of the wisher {wish.age_of_wisher}</h6>
+                  {wish.interested_users.length > 0 && (
+                    <h6>
+                      number of interested users {wish.interested_users.length}
+                    </h6>
+                  )}
                 </Link>
               </div>
             ))

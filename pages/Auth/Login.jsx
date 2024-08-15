@@ -28,12 +28,13 @@ function Login() {
       navigate(`/profile/${user._id}`);
     } catch (error) {
       setErrorMessage(error.response.data.message);
+      console.log(errorMessage)
     }
   };
   return (
     <div className='loginPage'>
       <div className='logo-div'>
-        <Link to={'/'}>
+        <Link to='/'>
           <img
             src='../src/assets/oxito.png'
             alt='oxitoficina-logo'

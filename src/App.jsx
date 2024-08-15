@@ -21,11 +21,15 @@ import AddWorkshop from '../components/AddWorskshop';
 import AddWish from '../components/AddWish';
 import WishDetail from '../components/WishDetail';
 import WorkshopDetail from '../components/WorkshopDetail';
+import Navbar from '../components/Navbar';
 
 function App() {
   return (
     <>
       <AuthProviderWrapper>
+        <Anon>
+          <Navbar />
+        </Anon>
         <Routes>
           <Route
             path='/'

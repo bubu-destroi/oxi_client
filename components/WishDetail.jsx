@@ -18,6 +18,7 @@ const WishDetail = () => {
       );
       setSingleWish(response.data);
       console.log(response.data);
+      console.log('user id', user._id, 'created_by', singleWish.created_by)
     } catch (error) {
       console.log('error', error);
     }

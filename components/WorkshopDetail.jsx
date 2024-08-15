@@ -4,7 +4,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function WorkshopDetail() {
-  const { user , updateUser} = useContext(AuthContext);
+  const { user, updateUser } = useContext(AuthContext);
 
   const [singleWorkshop, setSingleWorkshop] = useState(null);
 
@@ -29,9 +29,9 @@ function WorkshopDetail() {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    if(user){
+    if (user) {
       try {
-         await axios.put(
+        await axios.put(
           `${import.meta.env.VITE_API_URL}/api/workshops/${workshopID}/join`,
           { userID: user._id }
         );
@@ -45,7 +45,7 @@ function WorkshopDetail() {
     }
   };
 
-  return(
+  return (
     <>
       <div className='logo-div'>
         <Link to={'/'}>
@@ -111,11 +111,13 @@ function WorkshopDetail() {
           </div>
         )}
         <div className='workshop-image'>
-          {singleWorkshop && (<img
-            src={singleWorkshop.image}
-            alt='workshop-image'
-            height={'400px'}
-          />)}
+          {singleWorkshop && (
+            <img
+              src={singleWorkshop.image}
+              alt='workshop-image'
+              height={'400px'}
+            />
+          )}
         </div>
       </div>
     </>

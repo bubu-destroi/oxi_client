@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import {useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/auth.context';
@@ -6,8 +6,8 @@ import { AuthContext } from '../../context/auth.context';
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState(null);
-  const { logout, storeToken, authenticateUser, user } =
+  //const [errorMessage, setErrorMessage] = useState(null);
+  const { logout, storeToken, authenticateUser, updatedUser, user } =
     useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -24,13 +24,21 @@ function Login() {
       );
       storeToken(response.data.authToken);
       console.log(response.data.authToken);
-      authenticateUser();
-      navigate(`/profile/${user._id}`);
+      await authenticateUser();
+      console.log('this is the updatedUser', updatedUser);
     } catch (error) {
-      setErrorMessage(error.response.data.message);
-      console.log(errorMessage)
+      console.log('not logged in because', error);
+      //setErrorMessage(error.response.data.message);
+      //console.log(errorMessage)
     }
   };
+  useEffect(() => {
+    // Navigate to the user's profile after the user state is updated
+    if (user && user._id) {
+      console.log('Navigating to profile with user:', user);
+      navigate(`/profile/${user._id}`);
+    }
+  }, [user, navigate]);
   return (
     <div className='loginPage'>
       <div className='logo-div'>
@@ -61,7 +69,7 @@ function Login() {
         />
         <button type='submit'>lets go!</button>
       </form>
-      {errorMessage && <p>{errorMessage}</p>}
+      {/* {errorMessage && <p>{errorMessage}</p>} */}
       <p>you do not own an account yet?</p>
       <Link to='/signup'>create your account here</Link>
       <p>or log out!</p>

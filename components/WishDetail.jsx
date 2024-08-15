@@ -56,10 +56,10 @@ const WishDetail = () => {
         <div key={singleWish._id}>
           <h3>{singleWish && singleWish.title}</h3>
           <h4>{singleWish && singleWish.description}</h4>
-          <h4>{singleWish && singleWish.category}</h4>
-          <h4>{singleWish && singleWish.subcategory}</h4>
-          <h4>{singleWish && singleWish.remote}</h4>
-          <h4>{singleWish && singleWish.age_of_wisher}</h4>
+          <h5>{singleWish && singleWish.category}</h5>
+          <h5>{singleWish && singleWish.subcategory}</h5>
+          <h5>{singleWish && singleWish.remote}</h5>
+          <h5>{singleWish && singleWish.age_of_wisher}</h5>
         </div>
       )}
       <Link to='/new-proposal'>I can to teach this!</Link>

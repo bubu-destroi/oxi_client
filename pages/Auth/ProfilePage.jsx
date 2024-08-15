@@ -6,7 +6,7 @@ import axios from 'axios';
 function ProfilePage() {
   const { user, logout, updateUser } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
-  const {userID} = useParams()
+  const { userID } = useParams();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -28,7 +28,7 @@ function ProfilePage() {
     console.log(userID);
 
     //ESTA DEPENDENCY PODE DAR PROBLEMAS, EU TIREI AS ANTERIORES PORQUE ESTAVA MOUNTING NONSTOP
-  },[] );
+  }, []);
   if (loading) return <p>Loading...</p>;
   if (!user) return <p>No user data available.</p>;
   return (
@@ -47,7 +47,9 @@ function ProfilePage() {
         {user.wishes && user.wishes.length > 0 ? (
           user.wishes.map((wish) => (
             <div key={wish._id}>
-              <h5>{wish.title}</h5>
+              <Link to={`/wishlist/${wish._id}`}>
+                <h5>{wish.title}</h5>
+              </Link>
             </div>
           ))
         ) : (
@@ -60,7 +62,9 @@ function ProfilePage() {
         {user.signedUp_workshops && user.signedUp_workshops.length > 0 ? (
           user.signedUp_workshops.map((workshop) => (
             <div key={workshop._id}>
-              <h5>{workshop.title}</h5>
+              <Link to={`/workshops/${workshop._id}`}>
+                <h5>{workshop.title}</h5>
+              </Link>
             </div>
           ))
         ) : (
@@ -72,7 +76,9 @@ function ProfilePage() {
         {user.userWaitingList && user.userWaitingList.length > 0 ? (
           user.userWaitingList.map((workshop) => (
             <div key={workshop._id}>
-              <h5>{workshop.title}</h5>
+              <Link to={`/workshops/${workshop._id}`}>
+                <h5>{workshop.title}</h5>
+              </Link>
             </div>
           ))
         ) : (
@@ -84,7 +90,9 @@ function ProfilePage() {
         {user.userWishWaitingList && user.userWishWaitingList.length > 0 ? (
           user.userWishWaitingList.map((wish) => (
             <div key={wish._id}>
-              <h5>{wish.title}</h5>
+              <Link to={`/wishlist/${wish._id}`}>
+                <h5>{wish.title}</h5>
+              </Link>
             </div>
           ))
         ) : (

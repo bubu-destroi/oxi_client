@@ -20,6 +20,7 @@ import Homepage from '../pages/Homepage';
 import AddWorkshop from '../components/AddWorskshop';
 import AddWish from '../components/AddWish';
 import WishDetail from '../components/WishDetail';
+import WorkshopDetail from '../components/WorkshopDetail';
 
 function App() {
   return (
@@ -59,6 +60,14 @@ function App() {
             element={
               <Anon>
                 <Workshops />
+              </Anon>
+            }
+          />
+          <Route
+            path='/workshops/:workshopID'
+            element={
+              <Anon>
+                <WorkshopDetail />
               </Anon>
             }
           />

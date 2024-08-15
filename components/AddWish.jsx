@@ -39,13 +39,15 @@ function AddWish() {
           subcategory,
           remote,
           age_of_wisher: user.age,
-          userID: user._id
+          userID: user._id,
+          created_by : user._id,
         };
         console.log(newWish);
         await axios.post(
           `${import.meta.env.VITE_API_URL}/api/wishlist`,
           newWish
         );
+        navigate(`/profile/${user._id}`)
         console.log('Wish successfully posted');
       } catch (error) {
         console.log('error', error);

@@ -30,6 +30,14 @@ function TeacherDetail() {
 
   return (
     <>
+    <div className='logo-div'>
+      <Link to={'/'}>
+        <img
+          src='../src/assets/oxito.png'
+          alt='oxitoficina-logo'
+        />
+      </Link>
+    </div>
       <div>a closer look at</div>
       {teacher && (
         <div key={teacher._id}>

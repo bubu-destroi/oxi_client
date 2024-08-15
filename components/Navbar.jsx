@@ -1,15 +1,25 @@
-import { Link /* , NavLink, Route, Routes */ } from 'react-router-dom';
+import { Link , useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../context/auth.context';
 
 function Navbar() {
   const { user, logout } = useContext(AuthContext);
+  const navigate = useNavigate()
+
+  const handLogoClick = ((e) => {
+    e.preventDefault()
+    if(user){
+      navigate(`/profile/${user._id}`)
+    }else{
+      navigate('/signup')
+    }
+  })
 
   return (
     <>
-    
-      {/* <Link to={`/profile/${user._id}`}></Link> */}
-        <div className='user-logo-menu'>
+  
+
+        <div className='user-logo-menu' onClick={handLogoClick}>
           <img src='../src/assets/user-logo.png' />
         </div>
     

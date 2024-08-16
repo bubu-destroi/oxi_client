@@ -31,11 +31,7 @@ function Teachers() {
           />
         </Link>
       </div>
-      <button
-        type='submit'
-        onClick={logout}>
-        logout
-      </button>
+
       <h2>Check out our Teachers!</h2>
       <div>
         {teachers.map((teacher) => {

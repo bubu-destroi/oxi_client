@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import { /* useContext,  */useEffect, useState } from 'react';
 import axios from 'axios';
-import { AuthContext } from '../context/auth.context';
+//import { AuthContext } from '../context/auth.context';
 
 function Teachers() {
-  const { logout } = useContext(AuthContext);
+ // const { logout } = useContext(AuthContext);
   const [teachers, setTeachers] = useState([]);
 
   const getAllTeachers = async () => {

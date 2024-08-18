@@ -94,7 +94,7 @@ const WishDetail = () => {
           <h5>{singleWish && singleWish.age_of_wisher}</h5>
         </div>
       )}
-      <Link to='/new-proposal'>I can to teach this!</Link>
+      <Link to='/new-proposal'>I can teach this!</Link>
       {/*   {user._id !== singleWish.created_by && (
         <button
           type='button'

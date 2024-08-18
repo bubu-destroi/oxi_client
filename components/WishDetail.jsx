@@ -8,6 +8,7 @@ const WishDetail = () => {
 
   const [singleWish, setSingleWish] = useState(null);
 
+  const [errorMessage, setErrorMessage] = useState('')
   const { wishID } = useParams();
   const navigate = useNavigate();
 
@@ -70,7 +71,8 @@ const WishDetail = () => {
       );
       navigate(`/profile/${user._id}`);
     } catch (error) {
-      console.log('handle join wish error', error);
+      setErrorMessage('Unable to join the list! Check on your profile if you have already done do.')
+      console.log(errorMessage);
     }
   };
 
@@ -92,16 +94,36 @@ const WishDetail = () => {
           <h5>{singleWish && singleWish.subcategory}</h5>
           <h5>{singleWish && singleWish.remote}</h5>
           <h5>{singleWish && singleWish.age_of_wisher}</h5>
+          {singleWish.interested_users.length > 0 && (
+                    <h6>
+                      number of interested users {singleWish.interested_users.length}
+                    </h6>
+                  )}
         </div>
       )}
       <Link to='/new-proposal'>I can teach this!</Link>
-      {/*   {user._id !== singleWish.created_by && (
-        <button
-          type='button'
-          onClick={handleWantToJoinWish}>
+
+      {/* this following logic will break if there are no authenticated users */}
+
+      {singleWish && user._id !== singleWish.created_by && (
+        <button type='button' onClick={handleWantToJoinWish}>
           I also want to learn about this!
         </button>
-      )}  */}
+      )}
+
+      {singleWish && user._id === singleWish.created_by && (
+        <button type='button' onClick={handleDelete}>
+          Delete this wish?
+        </button>
+      ) }
+
+
+
+    {/*   {singleWish && user._id === singleWish.created_by && (
+        <button type='button' onClick={handleDelete}>
+          Do you need to edit this wish?
+        </button>
+      ) } */}
       {/* {user.userWishWaitingList.includes(singleWish._id && (<p>You have already shown interest in joining this workshop!</p> ))}
        */}
       {/*  {user._id === singleWish.created_by && (

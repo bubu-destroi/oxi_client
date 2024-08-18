@@ -54,8 +54,8 @@ function Wishlist() {
         </Link>
       </div>
       <h3 className='about-wishes'>
-        These are the subjects our users want to learn about. If you have an
-        interest to prepare a workshop in response to one of these requests,
+        These are the subjects our users want to learn about. If you are
+        interested in preparing a workshop in response to one of these requests,
         click the button -I Can Teach You!- and fill the form
       </h3>
       <div>

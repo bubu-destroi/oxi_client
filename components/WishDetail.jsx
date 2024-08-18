@@ -101,7 +101,7 @@ const WishDetail = () => {
                   )}
         </div>
       )}
-      <Link to='/new-proposal'>I can teach this!</Link>
+      <Link to='/new-proposal'>I can teach you!</Link>
 
       {/* this following logic will break if there are no authenticated users */}
 

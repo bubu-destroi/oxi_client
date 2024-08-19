@@ -124,7 +124,10 @@ function SignUp() {
       <form
         action=''
         onSubmit={handleSubmit}>
-        <p>we need your parents/caretaker information!/if you are an adult, input your own information</p>
+        <p>
+          we need your parents/caretaker information! if you are an adult, input
+          your own information
+        </p>
         <label htmlFor=''>their name</label>
         <input
           type='text'
@@ -143,7 +146,9 @@ function SignUp() {
           onChange={handleAddress}
         />
         <br />
-        <label htmlFor=''>their telephone number, including international dialling code</label>
+        <label htmlFor=''>
+          their telephone number, including international dialling code
+        </label>
         <input
           type='text'
           name='phone_number'
@@ -171,7 +176,10 @@ function SignUp() {
           onChange={handleEmail}
         />
         <br />
-        <label htmlFor=''>create a password with at least 6 characters, one number, one lowercase and one uppercase letter</label>
+        <label htmlFor=''>
+          create a password with at least 6 characters, one number, one
+          lowercase and one uppercase letter
+        </label>
         <input
           type='password'
           name='password'

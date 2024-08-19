@@ -8,7 +8,7 @@ const WishDetail = () => {
 
   const [singleWish, setSingleWish] = useState(null);
 
-  const [errorMessage, setErrorMessage] = useState('')
+  //const [errorMessage, setErrorMessage] = useState('');
   const { wishID } = useParams();
   const navigate = useNavigate();
 
@@ -67,7 +67,7 @@ const WishDetail = () => {
   const handleWantToJoinWish = async (e) => {
     e.preventDefault();
     if (!user) {
-      navigate('/login'); 
+      navigate('/login');
       return;
     }
     try {
@@ -100,17 +100,17 @@ const WishDetail = () => {
           <h5>{singleWish && singleWish.remote}</h5>
           <h5>{singleWish && singleWish.age_of_wisher}</h5>
           {singleWish.interested_users.length > 0 && (
-                    <h6>
-                      number of interested users {singleWish.interested_users.length}
-                    </h6>
-                  )}
+            <h6>
+              number of interested users {singleWish.interested_users.length}
+            </h6>
+          )}
         </div>
       )}
       <Link to='/new-proposal'>I can teach you!</Link>
 
       {/* this following logic will break if there are no authenticated users */}
 
-   {/*    {singleWish && user._id !== singleWish.created_by && (
+      {/*    {singleWish && user._id !== singleWish.created_by && (
         <button type='button' onClick={handleWantToJoinWish}>
           I also want to learn about this!
         </button>
@@ -118,7 +118,9 @@ const WishDetail = () => {
 
       {user ? (
         user._id !== singleWish?.created_by && (
-          <button type='button' onClick={handleWantToJoinWish}>
+          <button
+            type='button'
+            onClick={handleWantToJoinWish}>
             I also want to learn about this!
           </button>
         )
@@ -128,21 +130,21 @@ const WishDetail = () => {
         </p>
       )}
 
-     {/*  {singleWish && user._id === singleWish.created_by && (
+      {/*  {singleWish && user._id === singleWish.created_by && (
         <button type='button' onClick={handleDelete}>
           Delete this wish?
         </button>
       ) } */}
 
       {user && user._id === singleWish?.created_by && (
-        <button type='button' onClick={handleDelete}>
+        <button
+          type='button'
+          onClick={handleDelete}>
           Delete your Wish
         </button>
       )}
 
-
-
-    {/*   {singleWish && user._id === singleWish.created_by && (
+      {/*   {singleWish && user._id === singleWish.created_by && (
         <button type='button' onClick={handleDelete}>
           Do you need to edit this wish?
         </button>

@@ -42,9 +42,9 @@ function App() {
           <Route
             path='/wishlist/:wishID'
             element={
-              <Anon>
+             // <Anon>
                 <WishDetail />
-              </Anon>
+             // </Anon>
             }
           />
           <Route
@@ -78,7 +78,9 @@ function App() {
 
           <Route
             path='/wishlist'
-            element={<Wishlist />}
+            element={
+                <Wishlist />
+            }
           />
           <Route
             path='/profile/:userID'

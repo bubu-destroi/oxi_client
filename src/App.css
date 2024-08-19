@@ -137,3 +137,8 @@ input{
 textarea{
   color: aliceblue;
 }
+
+/* ATENÇÃO TRUQUEEEEEEE */
+text{
+  mix-blend-mode: difference;
+}

@@ -35,7 +35,7 @@ const WishDetail = () => {
   useEffect(() => {
     if (singleWish) {
       //console.log('singleWish:', singleWish);
-      // console.log('user id:', user._id, 'created_by:', singleWish.created_by);
+      //console.log('user id:', user._id, 'created_by:', singleWish.created_by);
     }
   }, [singleWish]);
 
@@ -53,10 +53,12 @@ const WishDetail = () => {
   const handleDelete = async (e) => {
     e.preventDefault();
     try {
-      await axios.delete(
-        `${import.meta.env.VITE_API_URL}/api/wishlist/${wishID}`
-      );
-      navigate(`/profile/${user._id}`);
+      if (user && user._id === singleWish.created_by) {
+        await axios.delete(
+          `${import.meta.env.VITE_API_URL}/api/wishlist/${wishID}`
+        );
+        navigate(`/profile/${user._id}`);
+      }
     } catch (error) {
       console.log('could not delete wish');
     }
@@ -64,6 +66,10 @@ const WishDetail = () => {
 
   const handleWantToJoinWish = async (e) => {
     e.preventDefault();
+    if (!user) {
+      navigate('/login'); 
+      return;
+    }
     try {
       await axios.put(
         `${import.meta.env.VITE_API_URL}/api/wishlist/${wishID}/join`,
@@ -71,8 +77,7 @@ const WishDetail = () => {
       );
       navigate(`/profile/${user._id}`);
     } catch (error) {
-      setErrorMessage('Unable to join the list! Check on your profile if you have already done do.')
-      console.log(errorMessage);
+      console.log('unable to join this wish', error);
     }
   };
 
@@ -105,17 +110,35 @@ const WishDetail = () => {
 
       {/* this following logic will break if there are no authenticated users */}
 
-      {singleWish && user._id !== singleWish.created_by && (
+   {/*    {singleWish && user._id !== singleWish.created_by && (
         <button type='button' onClick={handleWantToJoinWish}>
           I also want to learn about this!
         </button>
+      )} */}
+
+      {user ? (
+        user._id !== singleWish?.created_by && (
+          <button type='button' onClick={handleWantToJoinWish}>
+            I also want to learn about this!
+          </button>
+        )
+      ) : (
+        <p>
+          <Link to='/login'>Log in</Link> to join this wish.
+        </p>
       )}
 
-      {singleWish && user._id === singleWish.created_by && (
+     {/*  {singleWish && user._id === singleWish.created_by && (
         <button type='button' onClick={handleDelete}>
           Delete this wish?
         </button>
-      ) }
+      ) } */}
+
+      {user && user._id === singleWish?.created_by && (
+        <button type='button' onClick={handleDelete}>
+          Delete your Wish
+        </button>
+      )}
 
 
 

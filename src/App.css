@@ -114,14 +114,14 @@ body{
 }
 
 .user-logo-menu img{
-  position: absolute;
+  position: fixed;
   top: 40px;
   right: 30px;
   width: 100px;
 }
 
 .menu-right{
-  position: absolute;
+  position: fixed;
 
   top: 200px;
   right: 30px;

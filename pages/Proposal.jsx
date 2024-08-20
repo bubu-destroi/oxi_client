@@ -157,7 +157,7 @@ function Proposal() {
 
   useEffect(() => {
     setName;
-    console.log(remote)
+    console.log(remote);
   }, [name, remote]);
 
   return (
@@ -181,7 +181,9 @@ function Proposal() {
         in case of multiple teachers, collective or school, input these
         informations in the biography field.
       </h6>
-      <form className='proposal-form' onSubmit={handleSubmit}>
+      <form
+        className='proposal-form'
+        onSubmit={handleSubmit}>
         <label htmlFor='name'>Name</label>
         <input
           type='text'
@@ -298,7 +300,11 @@ function Proposal() {
           type='date'
           name='date'
           id='date'
-          min={new Date(new Date().setDate(new Date().getDate() + 1)).toISOString().split('T')[0]} 
+          min={
+            new Date(new Date().setDate(new Date().getDate() + 1))
+              .toISOString()
+              .split('T')[0]
+          }
           value={date}
           onChange={handleDate}
         />
@@ -335,7 +341,7 @@ function Proposal() {
           onChange={handlePlace}
         />
         <br />
-        <label htmlFor='minimum_age'>Mininmum age of participants</label>
+        <label htmlFor='minimum_age'>Minimum age of participants</label>
         <input
           type='number'
           name='minimum_age'

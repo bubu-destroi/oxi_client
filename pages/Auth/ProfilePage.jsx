@@ -133,11 +133,16 @@ function ProfilePage() {
           <p>Go check our wishlist and be surprised!!</p>
         )}
       </div>
-      <h3>The proposals submited, yet to be approved</h3>
+      
+          
+      {user &&
+        user.admin === true &&
+        proposals.length > 0 && <h3>The proposals submited, yet to be approved</h3>}
       {user &&
         user.admin === true &&
         proposals.length > 0 &&
         proposals.map((proposal) => (
+          
           <div key={proposal._id}>
             <Link to={`/proposals/${proposal._id}`}>
               <h5>{proposal.title}</h5>

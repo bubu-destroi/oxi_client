@@ -7,6 +7,39 @@ function ProfilePage() {
   const { user, logout, updateUser } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
   const { userID } = useParams();
+  const [proposals, setProposals] = useState([]);
+  /* const [singleProposal, setSingleProposal] = useState(null); */
+
+  const fetchProposals = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/proposals`
+      );
+      setProposals(response.data);
+    } catch (error) {
+      console.log('error fetching all proposals', error);
+    }
+  };
+
+  /* const fetchSingleProposal = async (id) => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/proposals/${id}`
+      );
+      setSingleProposal(response.data);
+    } catch (error) {
+      console.log('error fetching sigle proposal', error);
+    }
+  }; */
+
+  const handleDeleteProposal = async (id) => {
+    try {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/proposals/${id}`);
+      fetchProposals();
+    } catch (error) {
+      console.log('error deleting proposal', error);
+    }
+  };
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -26,6 +59,7 @@ function ProfilePage() {
     };
     fetchUserData();
     console.log(userID);
+    fetchProposals();
 
     //ESTA DEPENDENCY PODE DAR PROBLEMAS, EU TIREI AS ANTERIORES PORQUE ESTAVA MOUNTING NONSTOP
   }, []);
@@ -99,6 +133,23 @@ function ProfilePage() {
           <p>Go check our wishlist and be surprised!!</p>
         )}
       </div>
+      <h3>The proposals submited, yet to be approved</h3>
+      {user &&
+        user.admin === true &&
+        proposals.length > 0 &&
+        proposals.map((proposal) => (
+          <div key={proposal._id}>
+            <Link to={`/proposals/${proposal._id}`}>
+              <h5>{proposal.title}</h5>
+            </Link>
+            <button
+              type='button'
+              onClick={() => handleDeleteProposal(proposal._id)}>
+              delete
+            </button>
+          </div>
+        ))}
+        <br />
 
       <button onClick={logout}>Logout</button>
     </>

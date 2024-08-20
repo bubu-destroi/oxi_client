@@ -142,3 +142,22 @@ textarea{
 text{
   mix-blend-mode: difference;
 }
+
+.proposal-extras{
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  padding: 10px;
+  margin: auto;
+}
+
+.proposal-form input{
+padding: 10px;
+}
+.proposal-form label{
+padding: 10px;
+}
+.proposal-form textarea{
+padding: 10px;
+}

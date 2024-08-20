@@ -157,7 +157,8 @@ function Proposal() {
 
   useEffect(() => {
     setName;
-  }, [name]);
+    console.log(remote)
+  }, [name, remote]);
 
   return (
     <>
@@ -170,17 +171,17 @@ function Proposal() {
         </Link>
       </div>
       <h1>SUBMIT YOUR PROPOSAL</h1>
-      <h6>
+      <h6 className='proposal-extras'>
         Here you will provide as much detailed information as you can and, uppon
         submit, the proposal will be sent via email and you will be contacted as
         soon as possible
       </h6>
       <h3>First, create a Teacher Profile</h3>
-      <h6>
+      <h6 className='proposal-extras'>
         in case of multiple teachers, collective or school, input these
         informations in the biography field.
       </h6>
-      <form onSubmit={handleSubmit}>
+      <form className='proposal-form' onSubmit={handleSubmit}>
         <label htmlFor='name'>Name</label>
         <input
           type='text'
@@ -238,11 +239,12 @@ function Proposal() {
           value={description}
           onChange={handleDescription}
         />
-        <h6>
+        <h6 className='proposal-extras'>
           In the description field you should provide all the information you
-          feel like addind, besides the other input fields. Be sure to be clear
-          with your idea! Might be a good idea to mention the WISH you are
-          responding to...
+          feel like adding, besides the other input fields, such as all the
+          languages you are comfortable with, availability, required resources
+          or total estimated budget. Be sure to be clear with your idea! Might
+          be a good idea to mention the WISH you are responding to...
         </h6>
         <br />
         <label htmlFor='image'>Upload an image</label>
@@ -296,10 +298,11 @@ function Proposal() {
           type='date'
           name='date'
           id='date'
+          min={new Date(new Date().setDate(new Date().getDate() + 1)).toISOString().split('T')[0]} 
           value={date}
           onChange={handleDate}
         />
-        <h6>
+        <h6 className='proposal-extras'>
           {' '}
           in case you have a flexible availability, say so in the description
           field
@@ -318,7 +321,7 @@ function Proposal() {
           type='checkbox'
           name='remote'
           id='remote'
-          checked={!remote}
+          checked={remote}
           onChange={(e) => setRemote(e.target.checked)}
         />
 

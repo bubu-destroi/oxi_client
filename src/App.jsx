@@ -22,6 +22,7 @@ import AddWish from '../components/AddWish';
 import WishDetail from '../components/WishDetail';
 import WorkshopDetail from '../components/WorkshopDetail';
 import Navbar from '../components/Navbar';
+import Proposal from '../pages/Proposal';
 
 function App() {
   return (
@@ -42,10 +43,14 @@ function App() {
           <Route
             path='/wishlist/:wishID'
             element={
-             // <Anon>
-                <WishDetail />
-             // </Anon>
+              // <Anon>
+              <WishDetail />
+              // </Anon>
             }
+          />
+          <Route
+            path='/new-proposal'
+            element={<Proposal />}
           />
           <Route
             path='/create-wish'
@@ -78,9 +83,7 @@ function App() {
 
           <Route
             path='/wishlist'
-            element={
-                <Wishlist />
-            }
+            element={<Wishlist />}
           />
           <Route
             path='/profile/:userID'

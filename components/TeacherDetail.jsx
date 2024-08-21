@@ -43,7 +43,13 @@ function TeacherDetail() {
         <div className='teacher-detail' key={teacher._id}>
           <h3>{teacher.name}</h3>
           <h5>{teacher.bio}</h5>
-          <h5>{teacher.socialMedia}</h5>
+          <h5><a 
+          href={teacher.socialMedia.startsWith('http') ? teacher.socialMedia : `https://${teacher.socialMedia}`} 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          {teacher.socialMedia}
+        </a></h5>
           <ul>
             {teacher.previous_workshops.map((workshop) => (
               <li key={workshop._id}>{workshop.title}</li>

@@ -40,9 +40,16 @@ function Teachers() {
               <Link to={`/teachers/${teacher._id}`}>
                 <h2>{teacher.name}</h2>
                 <h5>{teacher.bio}</h5>
-                <h5>{teacher.socialMedia}</h5>
-                <h5>{teacher.previous_workshops}</h5>
               </Link>
+                <h5><a 
+          href={teacher.socialMedia.startsWith('http') ? teacher.socialMedia : `https://${teacher.socialMedia}`} 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          {teacher.socialMedia}
+        </a></h5>
+                {/*  */}
+                <h5>{teacher.previous_workshops}</h5>
             </div>
           );
         })}

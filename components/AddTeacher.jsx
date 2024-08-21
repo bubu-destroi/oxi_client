@@ -45,8 +45,9 @@ function AddTeacher() {
   return (
     <>
       <h3>Create a Teacher Profile</h3>
-      <form onSubmit={handleSubmit}>
+      <form className='signup-form' onSubmit={handleSubmit}>
         <label htmlFor='name'>Name</label>
+        <br />
         <input
           type='text'
           name='name'
@@ -54,14 +55,18 @@ function AddTeacher() {
           value={name}
           onChange={handleName}
         />
+        <br />
         <label htmlFor='bio'>Biography</label>
+        <br />
         <textarea
           name='bio'
           id='bio'
           value={bio}
           onChange={handleBio}
         />
+        <br />
         <label htmlFor='email'>Email</label>
+        <br />
         <input
           type='text'
           name='email'
@@ -69,7 +74,9 @@ function AddTeacher() {
           value={email}
           onChange={handleEmail}
         />
+        <br />
         <label htmlFor='socialMedia'>Social Media or linkTree</label>
+        <br />
         <input
           type='text'
           name='socialMedia'
@@ -77,6 +84,7 @@ function AddTeacher() {
           value={socialMedia}
           onChange={handleSocialMedia}
         />
+        <br />
         <button type='submit'>create</button>
       </form>
       

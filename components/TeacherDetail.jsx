@@ -40,7 +40,7 @@ function TeacherDetail() {
       </div>
       <div>a closer look at</div>
       {teacher && (
-        <div key={teacher._id}>
+        <div className='teacher-div' key={teacher._id}>
           <h3>{teacher.name}</h3>
           <h5>{teacher.bio}</h5>
           <h5>{teacher.socialMedia}</h5>

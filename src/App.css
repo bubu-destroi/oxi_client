@@ -135,9 +135,9 @@ textarea {
 }
 
 /* ATENÇÃO TRUQUEEEEEEE */
-text {
+/* text {
   mix-blend-mode: difference;
-}
+} */
 
 .proposal-extras {
   width: 400px;
@@ -196,6 +196,14 @@ text {
   font-family: monospace;
   color: darkslateblue;
 }
+.signup-form textarea {
+  padding: 20px;
+  background-color: rgba(221, 220, 255, 0.997);
+  border-style: none;
+  margin: 10px;
+  font-family: monospace;
+  color: darkslateblue;
+}
 
 .signup-extras {
   width: 400px;
@@ -208,4 +216,15 @@ text {
 
 button {
   margin: 5px;
+}
+
+.teacher-div{
+  margin-top: 50px;
+  width: 300px;
+  padding: 30px;
+}
+
+.all-teachers{
+  display: flex;
+  flex-wrap: row;
 }

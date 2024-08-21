@@ -69,8 +69,11 @@ function AddWish() {
       </div>
       <div>
         <h1>Tell us what you want to learn about!</h1>
-        <form onSubmit={handleSubmit}>
+        <form
+          className='signup-form'
+          onSubmit={handleSubmit}>
           <label htmlFor='title'>Title</label>
+          <br />
           <input
             type='text'
             name='title'
@@ -80,6 +83,7 @@ function AddWish() {
           />
           <br />
           <label htmlFor='description'>Description</label>
+          <br />
           <textarea
             name='description'
             id='description'
@@ -88,6 +92,7 @@ function AddWish() {
           />
           <br />
           <label htmlFor='category'>Select a category</label>
+          <br />
           <input
             type='text'
             name='category'
@@ -97,6 +102,7 @@ function AddWish() {
           />
           <br />
           <label htmlFor='subcategory'>Type a subcategory</label>
+          <br />
           <input
             type='text'
             name='subcategory'
@@ -106,6 +112,7 @@ function AddWish() {
           />
           <br />
           <label htmlFor='remote'>Remote?</label>
+          <br />
           <input
             name='remote'
             id='remote'

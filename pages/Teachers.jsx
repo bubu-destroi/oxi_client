@@ -33,12 +33,12 @@ function Teachers() {
       </div>
 
       <h2>Check out our Teachers!</h2>
-      <div>
+      <div className='all-teachers'>
         {teachers.map((teacher) => {
           return (
-            <div key={teacher._id}>
+            <div className='teacher-div' key={teacher._id}>
               <Link to={`/teachers/${teacher._id}`}>
-                <h3>{teacher.name}</h3>
+                <h2>{teacher.name}</h2>
                 <h5>{teacher.bio}</h5>
                 <h5>{teacher.socialMedia}</h5>
                 <h5>{teacher.previous_workshops}</h5>

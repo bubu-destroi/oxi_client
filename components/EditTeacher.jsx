@@ -33,7 +33,7 @@ function EditTeacher() {
         bio,
         socialMedia,
       };
-      console.log(updatedTeacher)
+      console.log(updatedTeacher);
       await axios.put(
         `${import.meta.env.VITE_API_URL}/api/teachers/${teacherID}`,
         updatedTeacher
@@ -53,13 +53,14 @@ function EditTeacher() {
 
   const handleDelete = async (teacherID) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/api/teachers/${teacherID}`)
-      navigate('/teachers')
-      
+      await axios.delete(
+        `${import.meta.env.VITE_API_URL}/api/teachers/${teacherID}`
+      );
+      navigate('/teachers');
     } catch (error) {
-      console.log('error deleting teacher profile', error)
+      console.log('error deleting teacher profile', error);
     }
-  }
+  };
 
   const getSingleTeacher = async (id) => {
     try {
@@ -83,8 +84,11 @@ function EditTeacher() {
   return (
     <>
       <h3>Edit a Teacher Profile</h3>
-      <form onSubmit={handleSubmit}>
+      <form
+        className='signup-form'
+        onSubmit={handleSubmit}>
         <label htmlFor='name'>Name</label>
+        <br />
         <input
           type='text'
           name='name'
@@ -92,14 +96,18 @@ function EditTeacher() {
           value={name}
           onChange={handleName}
         />
+        <br />
         <label htmlFor='bio'>Biography</label>
+        <br />
         <textarea
           name='bio'
           id='bio'
           value={bio}
           onChange={handleBio}
         />
+        <br />
         <label htmlFor='email'>Email - this will remain private</label>
+        <br />
         <input
           type='text'
           name='email'
@@ -107,7 +115,9 @@ function EditTeacher() {
           value={email}
           onChange={handleEmail}
         />
+        <br />
         <label htmlFor='socialMedia'>Social Media or linkTree</label>
+        <br />
         <input
           type='text'
           name='socialMedia'
@@ -115,9 +125,15 @@ function EditTeacher() {
           value={socialMedia}
           onChange={handleSocialMedia}
         />
+        <br />
         <button type='submit'>ok, done!</button>
       </form>
-        <button type='submit' onClick={handleDelete} >erase this teacher profile</button>
+      <br />
+      <button
+        type='submit'
+        onClick={handleDelete}>
+        erase this teacher profile
+      </button>
     </>
   );
 }

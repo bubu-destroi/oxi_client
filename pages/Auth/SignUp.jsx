@@ -122,13 +122,15 @@ function SignUp() {
         do you already own an account? <Link to='/login'> log in here!</Link>{' '}
       </h5>
       <form
+      className='signup-form'
         action=''
         onSubmit={handleSubmit}>
-        <p>
+        <p className='signup-extras'>
           we need your parents/caretaker information! if you are an adult, input
           your own information
         </p>
         <label htmlFor=''>their name</label>
+        <br />
         <input
           type='text'
           name='parent-name'
@@ -138,6 +140,7 @@ function SignUp() {
         />
         <br />
         <label htmlFor=''>their address</label>
+        <br />
         <input
           type='text'
           name='address'
@@ -149,6 +152,7 @@ function SignUp() {
         <label htmlFor=''>
           their telephone number, including international dialling code
         </label>
+        <br />
         <input
           type='text'
           name='phone_number'
@@ -160,6 +164,7 @@ function SignUp() {
         <label htmlFor=''>
           upload their id card picture, just to check if it matches!
         </label>
+        <br />
         <input
           type='file'
           name='id_card_picture'
@@ -168,6 +173,7 @@ function SignUp() {
         />
         <br />
         <label htmlFor=''>their email</label>
+        <br />
         <input
           type='email'
           name='email'
@@ -176,7 +182,7 @@ function SignUp() {
           onChange={handleEmail}
         />
         <br />
-        <label htmlFor=''>
+        <label className='signup-extras' htmlFor=''>
           create a password with at least 6 characters, one number, one
           lowercase and one uppercase letter
         </label>
@@ -188,8 +194,10 @@ function SignUp() {
           onChange={handlePassword}
         />
         <br />
-        <p>ok! now your information</p>
+        <h3>ok! now your information</h3>
+        <br />
         <label htmlFor=''>create a username for your profile</label>
+        <br />
         <input
           type='text'
           name='learner_username'
@@ -199,6 +207,7 @@ function SignUp() {
         />
         <br />
         <label htmlFor=''>what is your date of birth?</label>
+        <br />
         <input
           type='date'
           name='date_of_birth'

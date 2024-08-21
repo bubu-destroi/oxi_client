@@ -183,3 +183,35 @@ margin: 10px;
 font-family: monospace;
 color: darkslateblue;
 }
+
+.login-signup{
+  padding: 10px;
+  background-color: rgba(221, 220, 255, 0.997);
+  border-style: none;
+  margin: 10px;
+  font-family: monospace;
+  color: darkslateblue;
+}
+
+.signup-form input{
+  padding: 10px;
+  background-color: rgba(221, 220, 255, 0.997);
+  border-style: none;
+  margin: 10px;
+  font-family: monospace;
+  color: darkslateblue;
+}
+
+.signup-extras{
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  padding: 10px;
+  margin: auto;
+ 
+}
+
+button{
+  margin: 5px;
+}

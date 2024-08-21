@@ -7,7 +7,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   //const [errorMessage, setErrorMessage] = useState(null);
-  const { logout, storeToken, authenticateUser, updatedUser, user } =
+  const { storeToken, authenticateUser, updatedUser, user } =
     useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -52,32 +52,38 @@ function Login() {
       <h2>please log in to start learning!</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor='email'>your email</label>
+        <br />
         <input
+          className='login-signup'
           type='email'
           name='email'
           id='email'
           value={email}
           onChange={handleEmail}
         />
+        <br />
         <label htmlFor='password'>your password</label>
+        <br />
         <input
+          className='login-signup'
           type='password'
           name='password'
           id='password'
           value={password}
           onChange={handlePassword}
         />
+        <br />
         <button type='submit'>lets go!</button>
       </form>
       {/* {errorMessage && <p>{errorMessage}</p>} */}
       <p>you do not own an account yet?</p>
       <Link to='/signup'>create your account here</Link>
-      <p>or log out!</p>
+     {/*  <p>or log out!</p>
       <button
         type='submit'
         onClick={logout}>
         logout
-      </button>
+      </button> */}
     </div>
   );
 }

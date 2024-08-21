@@ -84,6 +84,10 @@ function AddWish() {
           <br />
           <label htmlFor='description'>Description</label>
           <br />
+          <h5 className='signup-extras'>
+            Here you can tell us all the most important details, like the best
+            location for you or what languages you are comfortable with..
+          </h5>
           <textarea
             name='description'
             id='description'

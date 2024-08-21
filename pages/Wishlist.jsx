@@ -74,9 +74,9 @@ function Wishlist() {
         />
         {filteredWishes.length > 0
           ? filteredWishes.map((wish) => (
-              <div key={wish._id}>
+              <div className='wishes-div' key={wish._id}>
                 <Link to={`/wishlist/${wish._id}`}>
-                  <h3>{wish.title}</h3>
+                  <h2>{wish.title}</h2>
                   <h5>{wish.description}</h5>
                   <h6>age of the wisher {wish.age_of_wisher}</h6>
                   {wish.interested_users.length > 0 && (

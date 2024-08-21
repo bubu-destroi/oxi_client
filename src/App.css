@@ -219,12 +219,30 @@ button {
 }
 
 .teacher-div{
-  margin-top: 50px;
-  width: 300px;
-  padding: 30px;
+  margin-top: 10px;
+ /*  width: 300px; */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-basis:calc(50% - 10px); ;
+  box-sizing: border-box;
 }
 
 .all-teachers{
+  width: 700px;
   display: flex;
-  flex-wrap: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.wishes-div{
+  width: 300px;
+  margin: auto;
+  padding-top: 20px;
+}
+
+.teacher-detail{
+  width: 300px;
+  margin: auto;
+  padding-top: 20px;
 }

@@ -162,14 +162,16 @@ function Proposal() {
 
   return (
     <>
+     <div className='logo-and-search'>
       <div className='logo-div'>
-        <Link to={'/'}>
+        <Link to='/'>
           <img
             src='/oxito.png'
             alt='oxitoficina-logo'
           />
         </Link>
       </div>
+    </div>
       <h1>SUBMIT YOUR PROPOSAL</h1>
       <h6 className='proposal-extras'>
         Here you will provide as much detailed information as you can and, uppon

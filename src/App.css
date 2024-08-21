@@ -169,7 +169,10 @@ textarea {
   color: darkslateblue;
   /* border-color: chartreuse; */
 }
-
+select{
+  background-color: rgba(221, 220, 255, 0.997);
+ 
+}
 .search-input {
   padding: 10px;
   background-color: rgba(221, 220, 255, 0.997);

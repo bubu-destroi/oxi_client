@@ -163,16 +163,20 @@ function AddWorkshop() {
 
   return (
     <>
-      <div className='logo-div'>
-        <Link to={'/'}>
-          <img
-            src='/oxito.png'
-            alt='oxitoficina-logo'
-          />
-        </Link>
+      <div className='logo-and-search'>
+        <div className='logo-div'>
+          <Link to='/'>
+            <img
+              src='/oxito.png'
+              alt='oxitoficina-logo'
+            />
+          </Link>
+        </div>
       </div>
-      <h3>Create a Workshop</h3>
-      <form onSubmit={handleSubmit}>
+      <h2>Create a Workshop</h2>
+      <form
+        className='signup-form'
+        onSubmit={handleSubmit}>
         <label htmlFor='title'>Title</label>
         <input
           type='text'
@@ -262,6 +266,7 @@ function AddWorkshop() {
         </select> */}
         <label htmlFor='teacher'>Select a Teacher</label>
         <select
+
           name='teacher'
           id='teacher'
           value={selectedTeacher}
@@ -278,7 +283,7 @@ function AddWorkshop() {
         <button
           type='button'
           onClick={addTeacher}>
-          Add another Teacher
+          Add
         </button>
 
         <div>

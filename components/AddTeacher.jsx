@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function AddTeacher() {
   const [name, setName] = useState('');
@@ -44,6 +45,16 @@ function AddTeacher() {
 
   return (
     <>
+    <div className='logo-and-search'>
+      <div className='logo-div'>
+        <Link to='/'>
+          <img
+            src='/oxito.png'
+            alt='oxitoficina-logo'
+          />
+        </Link>
+      </div>
+      </div>
       <h3>Create a Teacher Profile</h3>
       <form className='signup-form' onSubmit={handleSubmit}>
         <label htmlFor='name'>Name</label>

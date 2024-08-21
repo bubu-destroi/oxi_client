@@ -67,6 +67,7 @@ function ProfilePage() {
   if (!user) return <p>No user data available.</p>;
   return (
     <>
+     <div className='logo-and-search'>
       <div className='logo-div'>
         <Link to='/'>
           <img
@@ -74,6 +75,7 @@ function ProfilePage() {
             alt='oxitoficina-logo'
           />
         </Link>
+      </div>
       </div>
       <h1>hello {user.learner_username && user.learner_username}!</h1>
       <h3>these are the wishes you requested</h3>

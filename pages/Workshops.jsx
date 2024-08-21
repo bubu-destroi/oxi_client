@@ -56,15 +56,15 @@ function Workshops() {
 
   return (
     <>
+      <div className='logo-and-search'>
       <div className='logo-div'>
-        <Link to={'/'}>
+        <Link to='/'>
           <img
             src='/oxito.png'
             alt='oxitoficina-logo'
           />
         </Link>
       </div>
-      <h2>Check out our Workshops!</h2>
       <div>
         <input
           className='search-input'
@@ -74,6 +74,11 @@ function Workshops() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
+
+      </div>
+      </div>
+      <h2>Check out our Workshops!</h2>
+      <div>
         {filteredWorkshops.length > 0
           ? filteredWorkshops.map((workshop) => (
               <div key={workshop._id}>

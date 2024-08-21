@@ -47,13 +47,15 @@ function WorkshopDetail() {
 
   return (
     <>
-      <div className='logo-div'>
-        <Link to={'/'}>
-          <img
-            src='/oxito.png'
-            alt='oxitoficina-logo'
-          />
-        </Link>
+      <div className='logo-and-search'>
+        <div className='logo-div'>
+          <Link to='/'>
+            <img
+              src='/oxito.png'
+              alt='oxitoficina-logo'
+            />
+          </Link>
+        </div>
       </div>
       <div className='workshop-container'>
         {singleWorkshop && (

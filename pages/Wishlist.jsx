@@ -45,14 +45,28 @@ function Wishlist() {
 
   return (
     <>
+      <div className='logo-and-search'>
       <div className='logo-div'>
-        <Link to={'/'}>
+        <Link to='/'>
           <img
             src='/oxito.png'
             alt='oxitoficina-logo'
           />
         </Link>
       </div>
+      <div>
+        <input
+          className='search-input'
+          id='search-query'
+          type='text'
+          placeholder='search for any word...'
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+
+      </div>
+      </div>
+      <h1>WISHLIST</h1>
       <h3 className='about-wishes'>
         These are the subjects our users want to learn about. If you are
         interested in preparing a workshop in response to one of these requests,
@@ -64,14 +78,14 @@ function Wishlist() {
         </Link>
       </div>
       <div>
-        <input
+        {/* <input
         className='search-input'
           id='search-query'
           type='text'
           placeholder='search for any word...'
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-        />
+        /> */}
         {filteredWishes.length > 0
           ? filteredWishes.map((wish) => (
               <div className='wishes-div' key={wish._id}>

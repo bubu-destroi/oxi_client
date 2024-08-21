@@ -59,16 +59,18 @@ function AddWish() {
 
   return (
     <>
+      <div className='logo-and-search'>
       <div className='logo-div'>
-        <Link to={'/'}>
+        <Link to='/'>
           <img
             src='/oxito.png'
             alt='oxitoficina-logo'
           />
         </Link>
       </div>
+      </div>
       <div>
-        <h1>Tell us what you want to learn about!</h1>
+        <h2>Tell us what you want to learn about!</h2>
         <form
           className='signup-form'
           onSubmit={handleSubmit}>

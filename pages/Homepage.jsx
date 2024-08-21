@@ -44,7 +44,7 @@ function Homepage() {
         </h3>
         <h3>
           Check out our <Link to='/teachers' >teachers, collaborators</Link>,<Link to='/workshops' > WORKSHOPS</Link> and take a peek at
-          what kids want to learn in our <Link to='/wishlist' > WISHLIST</Link> !
+          what our students want to learn in our <Link to='/wishlist' > WISHLIST</Link> !
         </h3>
         <h5>
           Create an account, let us know what you want to learn about and

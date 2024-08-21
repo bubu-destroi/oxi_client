@@ -1,15 +1,13 @@
-*{
+* {
   display: flexbox;
   font-family: monospace;
   color: darkslateblue;
-
 }
-body{
+body {
   background-color: rgb(230, 228, 225);
   font-family: monospace;
   color: darkslateblue;
 }
-
 
 #root {
   max-width: 1280px;
@@ -69,25 +67,23 @@ body{
   top: 0;
 }
 
-.logo-div{
+.logo-div {
   height: 10px;
   left: 0;
-  transform: scale(0.25); 
+  transform: scale(0.25);
   transform-origin: top left;
   position: fixed;
 }
 
-.about-homepage{
+.about-homepage {
   margin: auto;
   width: 50vmax;
 }
 
-.about-wishes{
+.about-wishes {
   margin: auto;
   width: 50vmax;
 }
-
-
 
 .workshop-container {
   display: block;
@@ -113,78 +109,68 @@ body{
   object-fit: cover;
 }
 
-.user-logo-menu img{
+.user-logo-menu img {
   position: fixed;
   top: 40px;
   right: 30px;
   width: 100px;
 }
 
-.menu-right{
+.menu-right {
   position: fixed;
 
   top: 200px;
   right: 30px;
   width: 100px;
 }
-button{
+button {
   color: aliceblue;
 }
-input{
+input {
   color: aliceblue;
 }
 
-textarea{
+textarea {
   color: aliceblue;
 }
 
 /* ATENÇÃO TRUQUEEEEEEE */
-text{
+text {
   mix-blend-mode: difference;
 }
 
-.proposal-extras{
+.proposal-extras {
   width: 400px;
   display: flex;
   justify-content: center;
   align-self: center;
   padding: 10px;
   margin: auto;
- 
 }
 
-.proposal-form input{
-padding: 10px;
-background-color: rgba(221, 220, 255, 0.997);
-border-style: none;
-margin: 10px;
-font-family: monospace;
-color: darkslateblue;
-}
-.proposal-form label{
-padding: 10px;
-margin: 10px;
-}
-.proposal-form textarea{
-padding: 10px;
-background-color: rgba(221, 220, 255, 0.997);
-border-style:none ;
-margin: 10px;
-font-family: monospace;
-color: darkslateblue;
-/* border-color: chartreuse; */
-}
-
-.search-input{
+.proposal-form input {
   padding: 10px;
-background-color: rgba(221, 220, 255, 0.997);
-border-style: none;
-margin: 10px;
-font-family: monospace;
-color: darkslateblue;
+  background-color: rgba(221, 220, 255, 0.997);
+  border-style: none;
+  margin: 10px;
+  font-family: monospace;
+  color: darkslateblue;
+}
+.proposal-form label {
+  padding: 10px;
+  margin: 10px;
+}
+.proposal-form textarea {
+  padding: 10px;
+  background-color: rgba(221, 220, 255, 0.997);
+  border-style: none;
+  margin: 10px;
+  font-family: monospace;
+  color: darkslateblue;
+  /* border-color: chartreuse; */
 }
 
-.login-signup{
+.search-input {
   padding: 10px;
   background-color: rgba(221, 220, 255, 0.997);
   border-style: none;
@@ -193,7 +179,7 @@ color: darkslateblue;
   color: darkslateblue;
 }
 
-.signup-form input{
+.login-signup {
   padding: 10px;
   background-color: rgba(221, 220, 255, 0.997);
   border-style: none;
@@ -202,16 +188,24 @@ color: darkslateblue;
   color: darkslateblue;
 }
 
-.signup-extras{
+.signup-form input {
+  padding: 10px;
+  background-color: rgba(221, 220, 255, 0.997);
+  border-style: none;
+  margin: 10px;
+  font-family: monospace;
+  color: darkslateblue;
+}
+
+.signup-extras {
   width: 400px;
   display: flex;
   justify-content: center;
   align-self: center;
   padding: 10px;
   margin: auto;
- 
 }
 
-button{
+button {
   margin: 5px;
 }

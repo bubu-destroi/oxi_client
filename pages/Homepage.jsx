@@ -43,7 +43,7 @@ function Homepage() {
           Here you can find a wider and sharper approach towards learning!
         </h3>
         <h3>
-          Check out our <Link to='/teacher' >teachers, collaborators</Link>,<Link to='/workshops' > WORKSHOPS</Link> and take a peek at
+          Check out our <Link to='/teachers' >teachers, collaborators</Link>,<Link to='/workshops' > WORKSHOPS</Link> and take a peek at
           what kids want to learn in our <Link to='/wishlist' > WISHLIST</Link> !
         </h3>
         <h5>

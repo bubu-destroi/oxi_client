@@ -78,7 +78,7 @@ function Login() {
       {/* {errorMessage && <p>{errorMessage}</p>} */}
       <p>you do not own an account yet?</p>
       <Link to='/signup'>create your account here</Link>
-     {/*  <p>or log out!</p>
+      {/*  <p>or log out!</p>
       <button
         type='submit'
         onClick={logout}>

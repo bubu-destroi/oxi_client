@@ -174,3 +174,12 @@ font-family: monospace;
 color: darkslateblue;
 /* border-color: chartreuse; */
 }
+
+.search-input{
+  padding: 10px;
+background-color: rgba(221, 220, 255, 0.997);
+border-style: none;
+margin: 10px;
+font-family: monospace;
+color: darkslateblue;
+}

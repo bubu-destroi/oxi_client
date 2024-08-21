@@ -65,6 +65,7 @@ function Wishlist() {
       </div>
       <div>
         <input
+        className='search-input'
           id='search-query'
           type='text'
           placeholder='search for any word...'

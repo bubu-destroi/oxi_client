@@ -43,12 +43,12 @@ function Homepage() {
           Here you can find a wider and sharper approach towards learning!
         </h3>
         <h3>
-          Check out our teachers and collaborators, workshops and take a peak at
-          what kids want to learn!
+          Check out our <Link to='/teacher' >teachers, collaborators</Link>,<Link to='/workshops' > WORKSHOPS</Link> and take a peek at
+          what kids want to learn in our <Link to='/wishlist' > WISHLIST</Link> !
         </h3>
         <h5>
-          Create an account and let us know what you want to learn about and
-          sign up for already existing workshops
+          Create an account, let us know what you want to learn about and
+          sign up for our already existing workshops!
         </h5>
       </div>
     </>

@@ -64,6 +64,7 @@ function Workshops() {
       <h2>Check out our Workshops!</h2>
       <div>
         <input
+          className='search-input'
           id='search-query'
           type='text'
           placeholder='search for any word...'

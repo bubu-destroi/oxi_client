@@ -12,8 +12,11 @@ function Workshops() {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/workshops`
       );
-      setAllWorkshops(response.data);
-      setFilteredWorkshops(response.data);
+      const sortedWorkshops = response.data.sort(
+        (a, b) => new Date(a.date) - new Date(b.date)
+      );
+      setAllWorkshops(sortedWorkshops);
+      setFilteredWorkshops(sortedWorkshops);
     } catch (error) {
       console.log('error', error);
     }

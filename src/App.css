@@ -67,14 +67,14 @@ body {
   top: 0;
 }
 
-.logo-div {
+/* .logo-div {
   height: 10px;
   left: 0;
   transform: scale(0.25);
   transform-origin: top left;
   position: fixed;
 }
-
+ */
 .about-homepage {
   margin: auto;
   width: 50vmax;
@@ -245,4 +245,41 @@ button {
   width: 300px;
   margin: auto;
   padding-top: 20px;
+}
+
+
+#teacher-search{
+  margin-top: 20px; 
+  width: 200px;
+  padding: 10px;
+  background-color: rgba(221, 220, 255, 0.997);
+  border-style: none;
+  margin: 10px;
+  font-family: monospace;
+  color: darkslateblue;
+  
+} 
+
+.logo-and-search {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+}
+
+.logo-div img {
+  width: 200px; 
+   height: auto; 
+}
+
+#teacher-search {
+  margin-top: 10px; /* Adjusts the space between the logo and search bar */
+  width: 200px;
+  padding: 10px;
+  background-color: rgba(221, 220, 255, 0.997);
+  border-style: none;
+  font-family: monospace;
+  color: darkslateblue;
 }

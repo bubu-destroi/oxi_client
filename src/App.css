@@ -150,14 +150,27 @@ text{
   align-self: center;
   padding: 10px;
   margin: auto;
+ 
 }
 
 .proposal-form input{
 padding: 10px;
+background-color: rgba(221, 220, 255, 0.997);
+border-style: none;
+margin: 10px;
+font-family: monospace;
+color: darkslateblue;
 }
 .proposal-form label{
 padding: 10px;
+margin: 10px;
 }
 .proposal-form textarea{
 padding: 10px;
+background-color: rgba(221, 220, 255, 0.997);
+border-style:none ;
+margin: 10px;
+font-family: monospace;
+color: darkslateblue;
+/* border-color: chartreuse; */
 }

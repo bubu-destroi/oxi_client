@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { useEffect, useState , useContext} from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/auth.context';
 
 function SuggestionBox() {
   const [allSuggestions, setAllSuggestions] = useState([]);
 
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
 
   const getAllSuggestions = async () => {
     try {
@@ -20,14 +20,16 @@ function SuggestionBox() {
     }
   };
 
-  const handleDeleteSuggestion = async (id) =>{
+  const handleDeleteSuggestion = async (id) => {
     try {
-        await axios.delete(`${import.meta.env.VITE_API_URL}/api/suggestions/${id}`)
-        getAllSuggestions()
+      await axios.delete(
+        `${import.meta.env.VITE_API_URL}/api/suggestions/${id}`
+      );
+      getAllSuggestions();
     } catch (error) {
-        console.log('error deleting suggestion', error)
+      console.log('error deleting suggestion', error);
     }
-  }
+  };
 
   useEffect(() => {
     getAllSuggestions();
@@ -73,7 +75,13 @@ function SuggestionBox() {
                   key={suggestion._id}>
                   <h6>A {suggestion.age} years old person says:</h6>
                   <h5>{suggestion.comment}</h5>
-                  {user && user.admin === true && ( <button type='button' onClick={()=> handleDeleteSuggestion(suggestion._id)} >delete</button> ) }
+                  {user && user.admin === true && (
+                    <button
+                      type='button'
+                      onClick={() => handleDeleteSuggestion(suggestion._id)}>
+                      delete
+                    </button>
+                  )}
                 </div>
               );
             })}

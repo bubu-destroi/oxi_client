@@ -97,7 +97,7 @@ function About() {
           />
           <br />
           <label htmlFor=''>
-            Let the world know what is your mind, there are no stupid ideas!
+            Let the world know what is on your mind, there are no stupid ideas!
           </label>
           <br />
           <textarea

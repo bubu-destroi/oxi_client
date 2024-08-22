@@ -294,27 +294,104 @@ button {
   width: 600px;
 }
 
-.big-about-div{
+.big-about-div {
   width: 600px;
 }
 
-.suggestion-box-input{
+.suggestion-box-input {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
-#comment{
+#comment {
   height: 100px;
   width: 250px;
 }
 
-.all-suggestions{
+.all-suggestions {
   width: 600px;
   display: flex;
   flex-wrap: wrap;
 }
-.suggestion-box{
+.suggestion-box {
   width: 200px;
   padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .logo-div img {
+    width: 150px;
+  }
+
+  .create-an-account,
+  .big-about-div,
+  .about-homepage,
+  .about-wishes,
+  .all-suggestions {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .signup-extras,
+  .proposal-extras {
+    width: 100%;
+    padding: 5px;
+  }
+
+  .teacher-div {
+    flex-basis: 80%;
+    padding: 10px;
+    margin: 0 auto;
+  }
+
+  .all-teachers {
+    width: 100%;
+  }
+
+  .workshop-container {
+    padding-right: 0;
+  }
+
+  .workshop-image {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  .workshop-info {
+    padding-right: 0;
+  }
+
+  /* Adjust user-logo-menu positioning */
+  .user-logo-menu img {
+    position: fixed;
+    top: 10px; /* Adjust top spacing */
+    right: 10px; /* Keep it aligned to the right */
+    width: 60px; /* Reduce the size slightly for mobile */
+    max-width: 60px;
+    margin: 0; /* Remove auto-centering margin */
+  }
+  .menu-on-profile {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 80px; /* Adjusted width */
+    max-width: 80px; /* Ensures the logo does not grow too large */
+    margin: 10px auto;
+  }
+
+  .logo-and-search {
+    align-items: center;
+    top: 0;
+    left: 0;
+  }
+}
+@media (max-width: 768px) {
+  .menu-right {
+    display: none;
+  }
+
+  
+
 }

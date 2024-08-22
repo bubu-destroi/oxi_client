@@ -25,6 +25,7 @@ import Navbar from '../components/Navbar';
 import Proposal from '../pages/Proposal';
 import PreviousWorkshops from '../components/PreviousWorkshops';
 import About from '../pages/About';
+import SuggestionBox from '../pages/SuggestionBox';
 
 function App() {
   return (
@@ -47,6 +48,14 @@ function App() {
             element={
               <Anon>
                 <About />
+              </Anon>
+            }
+          />
+          <Route
+            path='/suggestion-box'
+            element={
+              <Anon>
+                <SuggestionBox />
               </Anon>
             }
           />

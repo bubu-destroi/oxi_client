@@ -308,3 +308,13 @@ button {
   height: 100px;
   width: 250px;
 }
+
+.all-suggestions{
+  width: 600px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.suggestion-box{
+  width: 200px;
+  padding: 20px;
+}

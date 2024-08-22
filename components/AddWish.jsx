@@ -68,6 +68,23 @@ function AddWish() {
           />
         </Link>
       </div>
+      <div className='menu-on-profile'>
+          <Link to={`/about-oxitoficina`}>
+            <h3>About OXITOFICINA</h3>
+          </Link>
+          <Link to={`/workshops`}>
+            <h3>Our Workshops</h3>
+          </Link>
+          <Link to={`/wishlist`}>
+            <h3>Wishlist</h3>
+          </Link>
+          <Link to={`/teachers`}>
+            <h3>Our Teachers</h3>
+          </Link>
+          <Link to={`/suggestion-box`}>
+            <h3>Suggestion Box</h3>
+          </Link>
+        </div>
       </div>
       <div>
         <h2>Tell us what you want to learn about!</h2>

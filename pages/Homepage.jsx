@@ -28,11 +28,14 @@ function Homepage() {
           <Link to={`/teachers`}>
             <h3>Our Teachers</h3>
           </Link>
-          {user && (
+          <Link to={`/suggestion-box`}>
+            <h3>Suggestion Box</h3>
+          </Link>
+          {/* {user && (
             <Link to={`/profile/${user._id}`}>
               <h3>Your profile</h3>
             </Link>
-          )}
+          )} */}
         </div>
       </div>
       <div className='about-homepage'>

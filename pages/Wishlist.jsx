@@ -54,6 +54,7 @@ function Wishlist() {
             />
           </Link>
         </div>
+
         <div>
           <input
             className='search-input'
@@ -65,6 +66,9 @@ function Wishlist() {
           />
         </div>
         <div className='menu-on-profile'>
+          <Link to={`/about-oxitoficina`}>
+            <h3>About OXITOFICINA</h3>
+          </Link>
           <Link to={`/workshops`}>
             <h3>Our Workshops</h3>
           </Link>
@@ -73,6 +77,9 @@ function Wishlist() {
           </Link>
           <Link to={`/teachers`}>
             <h3>Our Teachers</h3>
+          </Link>
+          <Link to={`/suggestion-box`}>
+            <h3>Suggestion Box</h3>
           </Link>
         </div>
       </div>

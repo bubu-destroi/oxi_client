@@ -1,12 +1,14 @@
 import axios from 'axios';
 import { useState } from 'react';
-//import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+import { useNavigate } from 'react-router-dom';
 
 function About() {
   const [age, setAge] = useState(0);
   const [comment, setComment] = useState('');
 
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleAge = (e) => {
     setAge(e.target.value);
@@ -29,13 +31,38 @@ function About() {
       );
       setAge(0)
       setComment('')
-      //navigate('/suggestion-box');
+      navigate('/suggestion-box');
     } catch (error) {
       console.log('error posting suggestion', error);
     }
   };
   return (
     <>
+    <div className='logo-and-search'>
+        <div className='logo-div'>
+          <Link to={'/'}>
+            <img
+              src='/oxito.png'
+              alt='oxitoficina-logo'
+            />
+          </Link>
+        </div>
+        <div className='menu-on-profile'>
+          <Link to={`/about-oxitoficina`}>
+            <h3>About OXITOFICINA</h3>
+          </Link>
+          <Link to={`/workshops`}>
+            <h3>Our Workshops</h3>
+          </Link>
+          <Link to={`/wishlist`}>
+            <h3>Wishlist</h3>
+          </Link>
+          <Link to={`/teachers`}>
+            <h3>Our Teachers</h3>
+          </Link>
+        </div>
+      </div>
+
       <div className='big-about-div'>
         <h1>About OXITOFICINA</h1>
         <h3>

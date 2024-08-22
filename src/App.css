@@ -293,3 +293,18 @@ button {
 .create-an-account {
   width: 600px;
 }
+
+.big-about-div{
+  width: 600px;
+}
+
+.suggestion-box-input{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#comment{
+  height: 100px;
+  width: 250px;
+}

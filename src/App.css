@@ -169,9 +169,8 @@ textarea {
   color: darkslateblue;
   /* border-color: chartreuse; */
 }
-select{
+select {
   background-color: rgba(221, 220, 255, 0.997);
- 
 }
 .search-input {
   padding: 10px;
@@ -221,38 +220,37 @@ button {
   margin: 5px;
 }
 
-.teacher-div{
+.teacher-div {
   margin-top: 10px;
- /*  width: 300px; */
+  /*  width: 300px; */
   padding: 20px;
   display: flex;
   flex-direction: column;
-  flex-basis:calc(50% - 10px); ;
+  flex-basis: calc(50% - 10px);
   box-sizing: border-box;
 }
 
-.all-teachers{
+.all-teachers {
   width: 700px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.wishes-div{
+.wishes-div {
   width: 300px;
   margin: auto;
   padding-top: 20px;
 }
 
-.teacher-detail{
+.teacher-detail {
   width: 300px;
   margin: auto;
   padding-top: 20px;
 }
 
-
-#teacher-search{
-  margin-top: 20px; 
+#teacher-search {
+  margin-top: 20px;
   width: 200px;
   padding: 10px;
   background-color: rgba(221, 220, 255, 0.997);
@@ -260,8 +258,7 @@ button {
   margin: 10px;
   font-family: monospace;
   color: darkslateblue;
-  
-} 
+}
 
 .logo-and-search {
   display: flex;
@@ -273,8 +270,8 @@ button {
 }
 
 .logo-div img {
-  width: 200px; 
-   height: auto; 
+  width: 200px;
+  height: auto;
 }
 
 #teacher-search {
@@ -285,4 +282,10 @@ button {
   border-style: none;
   font-family: monospace;
   color: darkslateblue;
+}
+
+.menu-on-profile {
+  margin-top: 10px; /* Adjusts the space between the logo and search bar */
+  width: 200px;
+  padding: 10px;
 }

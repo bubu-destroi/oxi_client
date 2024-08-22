@@ -62,6 +62,17 @@ function Teachers() {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
+        <div className='menu-on-profile'>
+          <Link to={`/workshops`}>
+            <h3>Our Workshops</h3>
+          </Link>
+          <Link to={`/wishlist`}>
+            <h3>Wishlist</h3>
+          </Link>
+          <Link to={`/teachers`}>
+            <h3>Our Teachers</h3>
+          </Link>
+        </div>
       </div>
 
       <h2>Check out our Teachers!</h2>

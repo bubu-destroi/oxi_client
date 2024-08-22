@@ -67,13 +67,24 @@ function ProfilePage() {
   if (!user) return <p>No user data available.</p>;
   return (
     <>
-     <div className='logo-and-search'>
+      <div className='logo-and-search'>
       <div className='logo-div'>
-        <Link to='/'>
+        <Link to={'/'}>
           <img
             src='/oxito.png'
             alt='oxitoficina-logo'
           />
+        </Link>
+      </div>
+      <div className='menu-on-profile' >
+        <Link to={`/workshops`}>
+          <h3>Our Workshops</h3>
+        </Link>
+        <Link to={`/wishlist`}>
+          <h3>Wishlist</h3>
+        </Link>
+        <Link to={`/teachers`}>
+          <h3>Our Teachers</h3>
         </Link>
       </div>
       </div>
@@ -92,7 +103,6 @@ function ProfilePage() {
           <p>You have no wishes listed.</p>
         )}
       </div>
-
       <h3>you are signed up for the following workshops</h3>
       <div>
         {user.signedUp_workshops && user.signedUp_workshops.length > 0 ? (
@@ -135,16 +145,13 @@ function ProfilePage() {
           <p>Go check our wishlist and be surprised!!</p>
         )}
       </div>
-      
-          
-      {user &&
-        user.admin === true &&
-        proposals.length > 0 && <h3>The proposals submited, yet to be approved</h3>}
+      {user && user.admin === true && proposals.length > 0 && (
+        <h3>The proposals submited, yet to be approved</h3>
+      )}
       {user &&
         user.admin === true &&
         proposals.length > 0 &&
         proposals.map((proposal) => (
-          
           <div key={proposal._id}>
             <Link to={`/proposals/${proposal._id}`}>
               <h5>{proposal.title}</h5>
@@ -156,8 +163,7 @@ function ProfilePage() {
             </button>
           </div>
         ))}
-        <br />
-
+      <br />
       <button onClick={logout}>Logout</button>
     </>
   );

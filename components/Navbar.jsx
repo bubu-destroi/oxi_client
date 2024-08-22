@@ -22,6 +22,7 @@ function Navbar() {
         onClick={handLogoClick}>
         <img src='/user-logo.png' />
       </div>
+      
 
       <div className='menu-right'>
         {/* 

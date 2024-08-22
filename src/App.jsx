@@ -23,6 +23,7 @@ import WishDetail from '../components/WishDetail';
 import WorkshopDetail from '../components/WorkshopDetail';
 import Navbar from '../components/Navbar';
 import Proposal from '../pages/Proposal';
+import PreviousWorkshops from '../components/PreviousWorkshops';
 
 function App() {
   return (
@@ -69,6 +70,14 @@ function App() {
             element={
               <Anon>
                 <Workshops />
+              </Anon>
+            }
+          />
+          <Route
+            path='/previous-workshops'
+            element={
+              <Anon>
+                <PreviousWorkshops />
               </Anon>
             }
           />

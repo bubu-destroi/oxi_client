@@ -12,9 +12,11 @@ function Workshops() {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/workshops`
       );
-      const sortedWorkshops = response.data.sort(
-        (a, b) => new Date(a.date) - new Date(b.date)
-      );
+      const today = new Date();
+      const sortedWorkshops = response.data
+        .filter((workshop) => new Date(workshop.date) >= today)
+        .sort((a, b) => new Date(a.date) - new Date(b.date));
+
       setAllWorkshops(sortedWorkshops);
       setFilteredWorkshops(sortedWorkshops);
     } catch (error) {
@@ -57,27 +59,40 @@ function Workshops() {
   return (
     <>
       <div className='logo-and-search'>
-      <div className='logo-div'>
-        <Link to='/'>
-          <img
-            src='/oxito.png'
-            alt='oxitoficina-logo'
+        <div className='logo-div'>
+          <Link to='/'>
+            <img
+              src='/oxito.png'
+              alt='oxitoficina-logo'
+            />
+          </Link>
+        </div>
+        <div>
+          <input
+            className='search-input'
+            id='search-query'
+            type='text'
+            placeholder='search for any word...'
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
-        </Link>
-      </div>
-      <div>
-        <input
-          className='search-input'
-          id='search-query'
-          type='text'
-          placeholder='search for any word...'
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-
-      </div>
+        </div>
+        <div className='menu-on-profile'>
+          <Link to={`/workshops`}>
+            <h3>Our Workshops</h3>
+          </Link>
+          <Link to={`/wishlist`}>
+            <h3>Wishlist</h3>
+          </Link>
+          <Link to={`/teachers`}>
+            <h3>Our Teachers</h3>
+          </Link>
+        </div>
       </div>
       <h2>Check out our Workshops!</h2>
+      <Link to='/previous-workshops'>
+        <h4>-See previous Workhops-</h4>
+      </Link>
       <div>
         {filteredWorkshops.length > 0
           ? filteredWorkshops.map((workshop) => (

@@ -9,6 +9,7 @@ function SignUp() {
   const [id_card_picture, setId_card_picture] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [learner_username, setLearner_username] = useState('');
   const [date_of_birth, setDate_of_birth] = useState('');
   const [age, setAge] = useState(null);
@@ -128,7 +129,7 @@ function SignUp() {
           </Link>
         </div>
       </div>
-      <h2 className='create-an-account' >
+      <h2 className='create-an-account'>
         create an account to sign up for workshops and tell us what you want to
         learn about!
       </h2>
@@ -202,13 +203,22 @@ function SignUp() {
           create a password with at least 6 characters, one number, one
           lowercase and one uppercase letter
         </label>
+        <br />
         <input
-          type='password'
+          type={showPassword ? 'text' : 'password'}
           name='password'
           id='password'
           value={password}
           onChange={handlePassword}
         />
+        <br />
+        <input
+          type='checkbox'
+          id='show-password'
+          checked={showPassword}
+          onChange={(e) => setShowPassword(e.target.checked)}
+        />
+        <label htmlFor='show-password'>Show Password</label>
         <br />
         <h3>ok! now your information</h3>
         <br />

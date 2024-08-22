@@ -27,6 +27,8 @@ function About() {
         `${import.meta.env.VITE_API_URL}/api/suggestions`,
         newSuggestion
       );
+      setAge(0)
+      setComment('')
       //navigate('/suggestion-box');
     } catch (error) {
       console.log('error posting suggestion', error);

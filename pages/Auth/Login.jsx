@@ -6,6 +6,7 @@ import { AuthContext } from '../../context/auth.context';
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   //const [errorMessage, setErrorMessage] = useState(null);
   const { storeToken, authenticateUser, updatedUser, user } =
     useContext(AuthContext);
@@ -33,7 +34,6 @@ function Login() {
     }
   };
   useEffect(() => {
-    // Navigate to the user's profile after the user state is updated
     if (user && user._id) {
       console.log('Navigating to profile with user:', user);
       navigate(`/profile/${user._id}`);
@@ -41,17 +41,16 @@ function Login() {
   }, [user, navigate]);
   return (
     <div className='loginPage'>
-    <div className='logo-and-search'>
-      <div className='logo-div'>
-        <Link to='/'>
-          <img
-            src='/oxito.png'
-            alt='oxitoficina-logo'
-          />
-        </Link>
+      <div className='logo-and-search'>
+        <div className='logo-div'>
+          <Link to='/'>
+            <img
+              src='/oxito.png'
+              alt='oxitoficina-logo'
+            />
+          </Link>
+        </div>
       </div>
-
-    </div>
       <h2>please log in to start learning!</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor='email'>your email</label>
@@ -69,12 +68,20 @@ function Login() {
         <br />
         <input
           className='login-signup'
-          type='password'
+          type={showPassword ? 'text' : 'password'}
           name='password'
           id='password'
           value={password}
           onChange={handlePassword}
         />
+        <br />
+        <input
+          type='checkbox'
+          id='show-password'
+          checked={showPassword}
+          onChange={(e) => setShowPassword(e.target.checked)}
+        />
+        <label htmlFor='show-password'>Show Password</label>
         <br />
         <button type='submit'>lets go!</button>
       </form>

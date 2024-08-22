@@ -106,15 +106,29 @@ function SignUp() {
 
   return (
     <>
-      <div className='logo-div'>
-        <Link to={'/'}>
-          <img
-            src='/oxito.png'
-            alt='oxitoficina-logo'
-          />
-        </Link>
+      <div className='logo-and-search'>
+        <div className='logo-div'>
+          <Link to='/'>
+            <img
+              src='/oxito.png'
+              alt='oxitoficina-logo'
+            />
+          </Link>
+        </div>
+
+        <div className='menu-on-profile'>
+          <Link to={`/workshops`}>
+            <h3>Our Workshops</h3>
+          </Link>
+          <Link to={`/wishlist`}>
+            <h3>Wishlist</h3>
+          </Link>
+          <Link to={`/teachers`}>
+            <h3>Our Teachers</h3>
+          </Link>
+        </div>
       </div>
-      <h2>
+      <h2 className='create-an-account' >
         create an account to sign up for workshops and tell us what you want to
         learn about!
       </h2>
@@ -122,7 +136,7 @@ function SignUp() {
         do you already own an account? <Link to='/login'> log in here!</Link>{' '}
       </h5>
       <form
-      className='signup-form'
+        className='signup-form'
         action=''
         onSubmit={handleSubmit}>
         <p className='signup-extras'>
@@ -182,7 +196,9 @@ function SignUp() {
           onChange={handleEmail}
         />
         <br />
-        <label className='signup-extras' htmlFor=''>
+        <label
+          className='signup-extras'
+          htmlFor=''>
           create a password with at least 6 characters, one number, one
           lowercase and one uppercase letter
         </label>

@@ -275,7 +275,7 @@ button {
 }
 
 #teacher-search {
-  margin-top: 10px; /* Adjusts the space between the logo and search bar */
+  margin-top: 10px; 
   width: 200px;
   padding: 10px;
   background-color: rgba(221, 220, 255, 0.997);
@@ -285,7 +285,7 @@ button {
 }
 
 .menu-on-profile {
-  margin-top: 10px; /* Adjusts the space between the logo and search bar */
+  margin-top: 10px; 
   width: 200px;
   padding: 10px;
 }

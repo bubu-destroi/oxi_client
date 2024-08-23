@@ -66,6 +66,7 @@ function SuggestionBox() {
       </div>
       <div>
         <h1>SUGGESTION BOX</h1>
+        <h4>Here you can read about different experiences related to teaching and different school systems</h4>
         <div className='all-suggestions'>
           {allSuggestions &&
             allSuggestions.map((suggestion) => {

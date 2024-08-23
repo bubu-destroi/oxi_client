@@ -305,19 +305,45 @@ button {
 }
 
 #comment {
-  height: 100px;
+  height: 100px;/*  */
   width: 250px;
 }
-
+/* 
 .all-suggestions {
   width: 600px;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap ;
 }
 .suggestion-box {
   width: 200px;
   padding: 20px;
+} */
+
+.all-suggestions {
+  width: 600px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-flow: dense;
+  grid-gap: 5px;
+  justify-content: center;
+ /* width: 100%; */
+  margin: 0 auto;
+  padding: 5px;
 }
+
+/* .all-suggestions {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 5px;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 5px;
+} */
+
+.suggestion-box {
+  padding: 10px;
+}
+
 
 @media (max-width: 768px) {
   .logo-div img {

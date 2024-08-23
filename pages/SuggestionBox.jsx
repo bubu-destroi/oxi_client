@@ -73,7 +73,7 @@ function SuggestionBox() {
                 <div
                   className='suggestion-box'
                   key={suggestion._id}>
-                  <h6>A {suggestion.age} years old person says:</h6>
+                  <h6>A {suggestion.age}-year-old person says:</h6>
                   <h5>{suggestion.comment}</h5>
                   {user && user.admin === true && (
                     <button

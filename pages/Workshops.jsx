@@ -1,11 +1,15 @@
-import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import {  useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { AuthContext } from '../context/auth.context';
 
 function Workshops() {
   const [allWorkshops, setAllWorkshops] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredWorkshops, setFilteredWorkshops] = useState([]);
+
+  const {user} = useContext(AuthContext)
+ const navigate = useNavigate()
 
   const getAllWorkshops = async () => {
     try {
@@ -96,6 +100,13 @@ function Workshops() {
         </div>
       </div>
       <h2>Check out our Workshops!</h2>
+      {user && user.admin === true && (
+        <button
+          type='button'
+          onClick={() => navigate('/create-workshop')}>
+          Create New Workshop
+        </button>
+      )}
       <Link to='/previous-workshops'>
         <h4>-See previous Workhops-</h4>
       </Link>

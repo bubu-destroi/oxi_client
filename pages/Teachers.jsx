@@ -1,6 +1,8 @@
-import { Link } from 'react-router-dom';
-import { /* useContext,  */ useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { /* useContext,  */ useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { AuthContext } from '../context/auth.context';
+useNavigate;
 //import { AuthContext } from '../context/auth.context';
 
 function Teachers() {
@@ -9,6 +11,8 @@ function Teachers() {
 
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredTeachers, setFilteredTeachers] = useState([]);
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const getAllTeachers = async () => {
     try {
@@ -82,6 +86,13 @@ function Teachers() {
       </div>
 
       <h2>Check out our Teachers!</h2>
+      {user && user.admin === true && (
+        <button
+          type='button'
+          onClick={() => navigate('/teachers/new')}>
+          Add Teacher
+        </button>
+      )}
       <div className='all-teachers'>
         {filteredTeachers.map((teacher) => {
           return (

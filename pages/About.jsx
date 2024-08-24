@@ -69,7 +69,7 @@ function About() {
           Hi, I'm Carolina. I created Oxitoficina (combining Oxytocin and
           Oficina) from a place of deep affection and concern for future
           generations. Throughout my own experience of the traditional education
-          system, both as student and as teacher, Ive witnessed how the current
+          system, both as student and as teacher, I've witnessed how the current
           system fails to realize students full potential. Talented teachers do
           the best with the few resources they are given; however, strict
           schedules and out-of-date syllabuses are primarily taught in

@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../context/auth.context';
-import { useContext } from 'react';
 
 function Homepage() {
-  const { user } = useContext(AuthContext);
+  
   return (
     <>
       <div className='logo-and-search'>
@@ -28,9 +26,6 @@ function Homepage() {
           <Link to={`/teachers`}>
             <h3>Our Teachers</h3>
           </Link>
-          <Link to={`/suggestion-box`}>
-            <h3>Suggestion Box</h3>
-          </Link>
           {/* {user && (
             <Link to={`/profile/${user._id}`}>
               <h3>Your profile</h3>
@@ -39,18 +34,27 @@ function Homepage() {
         </div>
       </div>
       <div className='about-homepage'>
-        <h1>Welcome to OXITOFICINA</h1>
-        <h3>
-          Here you can find a wider and sharper approach towards learning!
-        </h3>
-        <h3>
-          Check out our <Link to='/teachers'>teachers, collaborators</Link>,
-          <Link to='/workshops'> WORKSHOPS</Link> and take a peek at what our
-          students want to learn in our <Link to='/wishlist'> WISHLIST</Link> !
-        </h3>
+        <h1>
+          Welcome to <br /> OXITOFICINA
+        </h1>
+        <h3>Sharing knowledge between the talented and the curious.</h3>
         <h5>
-          Create an account, let us know what you want to learn about and sign
-          up for our already existing workshops!
+          We offer tailored <Link to={`/workshops`}>workshops </Link>
+          curated by our verified, industry-leading{' '}
+          <Link to={`/teachers`}>tutors and collaborators. </Link>
+          <br />
+          <br />
+          We don’t follow any defined syllabus, but are guided by our students
+          desires and our teachers creativity.
+          <br />
+          <br />
+          Let us know what you want to learn by{' '}
+          <Link to={'/create-wish'}>submitting a wish </Link>
+           on our
+          <Link to={`/wishlist`}> wishlist </Link>
+          or
+          <Link to={`/signup`}> create an account </Link>
+          and sign up to attend an upcoming workshop.
         </h5>
       </div>
     </>

@@ -57,7 +57,7 @@ function Teachers() {
             />
           </Link>
         </div>
-        <div>
+       {/*  <div>
           <input
             id='teacher-search'
             type='text'
@@ -65,7 +65,7 @@ function Teachers() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-        </div>
+        </div> */}
         <div className='menu-on-profile'>
           <Link to={`/about-oxitoficina`}>
             <h3>About OXITOFICINA</h3>
@@ -79,13 +79,17 @@ function Teachers() {
           <Link to={`/teachers`}>
             <h3>Our Teachers</h3>
           </Link>
-          <Link to={`/suggestion-box`}>
-            <h3>Suggestion Box</h3>
-          </Link>
         </div>
       </div>
 
-      <h2>Check out our Teachers!</h2>
+      <h2>Check out our Team</h2>
+      <input
+            id='teacher-search'
+            type='text'
+            placeholder='Search for ...'
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
       {user && user.admin === true && (
         <button
           type='button'

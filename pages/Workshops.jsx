@@ -71,7 +71,7 @@ function Workshops() {
             />
           </Link>
         </div>
-        <div>
+        {/* <div>
           <input
             className='search-input'
             id='search-query'
@@ -80,7 +80,7 @@ function Workshops() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-        </div>
+        </div> */}
         <div className='menu-on-profile'>
           <Link to={`/about-oxitoficina`}>
             <h3>About OXITOFICINA</h3>
@@ -94,12 +94,17 @@ function Workshops() {
           <Link to={`/teachers`}>
             <h3>Our Teachers</h3>
           </Link>
-          <Link to={`/suggestion-box`}>
-            <h3>Suggestion Box</h3>
-          </Link>
         </div>
       </div>
-      <h2>Check out our Workshops!</h2>
+      <h2>Check out our Workshops</h2>
+      <input
+            className='search-input'
+            id='search-query'
+            type='text'
+            placeholder='search for any word...'
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
       {user && user.admin === true && (
         <button
           type='button'
@@ -110,6 +115,10 @@ function Workshops() {
       <Link to='/previous-workshops'>
         <h4>-See previous Workhops-</h4>
       </Link>
+      <Link to='/new-proposal'>
+        <h4>Send us your workshop idea</h4>
+      </Link>
+      
       <div>
         {filteredWorkshops.length > 0
           ? filteredWorkshops.map((workshop) => (

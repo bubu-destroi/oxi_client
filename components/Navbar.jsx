@@ -22,7 +22,6 @@ function Navbar() {
         onClick={handLogoClick}>
         <img src='/user-logo.png' />
       </div>
-      
 
       <div className='menu-right'>
         {/* 
@@ -48,7 +47,7 @@ function Navbar() {
           <button onClick={logout}>Logout</button>
         ) : (
           <Link to={`/login`}>
-            <h3>log in</h3>
+            <h3>Log in</h3>
           </Link>
         )}
       </div>

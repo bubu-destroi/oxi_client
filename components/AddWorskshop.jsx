@@ -185,9 +185,6 @@ function AddWorkshop() {
           <Link to={`/teachers`}>
             <h3>Our Teachers</h3>
           </Link>
-          <Link to={`/suggestion-box`}>
-            <h3>Suggestion Box</h3>
-          </Link>
         </div>
       </div>
       <h2>Create a Workshop</h2>

@@ -55,16 +55,6 @@ function Wishlist() {
           </Link>
         </div>
 
-        <div>
-          <input
-            className='search-input'
-            id='search-query'
-            type='text'
-            placeholder='search for any word...'
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div>
         <div className='menu-on-profile'>
           <Link to={`/about-oxitoficina`}>
             <h3>About OXITOFICINA</h3>
@@ -78,31 +68,28 @@ function Wishlist() {
           <Link to={`/teachers`}>
             <h3>Our Teachers</h3>
           </Link>
-          <Link to={`/suggestion-box`}>
-            <h3>Suggestion Box</h3>
-          </Link>
         </div>
       </div>
       <h1>WISHLIST</h1>
-      <h3 className='about-wishes'>
-        These are the subjects our users want to learn about. If you are
-        interested in preparing a workshop in response to one of these requests,
-        click the button -I Can Teach You!- and fill the form
-      </h3>
+      <h5 className='about-wishes'>
+        These are the subjects our users want to learn about. <br /> If you are
+        interested in designing a workshop in response to one of these requests,
+        click the button -I Can Teach You!- and submit the form.
+      </h5>
       <div>
         <Link to='/create-wish'>
-          <h6>click here to ask for a workshop</h6>
+          <h3>Place your WISH here</h3>
         </Link>
       </div>
       <div>
-        {/* <input
-        className='search-input'
+        <input
+          className='search-input'
           id='search-query'
           type='text'
           placeholder='search for any word...'
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-        /> */}
+        />
         {filteredWishes.length > 0
           ? filteredWishes.map((wish) => (
               <div

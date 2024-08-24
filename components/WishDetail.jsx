@@ -104,9 +104,6 @@ const WishDetail = () => {
           <Link to={`/teachers`}>
             <h3>Our Teachers</h3>
           </Link>
-          <Link to={`/suggestion-box`}>
-            <h3>Suggestion Box</h3>
-          </Link>
         </div>
         </div>
       </div>
@@ -117,7 +114,7 @@ const WishDetail = () => {
           <h5>{singleWish && singleWish.category}</h5>
           <h5>{singleWish && singleWish.subcategory}</h5>
           <h5>{singleWish && singleWish.remote}</h5>
-          <h5>{singleWish && singleWish.age_of_wisher}</h5>
+          <h5>Age of the wisher {singleWish && singleWish.age_of_wisher}</h5>
           {singleWish.interested_users.length > 0 && (
             <h6>
               number of interested users {singleWish.interested_users.length}

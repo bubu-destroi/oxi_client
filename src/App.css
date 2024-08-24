@@ -302,6 +302,7 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  width: 100%;
 }
 
 #comment {
@@ -417,5 +418,11 @@ button {
   .menu-right {
     display: none;
   }
+
+}
+
+#comment{
+  width: 100%;
+  margin: 0 auto;
 
 }

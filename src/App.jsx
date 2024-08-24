@@ -52,7 +52,7 @@ function App() {
             }
           />
           <Route
-            path='/suggestion-box'
+            path='/voices-of-progress'
             element={
               <Anon>
                 <SuggestionBox />

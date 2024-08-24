@@ -104,11 +104,12 @@ function Teachers() {
               className='teacher-div'
               key={teacher._id}>
               <Link to={`/teachers/${teacher._id}`}>
-                <h2>{teacher.name}</h2>
+                <h3>{teacher.name}</h3>
                 <h5>{teacher.bio}</h5>
               </Link>
               <h5>
                 <a
+                id='social-link'
                   href={
                     teacher.socialMedia.startsWith('http')
                       ? teacher.socialMedia

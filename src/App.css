@@ -228,6 +228,7 @@ button {
   flex-direction: column;
   flex-basis: calc(50% - 10px);
   box-sizing: border-box;
+  width: 300px;
 }
 
 .all-teachers {
@@ -445,3 +446,11 @@ button {
 }
 
 /*  */
+
+#social-link{
+  font-size: smaller;
+  margin: auto, 0;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}

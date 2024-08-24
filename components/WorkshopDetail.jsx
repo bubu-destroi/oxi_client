@@ -50,7 +50,7 @@ function WorkshopDetail() {
       <div className='workshop-container'>
         {singleWorkshop && (
           <div
-            className='workshop-info'
+            className='workshop-detail'
             key={singleWorkshop._id}>
             <h3>{singleWorkshop.title && singleWorkshop.title}</h3>
             <h4>{singleWorkshop.description && singleWorkshop.description}</h4>

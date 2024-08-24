@@ -93,11 +93,8 @@ body {
   margin: 0 auto;
 }
 
-
 .workshop-info {
   margin: 0;
-
-
 }
 
 .workshop-image {
@@ -299,7 +296,6 @@ button {
 
 .big-about-div {
   width: 500px;
-
 }
 
 .suggestion-box-input {
@@ -310,7 +306,7 @@ button {
 }
 
 #comment {
-  height: 100px;/*  */
+  height: 100px; /*  */
   width: 250px;
 }
 /* 
@@ -331,7 +327,7 @@ button {
   grid-auto-flow: dense;
   grid-gap: 5px;
   justify-content: center;
- /* width: 100%; */
+  /* width: 100%; */
   margin: 0 auto;
   padding: 5px;
 }
@@ -349,6 +345,18 @@ button {
   padding: 10px;
 }
 
+.workshop-info {
+  padding: 10px;
+  margin: 0 auto;
+  display: flex;
+  flex-basis: 80%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-style: solid;
+  border-radius: 1px;
+  border-color: rgb(230, 245, 245);
+
+}
 
 @media (max-width: 768px) {
   .logo-div img {
@@ -381,7 +389,12 @@ button {
   }
 
   .workshop-container {
-    padding-right: 0;
+    padding: 10px;
+
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
   .workshop-image {
@@ -391,7 +404,16 @@ button {
   }
 
   .workshop-info {
-    padding-right: 0;
+    padding: 10px;
+    margin: 0 auto;
+    display: flex;
+    flex-basis: 80%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-style: solid;
+    border-radius: 1px;
+    border-color: rgb(230, 245, 245);
+
   }
 
   /* Adjust user-logo-menu positioning */
@@ -422,15 +444,12 @@ button {
   .menu-right {
     display: none;
   }
-
 }
 
-#comment{
+#comment {
   width: 100%;
   margin: 0 auto;
-
 }
-
 
 .custom-phone-input {
   display: block;
@@ -449,7 +468,7 @@ button {
 
 /*  */
 
-#social-link{
+#social-link {
   font-size: smaller;
   margin: auto, 0;
   display: flex;

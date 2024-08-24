@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import {  useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/auth.context';
 
@@ -8,8 +8,8 @@ function Workshops() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredWorkshops, setFilteredWorkshops] = useState([]);
 
-  const {user} = useContext(AuthContext)
- const navigate = useNavigate()
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const getAllWorkshops = async () => {
     try {
@@ -64,13 +64,13 @@ function Workshops() {
     <>
       <h2>Check out our Workshops</h2>
       <input
-            className='search-input'
-            id='search-query'
-            type='text'
-            placeholder='search for any word...'
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
+        className='search-input'
+        id='search-query'
+        type='text'
+        placeholder='search for any word...'
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
       {user && user.admin === true && (
         <button
           type='button'
@@ -84,22 +84,24 @@ function Workshops() {
       <Link to='/new-proposal'>
         <h4>Send us your workshop idea</h4>
       </Link>
-      
-      <div>
-        {filteredWorkshops.length > 0
-          ? filteredWorkshops.map((workshop) => (
-              <div key={workshop._id}>
-                <Link to={`/workshops/${workshop._id}`}>
-                  <h3>{workshop.title}</h3>
-                  <h5>{workshop.description}</h5>
-                  <h6>
-                    lectured by{' '}
-                    {workshop.teachers.map((t) => t.name).join(', ')}
-                  </h6>
-                </Link>
-              </div>
-            ))
-          : filteredWorkshops.length === 0 && <p>No workshops found</p>}
+
+      <div className='workshop-container'>
+        <div className='workshop-info'>
+          {filteredWorkshops.length > 0
+            ? filteredWorkshops.map((workshop) => (
+                <div key={workshop._id}>
+                  <Link to={`/workshops/${workshop._id}`}>
+                    <h3>{workshop.title}</h3>
+                    <h5>{workshop.description}</h5>
+                    <h6>
+                      lectured by{' '}
+                      {workshop.teachers.map((t) => t.name).join(', ')}
+                    </h6>
+                  </Link>
+                </div>
+              ))
+            : filteredWorkshops.length === 0 && <p>No workshops found</p>}
+        </div>
       </div>
     </>
   );

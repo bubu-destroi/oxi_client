@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { PhoneInput } from 'react-international-phone';
+import 'react-international-phone/style.css';
 import axios from 'axios';
 
 function SignUp() {
   const [parent_name, setParent_name] = useState('');
   const [address, setAddress] = useState('');
-  const [phone_number, setPhone_number] = useState(null);
+  const [phone_number, setPhone_number] = useState('');
   const [id_card_picture, setId_card_picture] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -27,9 +29,9 @@ function SignUp() {
   const handleAddress = (e) => {
     setAddress(e.target.value);
   };
-  const handlePhone_number = (e) => {
+  /*  const handlePhone_number = (e) => {
     setPhone_number(e.target.value);
-  };
+  }; */
   const handleId_card_picture = async (e) => {
     const uploadData = new FormData();
     //configuring how to send the file
@@ -164,17 +166,83 @@ function SignUp() {
           onChange={handleAddress}
         />
         <br />
-        <label htmlFor=''>
-          their telephone number, including international dialling code
-        </label>
+        <label htmlFor=''>their telephone number</label>
         <br />
-        <input
+        {/*   <input
           type='text'
           name='phone_number'
           id='phone_number'
           value={phone_number}
           onChange={handlePhone_number}
-        />
+        /> */}
+        {/*  <div className='phone-input'>
+          <PhoneInput
+            defaultCountry='pt'
+            value={phone_number}
+            onChange={() => setPhone_number(phone_number)}
+          />
+        </div> */}
+        {/*  <div className='phone-input'>
+          <PhoneInput
+            defaultCountry='pt'
+            value={phone_number}
+            onChange={setPhone_number} // Fixes the setPhone_number usage
+            containerClass='custom-phone-input'
+            inputClass='custom-phone-input-field'
+          />
+        </div> */}
+       {/*  <div className='phone-input'>
+          <PhoneInput
+            defaultCountry='pt'
+            value={phone_number}
+            onChange={setPhone_number}
+            inputStyle={{
+              padding: '10px',
+              backgroundColor: 'rgba(221, 220, 255, 0.997)',
+              border: 'none',
+              fontFamily: 'monospace',
+              color: 'darkslateblue',
+              margin: 'auto',
+              //width: '100%',
+              boxSizing: 'border-box',
+            }}
+            buttonStyle={{
+              backgroundColor: 'rgba(221, 220, 255, 0.997)',
+              border: 'none',
+              padding: '10px',
+            }}
+          />
+        </div> */}
+        <div className='phone-input'>
+  <PhoneInput
+    defaultCountry='pt'
+    value={phone_number}
+    onChange={setPhone_number}
+    inputStyle={{
+      padding: '10px',
+      backgroundColor: 'rgba(221, 220, 255, 0.997)',
+      border: 'none',
+      fontFamily: 'monospace',
+      color: 'darkslateblue',
+      margin: 'auto',
+      paddingLeft: '50px', // Ensure space for the flag
+      boxSizing: 'border-box',
+    }}
+    buttonStyle={{
+      backgroundColor: 'rgba(221, 220, 255, 0.997)',
+      border: 'none',
+      padding: '10px',
+      position: 'absolute', // Positioning the flag button
+      left: '0', // Aligning it to the left
+      top: '0', // Aligning it to the top
+      zIndex: '1', // Making sure it stays above the input
+    }}
+    containerStyle={{
+      position: 'relative',
+      width: '100%',
+    }}
+  />
+</div>
         <br />
         <label htmlFor=''>
           upload their id card picture, just to check if it matches!

@@ -31,7 +31,7 @@ function About() {
       );
       setAge(0);
       setComment('');
-      navigate('/suggestion-box');
+      navigate('/voices-of-progress');
     } catch (error) {
       console.log('error posting suggestion', error);
     }
@@ -65,7 +65,7 @@ function About() {
 
       <div className='big-about-div'>
         <h1>About OXITOFICINA</h1>
-        <h4>
+        <h5>
           Hi, I'm Carolina. I created Oxitoficina (combining Oxytocin and
           Oficina) from a place of deep affection and concern for future
           generations. Throughout my own experience of the traditional education
@@ -90,7 +90,7 @@ function About() {
           another still their IRS tax return. If there is the demand, we will
           offer it! Expecting, and even hoping for, ideas we could never even
           think of.{' '}
-        </h4>
+        </h5>
         <div className='suggestion-box-input'>
           <h4>
             And now, I ask you, could you be a{' '}

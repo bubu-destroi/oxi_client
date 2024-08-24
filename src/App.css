@@ -295,7 +295,8 @@ button {
 }
 
 .big-about-div {
-  width: 600px;
+  width: 300px;
+
 }
 
 .suggestion-box-input {
@@ -426,3 +427,21 @@ button {
   margin: 0 auto;
 
 }
+
+
+.custom-phone-input {
+  display: block;
+  margin: 10px;
+}
+
+.custom-phone-input-field {
+  padding: 10px;
+  background-color: rgba(221, 220, 255, 0.997);
+  border: none;
+  font-family: monospace;
+  color: darkslateblue;
+  width: 100%; /* Ensures it takes the full width like other inputs */
+  box-sizing: border-box; /* Ensures padding is included in the width */
+}
+
+/*  */

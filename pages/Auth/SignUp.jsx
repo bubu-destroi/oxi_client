@@ -113,28 +113,7 @@ function SignUp() {
 
   return (
     <>
-      <div className='logo-and-search'>
-        <div className='logo-div'>
-          <Link to='/'>
-            <img
-              src='/oxito.png'
-              alt='oxitoficina-logo'
-            />
-          </Link>
-        </div>
-
-        <div className='menu-on-profile'>
-          <Link to={`/workshops`}>
-            <h3>Our Workshops</h3>
-          </Link>
-          <Link to={`/wishlist`}>
-            <h3>Wishlist</h3>
-          </Link>
-          <Link to={`/teachers`}>
-            <h3>Our Teachers</h3>
-          </Link>
-        </div>
-      </div>
+     
       <h2 className='create-an-account'>
         create an account to sign up for workshops and tell us what you want to
         learn about!

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useContext } from 'react';
 import { AuthContext } from '../context/auth.context';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 function AddWish() {
@@ -59,30 +58,7 @@ function AddWish() {
 
   return (
     <>
-      <div className='logo-and-search'>
-      <div className='logo-div'>
-        <Link to='/'>
-          <img
-            src='/oxito.png'
-            alt='oxitoficina-logo'
-          />
-        </Link>
-      </div>
-      <div className='menu-on-profile'>
-          <Link to={`/about-oxitoficina`}>
-            <h3>About OXITOFICINA</h3>
-          </Link>
-          <Link to={`/workshops`}>
-            <h3>Our Workshops</h3>
-          </Link>
-          <Link to={`/wishlist`}>
-            <h3>Wishlist</h3>
-          </Link>
-          <Link to={`/teachers`}>
-            <h3>Our Teachers</h3>
-          </Link>
-        </div>
-      </div>
+      
       <div>
         <h2>Tell us what you want to learn about!</h2>
         <form

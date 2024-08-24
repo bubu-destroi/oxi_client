@@ -40,17 +40,9 @@ function Login() {
     }
   }, [user, navigate]);
   return (
+    <>
+
     <div className='loginPage'>
-      <div className='logo-and-search'>
-        <div className='logo-div'>
-          <Link to='/'>
-            <img
-              src='/oxito.png'
-              alt='oxitoficina-logo'
-            />
-          </Link>
-        </div>
-      </div>
       <h2>please log in to start learning!</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor='email'>your email</label>
@@ -95,6 +87,7 @@ function Login() {
         logout
       </button> */}
     </div>
+    </>
   );
 }
 

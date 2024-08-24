@@ -17,6 +17,35 @@ function Navbar() {
 
   return (
     <>
+    <div className='logo-and-search'>
+        <div className='logo-div'>
+          <Link to={'/'}>
+            <img
+              src='/oxito.png'
+              alt='oxitoficina-logo'
+            />
+          </Link>
+        </div>
+        <div className='menu-on-profile'>
+          <Link to={`/about-oxitoficina`}>
+            <h3>About OXITOFICINA</h3>
+          </Link>
+          <Link to={`/workshops`}>
+            <h3>Our Workshops</h3>
+          </Link>
+          <Link to={`/wishlist`}>
+            <h3>Wishlist</h3>
+          </Link>
+          <Link to={`/teachers`}>
+            <h3>Our Teachers</h3>
+          </Link>
+          {/* {user && (
+            <Link to={`/profile/${user._id}`}>
+              <h3>Your profile</h3>
+            </Link>
+          )} */}
+        </div>
+        </div>
       <div
         className='user-logo-menu'
         onClick={handLogoClick}>

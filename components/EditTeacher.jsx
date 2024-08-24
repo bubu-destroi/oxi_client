@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import {useNavigate, useParams } from 'react-router-dom';
 
 
 function EditTeacher() {
@@ -84,30 +84,7 @@ function EditTeacher() {
 
   return (
     <>
-    <div className='logo-and-search'>
-        <div className='logo-div'>
-          <Link to={'/'}>
-            <img
-              src='/oxito.png'
-              alt='oxitoficina-logo'
-            />
-          </Link>
-        </div>
-        <div className='menu-on-profile'>
-          <Link to={`/about-oxitoficina`}>
-            <h3>About OXITOFICINA</h3>
-          </Link>
-          <Link to={`/workshops`}>
-            <h3>Our Workshops</h3>
-          </Link>
-          <Link to={`/wishlist`}>
-            <h3>Wishlist</h3>
-          </Link>
-          <Link to={`/teachers`}>
-            <h3>Our Teachers</h3>
-          </Link>
-        </div>
-      </div>
+  
       <h3>Edit a Teacher Profile</h3>
       <form
         className='signup-form'

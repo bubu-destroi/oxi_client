@@ -5,7 +5,7 @@
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 
 function Proposal() {
   const [name, setName] = useState('');
@@ -162,30 +162,6 @@ function Proposal() {
 
   return (
     <>
-    <div className='logo-and-search'>
-        <div className='logo-div'>
-          <Link to={'/'}>
-            <img
-              src='/oxito.png'
-              alt='oxitoficina-logo'
-            />
-          </Link>
-        </div>
-        <div className='menu-on-profile'>
-          <Link to={`/about-oxitoficina`}>
-            <h3>About OXITOFICINA</h3>
-          </Link>
-          <Link to={`/workshops`}>
-            <h3>Our Workshops</h3>
-          </Link>
-          <Link to={`/wishlist`}>
-            <h3>Wishlist</h3>
-          </Link>
-          <Link to={`/teachers`}>
-            <h3>Our Teachers</h3>
-          </Link>
-        </div>
-      </div>
       <h1>SUBMIT YOUR PROPOSAL</h1>
       <h6 className='proposal-extras'>
         Here you will provide as much detailed information as you can and, uppon
@@ -201,6 +177,7 @@ function Proposal() {
         className='proposal-form'
         onSubmit={handleSubmit}>
         <label htmlFor='name'>Name</label>
+        <br />
         <input
           type='text'
           name='name'
@@ -210,6 +187,7 @@ function Proposal() {
         />
         <br />
         <label htmlFor='bio'>Biography</label>
+        <br />
         <textarea
           name='bio'
           id='bio'
@@ -218,6 +196,7 @@ function Proposal() {
         />
         <br />
         <label htmlFor='email'>Email</label>
+        <br />
         <input
           type='text'
           name='email'
@@ -227,6 +206,7 @@ function Proposal() {
         />
         <br />
         <label htmlFor='socialMedia'>Social Media or linkTree</label>
+        <br />
         <input
           type='text'
           name='socialMedia'
@@ -242,6 +222,7 @@ function Proposal() {
         <h3>Create a Workshop Proposal</h3>
 
         <label htmlFor='title'>Title</label>
+        <br />
         <input
           type='text'
           name='title'
@@ -251,6 +232,7 @@ function Proposal() {
         />
         <br />
         <label htmlFor='description'>Description</label>
+        <br />
         <textarea
           name='description'
           id='description'
@@ -266,6 +248,7 @@ function Proposal() {
         </h6>
         <br />
         <label htmlFor='image'>Upload an image</label>
+        <br />
         <input
           type='file'
           name='image'
@@ -274,6 +257,7 @@ function Proposal() {
         />
         <br />
         <label htmlFor='duration'>Duration - hours, days, weeks...?</label>
+        <br />
         <input
           type='text'
           name='duration'
@@ -285,6 +269,7 @@ function Proposal() {
         <label htmlFor='price'>
           an estimated price, in Euros, to charge per participant
         </label>
+        <br />
         <input
           type='number'
           name='price'
@@ -294,6 +279,7 @@ function Proposal() {
         />
         <br />
         <label htmlFor='category'>Select a category</label>
+        <br />
         <input
           type='text'
           name='category'
@@ -303,6 +289,7 @@ function Proposal() {
         />
         <br />
         <label htmlFor='subcategory'>And a subcategory</label>
+        <br />
         <input
           type='text'
           name='subcategory'
@@ -311,7 +298,8 @@ function Proposal() {
           onChange={handleSubcategory}
         />
         <br />
-        <label htmlFor='date'>Input a starting date</label>
+        <label htmlFor='date'>Select a starting date</label>
+        <br />
         <input
           type='date'
           name='date'
@@ -331,6 +319,7 @@ function Proposal() {
         </h6>
         <br />
         <label htmlFor='teacher'>Teacher</label>
+        <br />
         <input
           name='teacher'
           id='teacher'
@@ -348,7 +337,8 @@ function Proposal() {
         />
 
         <br />
-        <label htmlFor='place'>Place</label>
+        <label htmlFor='place'>Location</label>
+        <br />
         <input
           type='text'
           name='place'
@@ -358,6 +348,7 @@ function Proposal() {
         />
         <br />
         <label htmlFor='minimum_age'>Minimum age of participants</label>
+        <br />
         <input
           type='number'
           name='minimum_age'
@@ -367,6 +358,7 @@ function Proposal() {
         />
         <br />
         <label htmlFor='maximum_age'>Maximum age of participants</label>
+        <br />
         <input
           type='number'
           name='maximum_age'
@@ -376,6 +368,7 @@ function Proposal() {
         />
         <br />
         <label htmlFor='minParticipants'>Minimum number of participants</label>
+        <br />
         <input
           type='number'
           name='minParticipants'
@@ -385,6 +378,7 @@ function Proposal() {
         />
         <br />
         <label htmlFor='maxParticipants'>Maximum number of participants</label>
+        <br />
         <input
           type='number'
           name='maxParticipants'

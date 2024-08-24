@@ -89,23 +89,25 @@ body {
   display: block;
   position: relative;
   padding-right: 300px;
+  width: 40%;
+  margin: 0 auto;
 }
+
 
 .workshop-info {
   margin: 0;
+
+
 }
 
 .workshop-image {
   position: absolute;
   top: 0;
   right: 0;
-  width: 250px;
-  height: 400px;
+  width: fit-content;
 }
 
 .workshop-image img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
 }
 

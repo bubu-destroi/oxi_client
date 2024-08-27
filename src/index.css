@@ -1,4 +1,21 @@
-:root {
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom global styles */
+* {
+  font-family: monospace; /* Apply monospace font to all elements */
+  color: darkslateblue; /* Apply darkslateblue color to all elements */
+}
+
+body {
+  background-color: rgb(230, 228, 225); /* Set the background color for the body */
+  font-family: monospace; /* Ensure body uses monospace font */
+  color: darkslateblue; /* Ensure body text is darkslateblue */
+}
+
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -66,3 +83,4 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+ */

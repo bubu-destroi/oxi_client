@@ -67,31 +67,6 @@ function ProfilePage() {
   if (!user) return <p>No user data available.</p>;
   return (
     <>
-      <div className='logo-and-search'>
-      <div className='logo-div'>
-        <Link to={'/'}>
-          <img
-            src='/oxito.png'
-            alt='oxitoficina-logo'
-          />
-        </Link>
-      </div>
-      <div className='menu-on-profile'>
-          <Link to={`/about-oxitoficina`}>
-            <h3>About OXITOFICINA</h3>
-          </Link>
-          <Link to={`/workshops`}>
-            <h3>Our Workshops</h3>
-          </Link>
-          <Link to={`/wishlist`}>
-            <h3>Wishlist</h3>
-          </Link>
-          <Link to={`/teachers`}>
-            <h3>Our Teachers</h3>
-          </Link>
-        
-        </div>
-      </div>
       <h1>hello {user.learner_username && user.learner_username}!</h1>
       <h3>these are the wishes you requested</h3>
       <div>

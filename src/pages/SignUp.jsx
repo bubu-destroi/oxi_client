@@ -1,13 +1,15 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+
 import axios from 'axios';
-import CountryCodeSelector from '../CountryCodeSelector'; // Ensure the path is correct
 
 function SignUp() {
   const [parent_name, setParent_name] = useState('');
   const [address, setAddress] = useState('');
   const [phone_number, setPhone_number] = useState('');
-  const [countryCode, setCountryCode] = useState('+351');
+  const [countryCode, setCountryCode] = useState('+351')
+  const [customCountryCode, setCustomCountryCode] = useState('');
+  const [showCustomCodeInput, setShowCustomCodeInput] = useState(false);
   const [id_card_picture, setId_card_picture] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -31,16 +33,30 @@ function SignUp() {
   };
   const handlePhone_number = (e) => {
     setPhone_number(e.target.value);
-   
+  }; 
+
+  const handleCountryChange = (e) => {
+    const value = e.target.value;
+    if (value === 'custom') {
+      setShowCustomCodeInput(true);
+      setCountryCode('');
+    } else {
+      setCountryCode(value);
+      setCustomCountryCode('');
+      setShowCustomCodeInput(false);
+    }
   };
 
-  const handleCountryCodeChange = (code) => {
-    setCountryCode(code);
-    console.log(phone_number)
+  const handleCustomCountryCodeChange = (e) => {
+    setCustomCountryCode(e.target.value);
+    setCountryCode(e.target.value);
   };
+
+
 
   const handleId_card_picture = async (e) => {
     const uploadData = new FormData();
+    //configuring how to send the file
     uploadData.append('imgUrl', e.target.files[0]);
 
     try {
@@ -52,6 +68,7 @@ function SignUp() {
       setLoading(false);
       setId_card_picture(response.data.fileUrl);
     } catch (error) {
+      console.log(loading);
       console.error(error);
     }
   };
@@ -76,7 +93,7 @@ function SignUp() {
     ) {
       ageTotal--;
     }
-    setAge(ageTotal);
+    return setAge(ageTotal);
   };
   const handleDate_of_birth = (e) => {
     setDate_of_birth(e.target.value);
@@ -101,19 +118,19 @@ function SignUp() {
         userWaitingList,
         courses_taken,
       };
+      console.log(newUserProfile);
       await axios.post(
         `${import.meta.env.VITE_API_URL}/auth/signup`,
         newUserProfile
       );
       navigate('/login');
     } catch (error) {
-      console.error('error', error);
+      console.log('error', error);
     }
   };
 
   return (
     <>
-     
       <h2 className='create-an-account'>
         create an account to sign up for workshops and tell us what you want to
         learn about!
@@ -124,8 +141,7 @@ function SignUp() {
       <form
         className='signup-form'
         action=''
-        onSubmit={handleSubmit}
-      >
+        onSubmit={handleSubmit}>
         <p className='signup-extras'>
           we need your parents/caretaker information! if you are an adult, input
           your own information
@@ -152,25 +168,166 @@ function SignUp() {
         <br />
         <label htmlFor=''>their telephone number</label>
         <br />
-        <div className='phone-input' style={{ display: 'flex', alignItems: 'center' }}>
-          <CountryCodeSelector onCodeChange={handleCountryCodeChange} />
-          <br />
-        </div>
-          <input
-            type='text'
+        {/*   <input
+          type='text'
+          name='phone_number'
+          id='phone_number'
+          value={phone_number}
+          onChange={handlePhone_number}
+        /> */}
+        {/*  <div className='phone-input'>
+          <PhoneInput
+            defaultCountry='pt'
             value={phone_number}
-            onChange={handlePhone_number}
-            placeholder='phone number'
+            onChange={() => setPhone_number(phone_number)}
+          />
+        </div> */}
+        {/*  <div className='phone-input'>
+          <PhoneInput
+            defaultCountry='pt'
+            value={phone_number}
+            onChange={setPhone_number} // Fixes the setPhone_number usage
+            containerClass='custom-phone-input'
+            inputClass='custom-phone-input-field'
+          />
+        </div> */}
+       {/*  <div className='phone-input'>
+          <PhoneInput
+            defaultCountry='pt'
+            value={phone_number}
+            onChange={setPhone_number}
+            inputStyle={{
+              padding: '10px',
+              backgroundColor: 'rgba(221, 220, 255, 0.997)',
+              border: 'none',
+              fontFamily: 'monospace',
+              color: 'darkslateblue',
+              margin: 'auto',
+              //width: '100%',
+              boxSizing: 'border-box',
+            }}
+            buttonStyle={{
+              backgroundColor: 'rgba(221, 220, 255, 0.997)',
+              border: 'none',
+              padding: '10px',
+            }}
+          />
+        </div> */}
+    {/*     <div className='phone-input'>
+  <PhoneInput
+    defaultCountry='pt'
+    value={phone_number}
+    onChange={setPhone_number}
+    inputStyle={{
+      padding: '10px',
+      backgroundColor: 'rgba(221, 220, 255, 0.997)',
+      border: 'none',
+      fontFamily: 'monospace',
+      color: 'darkslateblue',
+      margin: 'auto',
+      paddingLeft: '50px', // Ensure space for the flag
+      boxSizing: 'border-box',
+    }}
+    buttonStyle={{
+      backgroundColor: 'rgba(221, 220, 255, 0.997)',
+      border: 'none',
+      padding: '10px',
+      position: 'absolute', // Positioning the flag button
+      left: '0', // Aligning it to the left
+      top: '0', // Aligning it to the top
+      zIndex: '1', // Making sure it stays above the input
+    }}
+    containerStyle={{
+      position: 'relative',
+      width: '100%',
+    }}
+  />
+
+</div> */}
+{/* <div className='phone-input' style={{ display: 'flex', alignItems: 'center' }}>
+      <select
+        value={countryCode}
+        onChange={handleCountryChange}
+        style={{
+          padding: '10px',
+          backgroundColor: 'rgba(221, 220, 255, 0.997)',
+          border: 'none',
+          fontFamily: 'monospace',
+          color: 'darkslateblue',
+        }}
+      >
+        <option value='+351'>🇵🇹 +351</option>
+        <option value='+1'>🇺🇸 +1 (USA)</option>
+        <option value='+44'>🇬🇧 +44 (UK)</option>
+      </select>
+      <input
+        type='text'
+        value={phone_number}
+        onChange={handlePhone_number}
+        placeholder='phone number'
+        style={{
+          padding: '10px',
+          backgroundColor: 'rgba(221, 220, 255, 0.997)',
+          border: 'none',
+          fontFamily: 'monospace',
+          color: 'darkslateblue',
+          flex: 1,
+          marginLeft: '5px',
+        }}
+      />
+    </div> */}
+    <div className='phone-input' style={{ display: 'flex', alignItems: 'center' }}>
+          <select
+            value={countryCode}
+            onChange={handleCountryChange}
             style={{
               padding: '10px',
               backgroundColor: 'rgba(221, 220, 255, 0.997)',
               border: 'none',
               fontFamily: 'monospace',
               color: 'darkslateblue',
-              flex: 1,
-              marginLeft: '5px',
+              marginRight: '5px',
             }}
-          />
+          >
+            <option value='+351'>🇵🇹 +351</option>
+            <option value='+1'>🇺🇸 +1 (USA)</option>
+            <option value='+44'>🇬🇧 +44 (UK)</option>
+            <option value='custom'>Other (Enter your own code)</option>
+          </select>
+          {showCustomCodeInput ? (
+            <input
+              type='text'
+              value={customCountryCode}
+              onChange={handleCustomCountryCodeChange}
+              placeholder='Enter country code'
+              style={{
+                padding: '10px',
+                backgroundColor: 'rgba(221, 220, 255, 0.997)',
+                border: 'none',
+                fontFamily: 'monospace',
+                color: 'darkslateblue',
+                flex: 1,
+                marginLeft: '5px',
+              }}
+            />
+          ) : (
+            <input
+              type='text'
+              value={phone_number}
+              onChange={handlePhone_number}
+              placeholder='phone number'
+              style={{
+                padding: '10px',
+                backgroundColor: 'rgba(221, 220, 255, 0.997)',
+                border: 'none',
+                fontFamily: 'monospace',
+                color: 'darkslateblue',
+                flex: 1,
+                marginLeft: '5px',
+              }}
+            />
+          )}
+        </div>
         <br />
         <label htmlFor=''>
           upload their id card picture, just to check if it matches!
@@ -195,8 +352,7 @@ function SignUp() {
         <br />
         <label
           className='signup-extras'
-          htmlFor=''
-        >
+          htmlFor=''>
           create a password with at least 6 characters, one number, one
           lowercase and one uppercase letter
         </label>

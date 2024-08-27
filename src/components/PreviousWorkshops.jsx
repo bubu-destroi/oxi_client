@@ -60,26 +60,6 @@ function PreviousWorkshops() {
 
   return (
     <>
-      <div className='logo-and-search'>
-        <div className='logo-div'>
-          <Link to='/'>
-            <img
-              src='/oxito.png'
-              alt='oxitoficina-logo'
-            />
-          </Link>
-        </div>
-        <div>
-          <input
-            className='search-input'
-            id='search-query'
-            type='text'
-            placeholder='search for any word...'
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div>
-      </div>
       <h2>Our previous Workshops!</h2>
       <Link to='/workshops' ><h4>--back to Workshops-</h4></Link>
       <div>

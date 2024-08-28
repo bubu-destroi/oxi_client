@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 function Homepage() {
   
   return (
-    <div className='flex flex-col items-center justify-center min-h-screen pt-24 p-4'>
+    <div className='flex flex-col items-center justify-center min-h-screen pt-10 p-4'>
       <div className='w-full max-w-xl'>
-        <h1 className='text-2xl sm:text-lg md:text-4xl font-bold mb-4 text-center'>
+        <h1 className='text-2xl sm:text-lg md:text-4xl font-bold  text-center'>
           Welcome to <br /> OXITOFICINA
         </h1>
         <h3 className='text-md sm:text-base md:text-md font-bold text-center mb-4 pt-10'>

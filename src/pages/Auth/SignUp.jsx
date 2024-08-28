@@ -21,6 +21,9 @@ function SignUp() {
   const courses_taken = [];
   const [loading, setLoading] = useState(false);
 
+  // Error State Variables
+  const [errors, setErrors] = useState({});
+
   const navigate = useNavigate();
 
   const handleParent_name = (e) => {
@@ -35,7 +38,6 @@ function SignUp() {
 
   const handleCountryCodeChange = (code) => {
     setCountryCode(code);
-    console.log(phone_number);
   };
 
   const handleId_card_picture = async (e) => {
@@ -82,8 +84,41 @@ function SignUp() {
     handleAge();
   };
 
+  const validateInputs = () => {
+    const newErrors = {};
+
+    if (!parent_name) newErrors.parent_name = 'Parent name is required.';
+    if (!address) newErrors.address = 'Address is required.';
+    if (!phone_number) newErrors.phone_number = 'Phone number is required.';
+    if (!id_card_picture) newErrors.id_card_picture = 'ID card picture is required.';
+    if (!email) {
+      newErrors.email = 'Email is required.';
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      newErrors.email = 'Invalid email address.';
+    }
+    if (!password) {
+      newErrors.password = 'Password is required.';
+    } else if (
+      !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/.test(password)
+    ) {
+      newErrors.password =
+        'Password must contain at least 6 characters, one number, one lowercase, and one uppercase letter.';
+    }
+    if (!learner_username) newErrors.learner_username = 'Username is required.';
+    if (!date_of_birth) newErrors.date_of_birth = 'Date of birth is required.';
+
+    return newErrors;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const newErrors = validateInputs();
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
     try {
       const newUserProfile = {
         parent_name,
@@ -115,30 +150,24 @@ function SignUp() {
       <div className='flex items-center justify-center min-h-screen pt-20 p-4'>
         <div className='max-w-md w-full'>
           <h2 className='text-xl sm:text-l font-bold px-10 pt-10 mb-4 text-center md:max-w-lg '>
-            Create an account <br/>
-            </h2>
-          <h3 className='text-l font-semibold mt-6 px-10  mb-4 text-center md:max-w-lg '>
-to sign up for workshops and tell us what you want to learn about!
-          
+            Create an account <br />
+          </h2>
+          <h3 className='text-l font-semibold mt-6 px-10 mb-4 text-center md:max-w-lg '>
+            to sign up for workshops and tell us what you want to learn about!
           </h3>
-          <h5 className='text-xs sm:text-xs  mb-4 flex flex-col items-center justify-center'>
+          <h5 className='text-xs sm:text-xs mb-4 flex flex-col items-center justify-center'>
             Do you already own an account?{' '}
-            <Link
-              to='/login'
-              className='text-red-500 hover:text-blue-500 mt-5'>
+            <Link to='/login' className='text-red-500 hover:text-blue-500 mt-5'>
               Log in here!
             </Link>
           </h5>
-          <form
-            className='w-full max-w-md p-6 '
-            onSubmit={handleSubmit}>
+          <form className='w-full max-w-md p-6' onSubmit={handleSubmit}>
             <p className='text-xs mb-4 text-center'>
               We need your parents/caretaker information! If you are an adult,
               input your own information.
             </p>
-            <label
-              htmlFor='parent-name'
-              className='block text-xs font-medium text-gray-700'>
+
+            <label htmlFor='parent-name' className='block text-xs font-medium text-gray-700'>
               Their name
             </label>
             <input
@@ -147,12 +176,14 @@ to sign up for workshops and tell us what you want to learn about!
               id='parent-name'
               value={parent_name}
               onChange={handleParent_name}
-              className=' block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+              className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
               placeholder='Enter their name'
             />
-            <label
-              htmlFor='address'
-              className='block text-xs  font-medium text-gray-700 mt-4'>
+            {errors.parent_name && (
+              <p className='text-red-500 text-xs mt-1'>{errors.parent_name}</p>
+            )}
+
+            <label htmlFor='address' className='block text-xs font-medium text-gray-700 mt-4'>
               Their address
             </label>
             <input
@@ -164,9 +195,11 @@ to sign up for workshops and tell us what you want to learn about!
               className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
               placeholder='Enter their address'
             />
-            <label
-              htmlFor='phone-number'
-              className='block text-xs  font-medium text-gray-700 mt-4'>
+            {errors.address && (
+              <p className='text-red-500 text-xs mt-1'>{errors.address}</p>
+            )}
+
+            <label htmlFor='phone-number' className='block text-xs font-medium text-gray-700 mt-4'>
               Their telephone number
             </label>
             <div className='flex items-center'>
@@ -179,9 +212,11 @@ to sign up for workshops and tell us what you want to learn about!
                 className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none ml-2'
               />
             </div>
-            <label
-              htmlFor='id_card_picture'
-              className='block text-xs  font-medium text-gray-700 mt-4'>
+            {errors.phone_number && (
+              <p className='text-red-500 text-xs mt-1'>{errors.phone_number}</p>
+            )}
+
+            <label htmlFor='id_card_picture' className='block text-xs font-medium text-gray-700 mt-4'>
               Upload their ID card picture
             </label>
             <input
@@ -191,9 +226,11 @@ to sign up for workshops and tell us what you want to learn about!
               onChange={handleId_card_picture}
               className='block w-full mt-1'
             />
-            <label
-              htmlFor='email'
-              className='block text-xs  font-medium text-gray-700 mt-4'>
+            {errors.id_card_picture && (
+              <p className='text-red-500 text-xs mt-1'>{errors.id_card_picture}</p>
+            )}
+
+            <label htmlFor='email' className='block text-xs font-medium text-gray-700 mt-4'>
               Their email
             </label>
             <input
@@ -205,11 +242,12 @@ to sign up for workshops and tell us what you want to learn about!
               className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
               placeholder='Enter their email'
             />
-            <label
-              htmlFor='password'
-              className='block text-xs  font-medium text-gray-700 mt-4'>
-              Create a password with at least 6 characters, one number, one
-              lowercase and one uppercase letter
+            {errors.email && (
+              <p className='text-red-500 text-xs mt-1'>{errors.email}</p>
+            )}
+
+            <label htmlFor='password' className='block text-xs font-medium text-gray-700 mt-4'>
+              Create a password with at least 6 characters, one number, one lowercase and one uppercase letter
             </label>
             <input
               type={showPassword ? 'text' : 'password'}
@@ -220,6 +258,10 @@ to sign up for workshops and tell us what you want to learn about!
               className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
               placeholder='Enter your password'
             />
+            {errors.password && (
+              <p className='text-red-500 text-xs mt-1'>{errors.password}</p>
+            )}
+
             <div className='flex items-center mt-2'>
               <input
                 type='checkbox'
@@ -228,18 +270,14 @@ to sign up for workshops and tell us what you want to learn about!
                 onChange={(e) => setShowPassword(e.target.checked)}
                 className='mr-2'
               />
-              <label
-                htmlFor='show-password'
-                className='text-xs  text-gray-600'>
+              <label htmlFor='show-password' className='text-xs text-gray-600'>
                 Show Password
               </label>
             </div>
-            <h3 className='text-lg font-semibold mt-6'>
-              Ok! Now your information
-            </h3>
-            <label
-              htmlFor='learner_username'
-              className='block text-xs  font-medium text-gray-700 mt-4'>
+
+            <h3 className='text-lg font-semibold mt-6'>Ok! Now your information</h3>
+
+            <label htmlFor='learner_username' className='block text-xs font-medium text-gray-700 mt-4'>
               Create a username for your profile
             </label>
             <input
@@ -251,9 +289,11 @@ to sign up for workshops and tell us what you want to learn about!
               className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
               placeholder='Enter your username'
             />
-            <label
-              htmlFor='date_of_birth'
-              className='block text-xs  font-medium text-gray-700 mt-4'>
+            {errors.learner_username && (
+              <p className='text-red-500 text-xs mt-1'>{errors.learner_username}</p>
+            )}
+
+            <label htmlFor='date_of_birth' className='block text-xs font-medium text-gray-700 mt-4'>
               What is your date of birth?
             </label>
             <input
@@ -264,9 +304,13 @@ to sign up for workshops and tell us what you want to learn about!
               onChange={handleDate_of_birth}
               className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
             />
+            {errors.date_of_birth && (
+              <p className='text-red-500 text-xs mt-1'>{errors.date_of_birth}</p>
+            )}
+
             <button
               type='submit'
-              className='w-full bg-red-500 text-white py-2 px-4  hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 mt-6'>
+              className='w-full bg-red-500 text-white py-2 px-4 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 mt-6'>
               CREATE!
             </button>
           </form>

@@ -27,6 +27,7 @@ import About from './pages/About';
 import SuggestionBox from './pages/SuggestionBox';
 import NavbarRight from './components/NavbarRigth';
 import NavbarLeft from './components/NavbarLeft';
+import EditWorkshop from './components/EditWorkshop';
 
 function App() {
   return (
@@ -91,6 +92,14 @@ function App() {
           element={
             <Anon>
               <Workshops />
+            </Anon>
+          }
+        />
+        <Route
+          path='/workshops/:workshopID/edit'
+          element={
+            <Anon>
+              <EditWorkshop />
             </Anon>
           }
         />

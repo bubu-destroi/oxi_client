@@ -27,6 +27,22 @@ function Workshops() {
       console.log('error', error);
     }
   };
+ 
+/*   const getPastWorkshops = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/workshops`
+      );
+      const today = new Date();
+      const sortedWorkshops = response.data
+        .filter((workshop) => new Date(workshop.date) < today) 
+        .sort((a, b) => new Date(b.date) - new Date(a.date)); 
+      //setAllWorkshops(sortedWorkshops);
+      setFilteredWorkshops(sortedWorkshops);
+    } catch (error) {
+      console.error('Error fetching workshops:', error);
+    }
+  }; */
   useEffect(() => {
     getAllWorkshops();
   }, []);
@@ -85,6 +101,14 @@ function Workshops() {
             </button>
           </div>
         )}
+        {/* <div className='text-center mb-4'>
+            <button
+              type='button'
+              onClick={getPastWorkshops}
+              className='bg-red-500 text-white px-4 py-2  hover:bg-red-600'>
+              -See previous workshops-
+            </button>
+          </div> */}
         <div className='text-center mb-4'>
           <Link to='/previous-workshops' className=''>
             <h4 className='text-sm sm:text-xs md:text-xs  hover:text-red-500'>

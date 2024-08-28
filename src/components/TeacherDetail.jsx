@@ -30,30 +30,48 @@ function TeacherDetail() {
 
   return (
     <>
-      <div>a closer look at</div>
-      {teacher && (
-        <div className='teacher-detail' key={teacher._id}>
-          <h3>{teacher.name}</h3>
-          <h5>{teacher.bio}</h5>
-          <h5><a 
-          href={teacher.socialMedia.startsWith('http') ? teacher.socialMedia : `https://${teacher.socialMedia}`} 
-          target="_blank" 
-          rel="noopener noreferrer"
-        >
-          {teacher.socialMedia}
-        </a></h5>
-          <ul>
-            {teacher.previous_workshops.map((workshop) => (
-              <li key={workshop._id}>{workshop.title}</li>
-            ))}
-          </ul>
+       <div className='big-container mx-auto pt-20 px-4 sm:px-6 md:px-8 lg:w-4/5 xl:w-3/5 p-4'>
+        <div className='flex flex-col items-center justify-center p-3 md:p-6 min-h-screen place-items-center'>
+       <h1 className='text-s md:text-md font-bold text-center pt-10'>a closer look at</h1>
+          {teacher && (
+            <div
+              className='workshop-detail shadow-sm p-4 md:p-5 w-full md:w-2/3 lg:w-1/2'
+              key={teacher._id}>
+              <h3 className='text-xl font-bold mb-2 text-center pb-5 text-red-500'>
+                {teacher.name}
+              </h3>
+              <h5 className='text-xs md:text-sm mb-3 text-justify'>
+                {teacher.bio}
+              </h5>
+              <h5 className='text-red-500 py-2 px-4 hover:text-blue-600 '>
+                <a
+                  href={
+                    teacher.socialMedia.startsWith('http')
+                      ? teacher.socialMedia
+                      : `https://${teacher.socialMedia}`
+                  }
+                  target='_blank'
+                  rel='noopener noreferrer'>
+                  {teacher.socialMedia}
+                </a>
+              </h5>
+              <ul>
+                {teacher.previous_workshops.map((workshop) => (
+                  <li key={workshop._id}>
+                    <h5 className='text-sm md:text-md font-bold p-4'>Upcoming Workshops</h5>
+                    <Link  className='text-red-500 py-2 px-4 hover:text-blue-600 ' to={`/workshops/${workshop._id}`}>{workshop.title}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {user?.admin && (
+            <Link to={`/teachers/${teacherID}/edit`}>
+              <button type='submit'>edit</button>
+            </Link>
+          )}
         </div>
-      )}
-      {user?.admin && (
-        <Link to={`/teachers/${teacherID}/edit`}>
-          <button type='submit'>edit</button>
-        </Link>
-      )}
+      </div>
     </>
   );
 }

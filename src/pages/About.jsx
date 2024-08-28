@@ -91,7 +91,7 @@ function About() {
           onSubmit={handleCommentSubmit}>
           <label
             htmlFor='age'
-            className='block text-xs font-medium'>
+            className='block text-xs font-medium  px-3'>
             Your age
           </label>
           <input
@@ -104,7 +104,7 @@ function About() {
           />
           <label
             htmlFor='comment'
-            className='block text-xs font-medium'>
+            className='block text-xs font-medium py-2 px-3'>
             Let the world know what is on your mind, there are no stupid ideas!
           </label>
           <textarea
@@ -113,7 +113,7 @@ function About() {
             value={comment}
             onChange={handleComment}
             placeholder='This little box is welcoming everyone to share their experience, as a student, former student, a parent or a teacher, you can be 4 years old or 120! All voices are to be heard :) and please, mind your language.'
-            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3  focus:outline-none'
+            className='block w-full  mt-1 text-xs bg-[rgba(221,220,255,0.997)] py-2 px-3  focus:outline-none'
             rows='6'
           />
           <button

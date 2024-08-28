@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import CountryCodeSelector from '../CountryCodeSelector'; 
@@ -14,7 +14,7 @@ function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [learner_username, setLearner_username] = useState('');
   const [date_of_birth, setDate_of_birth] = useState('');
-  const [age, setAge] = useState(null);
+  const [age, setAge] = useState(1);
   const wishes = [];
   const signedUp_workshops = [];
   const userWaitingList = [];
@@ -121,7 +121,7 @@ function SignUp() {
     }
 
     if (!age) {
-      handleAge(date_of_birth);
+      handleAge();
     }
 
     try {
@@ -149,6 +149,12 @@ function SignUp() {
       console.error('error', error);
     }
   };
+
+  useEffect(() =>{
+    handleAge()
+    console.log('mounting' ,age)
+    console.log(date_of_birth)
+  },[date_of_birth, age])
 
   return (
     <>

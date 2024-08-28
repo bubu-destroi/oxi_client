@@ -54,12 +54,12 @@ function NavbarLeft() {
           {/* Left Dropdown Menu */}
           <div
             id='left-content'
-            className={`absolute top-30 md:relative  md:top-0 left-0 mt-2 w-auto md:w-auto bg-red-100 500 bg-opacity-50 md:bg-transparent shadow-lg md:shadow-none md:text-md font-bold ${
+            className={`absolute top-30 md:relative  md:top-0 left-0 mt-2 w-auto md:w-auto bg-white 500 bg-opacity-70 md:bg-transparent md:shadow-none md:text-md font-bold ${
               toggleLeft ? 'block' : 'hidden'
             } md:block`}>
             <Link
               to={`/about-oxitoficina`}
-              className='block px-4 py-2 text-md hover:text-red-500  md:hover:bg-transparent'
+              className='block px-4 py-2 text-md hover:text-red-500 md:hover:bg-transparent'
               onClick={() => setToggleLeft(false)}>
               About OXITOFICINA
             </Link>
@@ -83,7 +83,7 @@ function NavbarLeft() {
             </Link>
             <Link
               to={`/`}
-              className='block px-4 py-2 text-md hover:text-red-500 md:hover:bg-transparent'
+              className='block px-4 py-2 text-md  hover:text-red-500 md:hover:bg-transparent'
               onClick={() => setToggleLeft(false)}>
               Homepage
             </Link>

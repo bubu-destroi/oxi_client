@@ -80,81 +80,90 @@ const WishDetail = () => {
       console.log('unable to join this wish', error);
     }
   };
-
   return (
     <>
-    <div className='container' >
-      
-      {singleWish && (
-        <div key={singleWish._id}>
-          <h3>{singleWish && singleWish.title}</h3>
-          <h4>{singleWish && singleWish.description}</h4>
-          <h5>{singleWish && singleWish.category}</h5>
-          <h5>{singleWish && singleWish.subcategory}</h5>
-          <h5>{singleWish && singleWish.remote}</h5>
-          <h5>Age of the wisher {singleWish && singleWish.age_of_wisher}</h5>
-          {singleWish.interested_users.length > 0 && (
-            <h6>
-              number of interested users {singleWish.interested_users.length}
-            </h6>
-          )}
-        </div>
-      )}
-      <Link to='/new-proposal'>I can teach you!</Link>
-
-      {/* this following logic will break if there are no authenticated users */}
-
-      {/*    {singleWish && user._id !== singleWish.created_by && (
-        <button type='button' onClick={handleWantToJoinWish}>
-          I also want to learn about this!
-        </button>
-      )} */}
-
-      {user ? (
-        user._id !== singleWish?.created_by && (
-          <button
-            type='button'
-            onClick={handleWantToJoinWish}>
-            I also want to learn about this!
-          </button>
-        )
-      ) : (
-        <p>
-          <Link to='/login'>Log in</Link> to join this wish.
-        </p>
-      )}
-
-      {/*  {singleWish && user._id === singleWish.created_by && (
-        <button type='button' onClick={handleDelete}>
-          Delete this wish?
-        </button>
-      ) } */}
-
-      {user && user._id === singleWish?.created_by && (
-        <button
-          type='button'
-          onClick={handleDelete}>
-          Delete your Wish
-        </button>
-      )}
-
-      {/*   {singleWish && user._id === singleWish.created_by && (
-        <button type='button' onClick={handleDelete}>
-          Do you need to edit this wish?
-        </button>
-      ) } */}
-      {/* {user.userWishWaitingList.includes(singleWish._id && (<p>You have already shown interest in joining this workshop!</p> ))}
-       */}
-      {/*  {user._id === singleWish.created_by && (
-        <button
-          type='button'
-          onClick={handleDelete}>
-          Delete your Wish
-        </button>
-      )}  */}
-    </div>
+      <div className="flex flex-col items-center justify-center pt-20 p-3 md:p-6 min-h-screen place-items-center">
+        {singleWish && (
+          <div
+            className="workshop-detail shadow-sm p-4 md:p-5 w-full md:w-2/3 lg:w-1/2"
+            key={singleWish._id}
+          >
+            <h3 className="text-xl font-bold mb-2 text-center pb-5 text-red-500">
+              {singleWish.title}
+            </h3>
+            <h4 className="text-xs md:text-sm mb-3 text-justify">
+              {singleWish.description}
+            </h4>
+  
+            {/* Image positioned between description and other details */}
+            <div className='sm:w-full object-cover md:w-64 float-end'>
+              {singleWish.image && (
+                <img
+                  src={singleWish.image}
+                  alt="wish"
+                  className=""
+                />
+              )}
+            </div>
+  
+            {/* Additional wish details */}
+            <div className="text-xs mb-2 mt-4 md:mt-6">
+              <h5 className="mb-1">{singleWish.category}</h5>
+              <h5 className="mb-1">{singleWish.subcategory}</h5>
+              <h5 className="mb-1">
+                Remote: {singleWish.remote ? 'Yes' : 'No'}
+              </h5>
+              <h5 className="mb-1">Age of the Wisher: {singleWish.age_of_wisher}</h5>
+              {singleWish.interested_users.length > 0 && (
+                <h6 className="mb-3">
+                  Number of Interested Users: {singleWish.interested_users.length}
+                </h6>
+              )}
+            </div>
+  
+            <div className="flex justify-center p-5">
+              <Link to='/new-proposal' className="bg-red-500 text-white py-2 px-4 hover:bg-blue-600 ">
+                I can teach you!
+              </Link>
+            </div>
+  
+            {user ? (
+              user._id !== singleWish?.created_by && (
+                <div className="flex justify-center mt-4">
+                  <button
+                    type="button"
+                    onClick={handleWantToJoinWish}
+                    className="bg-red-500 text-white py-2 px-4 hover:bg-blue-600"
+                  >
+                    I also want to learn about this!
+                  </button>
+                </div>
+              )
+            ) : (
+              <div className="flex justify-center mt-4">
+                <p>
+                  <Link to='/login' className="text-red-500 underline">Log in</Link> to join this wish.
+                </p>
+              </div>
+            )}
+  
+            {user && user._id === singleWish?.created_by && (
+              <div className="flex justify-center mt-4">
+                <button
+                  type="button"
+                  onClick={handleDelete}
+                  className="bg-red-500 text-white py-2 px-4 hover:bg-blue-600"
+                >
+                  Delete your Wish
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </>
   );
+  
 };
 
 export default WishDetail;

@@ -43,7 +43,10 @@ function WorkshopDetail() {
     } else {
       navigate('/signup');
     }
-  };return (
+
+  };
+  
+  return (
     <>
       <div className="flex flex-col items-center justify-center pt-20 p-3 md:p-6 min-h-screen place-items-center">
         {singleWorkshop && (

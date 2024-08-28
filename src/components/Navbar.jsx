@@ -52,21 +52,21 @@ function Navbar() {
           id='left-content'
           className={` ${
             toggleLeft ? 'fixed top-1 left-20 p-3' : 'hidden'
-          } md:fixed top-10 md:top-60 z-10`}>
+          } md:fixed top-10 md:top-52 left-0 z-10`}>
           <Link to={`/about-oxitoficina`} >
-            <h3 className=''>About OXITOFICINA</h3>
+            <h3 className='text-md sm:text-base md:text-lg font-bold mt-2'>About OXITOFICINA</h3>
           </Link>
           <Link to={`/workshops`}>
-            <h3>Workshops</h3>
+            <h3 className='text-md sm:text-base md:text-lg font-bold mt-2' >Workshops</h3>
           </Link>
           <Link to={`/wishlist`}>
-            <h3>Wishlist</h3>
+            <h3 className='text-md sm:text-base md:text-lg font-bold mt-2'>Wishlist</h3>
           </Link>
           <Link to={`/teachers`}>
-            <h3>Teachers</h3>
+            <h3 className='text-md sm:text-base md:text-lg font-bold mt-2'>Teachers</h3>
           </Link>
           <Link to={`/`}>
-            <h3>Homepage</h3>
+            <h3 className='text-md sm:text-base md:text-lg font-bold mt-2'>Homepage</h3>
           </Link>
           {/* {user && (
             <Link to={`/profile/${user._id}`}>
@@ -81,7 +81,7 @@ function Navbar() {
         onClick={handleToggleRight}>
         <img
           src='/user-logo.png'
-          className='w-10 md:w-28 fixed'
+          className='w-10 md:w-20 fixed'
         />
 
         <div

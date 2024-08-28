@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import CountryCodeSelector from '../CountryCodeSelector'; // Ensure the path is correct
+import CountryCodeSelector from '../CountryCodeSelector'; 
 
 function SignUp() {
   const [parent_name, setParent_name] = useState('');
   const [address, setAddress] = useState('');
   const [phone_number, setPhone_number] = useState('');
-  const [countryCode, setCountryCode] = useState('+351');
+  const [countryCode, setCountryCode] = useState('');
   const [id_card_picture, setId_card_picture] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -77,6 +77,7 @@ function SignUp() {
     ) {
       ageTotal--;
     }
+    console.log(age)
     setAge(ageTotal);
   };
   const handleDate_of_birth = (e) => {
@@ -117,6 +118,10 @@ function SignUp() {
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
+    }
+
+    if (!age) {
+      handleAge(date_of_birth);
     }
 
     try {

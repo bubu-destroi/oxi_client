@@ -5,13 +5,13 @@ function Homepage() {
   return (
     <div className='flex flex-col items-center justify-center min-h-screen pt-20 p-4'>
       <div className='w-full max-w-xl'>
-        <h1 className='text-4xl sm:text-lg md:text-4xl font-bold mb-4 text-center'>
+        <h1 className='text-3xl sm:text-lg md:text-4xl font-bold mb-4 text-center'>
           Welcome to <br /> OXITOFICINA
         </h1>
-        <h3 className='text-lg sm:text-base md:text-sm font-bold text-center mb-4 pt-10'>
+        <h3 className='text-md sm:text-base md:text-sm font-bold text-center mb-4 pt-10'>
           Sharing knowledge between the talented and the curious.
         </h3>
-        <h5 className='text-base sm:text-sm md:text-xs text-center mb-6'>
+        <h5 className='text-s sm:text-sm md:text-xs text-center mb-6'>
           We offer tailored{' '}
           <Link to={`/workshops`} className='text-red-500 hover:underline'>
             workshops

@@ -8,15 +8,6 @@ function Navbar() {
   const [toggleLeft, setToggleLeft] = useState(false);
   const [toggleRight, setToggleRight] = useState(false);
 
-  /*   const handLogoClick = (e) => {
-    e.preventDefault();
-    if (user) {
-      navigate(`/profile/${user._id}`);
-    } else {
-      navigate('/signup');
-    }
-  }; */
-
   const handleToggleLeft = () => {
     if (window.innerWidth > 768) {
       setToggleLeft(true);
@@ -24,6 +15,7 @@ function Navbar() {
     }
     setToggleLeft(!toggleLeft);
   };
+  
   const handleToggleRight = () => {
     if (window.innerWidth > 768) {
       setToggleRight(true);
@@ -33,89 +25,67 @@ function Navbar() {
   };
 
   return (
-    <div
-      id='navbar-container'
-      className='flex justify-between '>
-      <div
-        id='left-container'
-        className='relative top-0'>
-        <div
-          className=''
-          onClick={handleToggleLeft}>
-          <img
-            src='/oxito.png'
-            alt='oxitoficina-logo'
-            className='w-20 md:w-40 fixed'
-          />
-        </div>
-        <div
-          id='left-content'
-          className={` ${
-            toggleLeft ? 'fixed top-1 left-20 p-3' : 'hidden'
-          } md:fixed top-10 md:top-52 left-0 z-10`}>
-          <Link to={`/about-oxitoficina`} >
-            <h3 className='text-md sm:text-base md:text-lg font-bold mt-2'>About OXITOFICINA</h3>
-          </Link>
-          <Link to={`/workshops`}>
-            <h3 className='text-md sm:text-base md:text-lg font-bold mt-2' >Workshops</h3>
-          </Link>
-          <Link to={`/wishlist`}>
-            <h3 className='text-md sm:text-base md:text-lg font-bold mt-2'>Wishlist</h3>
-          </Link>
-          <Link to={`/teachers`}>
-            <h3 className='text-md sm:text-base md:text-lg font-bold mt-2'>Teachers</h3>
-          </Link>
-          <Link to={`/`}>
-            <h3 className='text-md sm:text-base md:text-lg font-bold mt-2'>Homepage</h3>
-          </Link>
-          {/* {user && (
-            <Link to={`/profile/${user._id}`}>
-              <h3>Your profile</h3>
-            </Link>
-          )} */}
-        </div>
-      </div>
-      <div
-        id='right-container'
-        className='flex flex-col items-end p-2'
-        onClick={handleToggleRight}>
-        <img
-          src='/user-logo.png'
-          className='w-10 md:w-20 fixed'
-        />
+    <div id="navbar-container" className="fixed top-0 left-0 w-full z-50">
+      <div className="flex justify-between items-center p-4">
+        {/* Left Container */}
+        <div id="left-container" className="relative">
+          {/* Logo with Dropdown Toggle */}
+          <div onClick={handleToggleLeft} className="cursor-pointer">
+            <img src="/oxito.png" alt="oxitoficina-logo" className="w-20 md:w-40" />
+          </div>
 
-        <div
-          id='right-content'
-          className={` ${
-            toggleRight ? 'fixed top-1 right-20 p-3' : 'hidden'
-          } sm:absolute top-28 md:top-60 z-10`}>
-          {/* 
-        <Link to={`/login`}>
-          {user && (
-          <h3>Log in</h3>
-        </Link> */}
-          {user && (
-            <Link to={`/profile/${user._id}`} >
-              <h3>Your profile</h3>
+          {/* Left Dropdown Menu */}
+          <div id="left-content" className={`absolute md:relative top-12 md:top-0 left-0 mt-2 w-48 md:w-auto md:bg-transparent shadow-lg md:shadow-none  ${toggleLeft ? 'block' : 'hidden'} md:block`}>
+            <Link to={`/about-oxitoficina`} className="block px-4 py-2 text-md  hover:bg-gray-100 md:hover:bg-transparent" onClick={() => setToggleLeft(false)}>
+              About OXITOFICINA
             </Link>
-          )}
-          {!user && (
-            <Link to={`/signup`}>
-              <h3>Create an account</h3>
+            <Link to={`/workshops`} className="block px-4 py-2 text-md  hover:text-red-500 md:hover:bg-transparent" onClick={() => setToggleLeft(false)}>
+              Workshops
             </Link>
-          )}
-          {user && (
-            <Link to={'/create-wish'}>
-              <h3>Add Wish</h3>
+            <Link to={`/wishlist`} className="block px-4 py-2 text-md hover:text-red-500 md:hover:bg-transparent" onClick={() => setToggleLeft(false)}>
+              Wishlist
             </Link>
-          )}
-          {user ? (
-            <button onClick={logout}>Logout</button>
-          ) : (
-            <Link to={`/login`}>
-              <h3>Log in</h3>
+            <Link to={`/teachers`} className="block px-4 py-2 text-md hover:text-red-500 md:hover:bg-transparent" onClick={() => setToggleLeft(false)}>
+              Teachers
             </Link>
-          )}
+            <Link to={`/`} className="block px-4 py-2 text-md  hover:text-red-500 md:hover:bg-transparent" onClick={() => setToggleLeft(false)}>
+              Homepage
+            </Link>
+          </div>
+        </div>
+
+        {/* Right Container */}
+        <div id="right-container" className="relative">
+          {/* User Icon with Dropdown Toggle */}
+          <div onClick={handleToggleRight} className="cursor-pointer">
+            <img src="/user-logo.png" alt="user-logo" className="w-10 md:w-20" />
+          </div>
+
+          {/* Right Dropdown Menu */}
+          <div id="right-content" className={`absolute md:relative top-12 md:top-0 right-0 mt-2 w-48 md:w-auto bg-white md:bg-transparent shadow-lg md:shadow-none rounded-lg ${toggleRight ? 'block' : 'hidden'} md:block`}>
+            {user ? (
+              <>
+                <Link to={`/profile/${user._id}`} className="block px-4 py-2 text-md  hover:text-red-500 md:hover:bg-transparent" onClick={() => setToggleRight(false)}>
+                  Your profile
+                </Link>
+                <Link to={'/create-wish'} className="block px-4 py-2 text-md  hover:text-red-500 md:hover:bg-transparent" onClick={() => setToggleRight(false)}>
+                  Add Wish
+                </Link>
+                <button onClick={() => { logout(); setToggleRight(false); }} className="block w-full px-4 py-2 text-md text-gray-700 hover:bg-gray-100 md:hover:bg-transparent">
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <Link to={`/signup`} className="block px-4 py-2 text-md  hover:text-red-500 md:hover:bg-transparent" onClick={() => setToggleRight(false)}>
+                  Create an account
+                </Link>
+                <Link to={`/login`} className="block px-4 py-2 text-md  hover:text-red-500 md:hover:bg-transparent" onClick={() => setToggleRight(false)}>
+                  Log in
+                </Link>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>

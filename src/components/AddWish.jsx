@@ -28,7 +28,6 @@ function AddWish() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted');
     if (user) {
       try {
         const newWish = {
@@ -41,13 +40,11 @@ function AddWish() {
           userID: user._id,
           created_by: user._id,
         };
-        console.log(newWish);
         await axios.post(
           `${import.meta.env.VITE_API_URL}/api/wishlist`,
           newWish
         );
         navigate(`/profile/${user._id}`);
-        console.log('Wish successfully posted');
       } catch (error) {
         console.log('error', error);
       }
@@ -57,70 +54,92 @@ function AddWish() {
   };
 
   return (
-    <>
-      
-      <div>
-        <h2>Tell us what you want to learn about!</h2>
-        <form
-          className='signup-form'
-          onSubmit={handleSubmit}>
-          <label htmlFor='title'>Title</label>
-          <br />
-          <input
-            type='text'
-            name='title'
-            id='title'
-            value={title}
-            onChange={handleTitle}
-          />
-          <br />
-          <label htmlFor='description'>Description</label>
-          <br />
-          <h5 className='signup-extras'>
-            Here you can tell us all the most important details, like the best
-            location for you or what languages you are comfortable with..
-          </h5>
-          <textarea
-            name='description'
-            id='description'
-            value={description}
-            onChange={handleDescription}
-          />
-          <br />
-          <label htmlFor='category'>Select a category</label>
-          <br />
-          <input
-            type='text'
-            name='category'
-            id='category'
-            value={category}
-            onChange={handleCategory}
-          />
-          <br />
-          <label htmlFor='subcategory'>Type a subcategory</label>
-          <br />
-          <input
-            type='text'
-            name='subcategory'
-            id='subcategory'
-            value={subcategory}
-            onChange={handleSubcategory}
-          />
-          <br />
-          <label htmlFor='remote'>Remote?</label>
-          <br />
-          <input
-            name='remote'
-            id='remote'
-            type='checkbox'
-            checked={remote}
-            onChange={(e) => setRemote(e.target.checked)} // Corrected logic for setting remote
-          />
-          <br />
-          <button type='submit'>ok! click here to make your request</button>
-        </form>
-      </div>
-    </>
+    <div className='flex flex-col items-center justify-center min-h-screen pt-20 p-4 '>
+      <h2 className='text-xl sm:text-l font-bold pt-12 mb-4 text-center md:max-w-lg'>
+        Tell us what you want to learn about!
+      </h2>
+      <form
+        className='w-full max-w-md p-6'
+        onSubmit={handleSubmit}>
+        <label
+          htmlFor='title'
+          className='block text-xs font-medium '>
+          Title
+        </label>
+        <input
+          type='text'
+          name='title'
+          id='title'
+          value={title}
+          onChange={handleTitle}
+          className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3  focus:outline-none'
+          placeholder='Enter the title'
+        />
+        <label
+          htmlFor='description'
+          className='block text-xs font-medium  mt-4'>
+          Description
+        </label>
+       {/*  <h5 className='text-xs mb-4 p-4 text-gray-700  text-justify'>
+          Here you can tell us all the most important details, like the best
+          location for you or what languages you are comfortable with.
+        </h5> */}
+        <textarea
+          name='description'
+          id='description'
+          value={description}
+          onChange={handleDescription}
+          className='block w-full h-auto mt-1 text-xs bg-[rgba(221,220,255,0.997)] py-10 px-4  focus:outline-none text-justify'
+          placeholder='Here you can tell us all the most important details, like the best location for you or what languages you are comfortable with.'
+        />
+        <label
+          htmlFor='category'
+          className='block text-xs font-medium mt-4'>
+          Category
+        </label>
+        <input
+          type='text'
+          name='category'
+          id='category'
+          value={category}
+          onChange={handleCategory}
+          className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3  focus:outline-none'
+          placeholder='Enter the category'
+        />
+        <label
+          htmlFor='subcategory'
+          className='block text-xs font-medium  mt-4'>
+          Subcategory
+        </label>
+        <input
+          type='text'
+          name='subcategory'
+          id='subcategory'
+          value={subcategory}
+          onChange={handleSubcategory}
+          className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 focus:outline-none'
+          placeholder='Enter the subcategory'
+        />
+        <label
+          htmlFor='remote'
+          className='block text-xs font-medium  mt-4'>
+          Remote?
+        </label>
+        <input
+          name='remote'
+          id='remote'
+          type='checkbox'
+          checked={remote}
+          onChange={(e) => setRemote(e.target.checked)}
+          className='mr-2 mt-1'
+        />
+        <button
+          type='submit'
+          className='w-full bg-red-500 text-white py-2 px-4 mt-6 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50'>
+          OK! Click here to make your request
+        </button>
+      </form>
+    </div>
   );
 }
 

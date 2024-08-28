@@ -68,7 +68,7 @@ function PreviousWorkshops() {
         <div className='text-center mb-4'>
           <Link to='/workshops'>
             <h4 className='text-sm sm:text-xs md:text-xs  hover:text-red-500'>
-              --back to Workshops-
+              -back to Workshops-
             </h4>
           </Link>
         </div>

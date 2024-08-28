@@ -28,6 +28,7 @@ import SuggestionBox from './pages/SuggestionBox';
 import NavbarRight from './components/NavbarRigth';
 import NavbarLeft from './components/NavbarLeft';
 import EditWorkshop from './components/EditWorkshop';
+import ProposalDetail from './components/ProposalDetail';
 
 function App() {
   return (
@@ -101,6 +102,16 @@ function App() {
             <Admin>
               <Anon>
                 <EditWorkshop />
+              </Anon>
+            </Admin>
+          }
+        />
+        <Route
+          path='/proposals/:proposalID'
+          element={
+            <Admin>
+              <Anon>
+                <ProposalDetail />
               </Anon>
             </Admin>
           }

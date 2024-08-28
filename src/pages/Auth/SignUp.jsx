@@ -21,7 +21,7 @@ function SignUp() {
   const courses_taken = [];
   const [loading, setLoading] = useState(false);
 
-  // Error State Variables
+
   const [errors, setErrors] = useState({});
 
   const navigate = useNavigate();

@@ -7,35 +7,65 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  //const [errorMessage, setErrorMessage] = useState(null);
-  const { storeToken, authenticateUser, updatedUser, user } =
-    useContext(AuthContext);
+  const [errorMessage, setErrorMessage] = useState(null); // State for error messages
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+
+  const { storeToken, authenticateUser, updatedUser, user } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
 
+  // Basic validation
+  const validateInputs = () => {
+    let isValid = true;
+
+    if (!email) {
+      setEmailError('Email is required.');
+      isValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      setEmailError('Email is not valid.');
+      isValid = false;
+    } else {
+      setEmailError('');
+    }
+
+    if (!password) {
+      setPasswordError('Password is required.');
+      isValid = false;
+    } else if (password.length < 6) {
+      setPasswordError('Password must be at least 6 characters.');
+      isValid = false;
+    } else {
+      setPasswordError('');
+    }
+
+    return isValid;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateInputs()) return;
+
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/auth/login`,
         { email, password }
       );
       storeToken(response.data.authToken);
-      console.log(response.data.authToken);
       await authenticateUser();
       console.log('this is the updatedUser', updatedUser);
     } catch (error) {
-      console.log('not logged in because', error);
-      //setErrorMessage(error.response.data.message);
-      //console.log(errorMessage)
+      console.log('Login error:', error.response?.data?.message || error.message);
+      setErrorMessage(error.response?.data?.message || 'An error occurred during login.');
     }
   };
+
   useEffect(() => {
     if (user && user._id) {
-      console.log('Navigating to profile with user:', user);
       navigate(`/profile/${user._id}`);
     }
   }, [user, navigate]);
@@ -64,6 +94,7 @@ function Login() {
               onChange={handleEmail}
               placeholder='Enter your email'
             />
+            {emailError && <p className='text-red-500 text-sm mt-1'>{emailError}</p>}
           </div>
           <div>
             <label
@@ -80,6 +111,7 @@ function Login() {
               onChange={handlePassword}
               placeholder='Enter your password'
             />
+            {passwordError && <p className='text-red-500 text-sm mt-1'>{passwordError}</p>}
           </div>
           <div className='flex items-center'>
             <input
@@ -95,7 +127,9 @@ function Login() {
               Show Password
             </label>
           </div>
+        {errorMessage && <p className='mt-4 flex justify-center text-center text-red-500'>{errorMessage}</p>}
           <div className='flex justify-center'>
+            <br />
             <button
               type='submit'
               className='bg-red-500 text-white py-2 px-4  hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50'>
@@ -103,7 +137,6 @@ function Login() {
             </button>
           </div>
         </form>
-        {/* {errorMessage && <p className="mt-4 text-center text-red-500">{errorMessage}</p>} */}
         <p className='mt-4 text-center text-sm sm:text-base'>
           You do not own an account yet?
         </p>
@@ -112,14 +145,6 @@ function Login() {
           className='block text-center text-red-500 hover:underline mt-2 text-sm sm:text-base'>
           Create your account here
         </Link>
-        {/* <p className="mt-4 text-center text-sm sm:text-base">Or log out!</p>
-        <button
-          type="submit"
-          onClick={logout}
-          className="w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
-        >
-          Logout
-        </button> */}
       </div>
     </div>
   );

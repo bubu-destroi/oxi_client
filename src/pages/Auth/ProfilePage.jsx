@@ -106,7 +106,7 @@ function ProfilePage() {
             ))
           ) : (
             <h5 className='text-xs p-2 hover:text-red-500'>
-              you are not signed uh5 for any workshops
+              you are not signed for any workshops
             </h5>
           )}
         </div>

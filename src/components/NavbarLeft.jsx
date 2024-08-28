@@ -1,11 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {  useState } from 'react';
 
 function NavbarLeft() {
   const [toggleLeft, setToggleLeft] = useState(false);
 
+  const navigate = useNavigate()
   const handleToggleLeft = () => {
-    if (window.innerWidth > 780) {
+    if (window.innerWidth > 800) {
       setToggleLeft(true);
       return;
     }
@@ -19,12 +20,14 @@ function NavbarLeft() {
         {/* Left Container */}
         <div id="left-container" className="relative">
           {/* Logo with Dropdown Toggle */}
-          <div onClick={handleToggleLeft} className="cursor-pointer">
-            <img src="/oxito.png" alt="oxitoficina-logo" className="w-20 md:w-40" />
-          </div>
+            <img onClick={() => {navigate(`/`) , setToggleLeft(false)}} src="/oxito.png" alt="oxitoficina-logo" className="w-20 md:w-40" />
+            <img onClick={handleToggleLeft} src="/menuburger.png" alt="oxitoficina-logo" className="ml-1 w-5 md:hidden" />
+         {/*  <div >
+            {toggleLeft===false && (<h4 onClick={handleToggleLeft} className="cursor-pointer md:hidden">MENU</h4>)}
+          </div> */}
   
           {/* Left Dropdown Menu */}
-          <div id="left-content" className={`absolute md:relative top-12 md:top-0 left-0 mt-2 w-auto md:w-auto bg-white md:bg-transparent shadow-lg md:shadow-none md:text-md font-bold ${toggleLeft ? 'block' : 'hidden'} md:block`}>
+          <div id="left-content" className={`absolute top-30 md:relative  md:top-0 left-0 mt-2 w-auto md:w-auto bg-red-100 500 bg-opacity-50 md:bg-transparent shadow-lg md:shadow-none md:text-md font-bold ${toggleLeft ? 'block' : 'hidden'} md:block`}>
             <Link to={`/about-oxitoficina`} className="block px-4 py-2 text-md hover:text-red-500  md:hover:bg-transparent" onClick={() => setToggleLeft(false)}>
               About OXITOFICINA
             </Link>

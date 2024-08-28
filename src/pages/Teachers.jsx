@@ -73,7 +73,7 @@ function Teachers() {
           </div>
         )}
         <div className='flex justify-center mb-6'>
-          <div className='grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-fit '>
+          <div className='grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-fit'>
             {filteredTeachers.map((teacher) => {
               return (
                 <div

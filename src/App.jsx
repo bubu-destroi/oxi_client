@@ -98,9 +98,11 @@ function App() {
         <Route
           path='/workshops/:workshopID/edit'
           element={
-            <Anon>
-              <EditWorkshop />
-            </Anon>
+            <Admin>
+              <Anon>
+                <EditWorkshop />
+              </Anon>
+            </Admin>
           }
         />
         <Route

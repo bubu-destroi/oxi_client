@@ -38,11 +38,11 @@ function About() {
   };
   return (
     <div className='flex flex-col items-center justify-center min-h-screen pt-20 p-4'>
-      <div className='w-full max-w-xl'>
-        <h1 className='text-lg font-bold mb-4 text-center pt-10'>
+      <div className='w-full max-w-xl p-5'>
+        <h1 className='text-2xl font-bold mb-4 text-center pt-10'>
           About OXITOFICINA
         </h1>
-        <p className='text-base sm:text-sm md:text-s mb-6 text-center'>
+        <p className='text-xs sm:text-sm  md:text-s mb-6 text-justify'>
           {' '}
           Hi, I'm Carolina. I created Oxitoficina (combining Oxytocin and
           Oficina) from a place of deep affection and concern for future
@@ -73,16 +73,16 @@ function About() {
           think of.
         </p>
         <div className='text-center mb-6'>
-          <h4 className='text-base sm:text-sm md:text-s mb-6'>
+          <h4 className='text-xs sm:text-sm md:text-s mb-6'>
             And now, I ask you, could you be a{' '}
             <Link
               to='/voices-of-progress'
-              className='text-red-500 hover:underline'>
+              className='text-red-500 hover'>
               voice of progress
             </Link>{' '}
             and tell me
           </h4>
-          <h3 className='text-lg sm:text-base md:text-sm font-bold mt-2'>
+          <h3 className='text-s sm:text-base md:text-sm font-bold mt-2'>
             WHAT DO YOU WISH WAS DIFFERENT IN YOUR SCHOOL EXPERIENCE?
           </h3>
         </div>
@@ -91,7 +91,7 @@ function About() {
           onSubmit={handleCommentSubmit}>
           <label
             htmlFor='age'
-            className='block text-sm font-medium'>
+            className='block text-xs font-medium'>
             Your age
           </label>
           <input
@@ -99,12 +99,12 @@ function About() {
             id='age'
             value={age}
             onChange={handleAge}
-            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 focus:outline-none'
             placeholder='Enter your age'
           />
           <label
             htmlFor='comment'
-            className='block text-sm font-medium'>
+            className='block text-xs font-medium'>
             Let the world know what is on your mind, there are no stupid ideas!
           </label>
           <textarea
@@ -113,7 +113,7 @@ function About() {
             value={comment}
             onChange={handleComment}
             placeholder='This little box is welcoming everyone to share their experience, as a student, former student, a parent or a teacher, you can be 4 years old or 120! All voices are to be heard :) and please, mind your language.'
-            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3  focus:outline-none'
             rows='6'
           />
           <button

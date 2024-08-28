@@ -83,6 +83,8 @@ const WishDetail = () => {
 
   return (
     <>
+    <div className='container' >
+      
       {singleWish && (
         <div key={singleWish._id}>
           <h3>{singleWish && singleWish.title}</h3>
@@ -150,6 +152,7 @@ const WishDetail = () => {
           Delete your Wish
         </button>
       )}  */}
+    </div>
     </>
   );
 };

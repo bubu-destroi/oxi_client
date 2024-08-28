@@ -8,7 +8,18 @@ export default {
     extend: {
       colors: {
         darkslateblue: '#483D8B',
-        
+
+    },
+    container: {
+      center: true,
+      justify: true,
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+        lg: '4rem',
+        xl: '5rem',
+        '2xl': '6rem',
+      },
     },
   },
 },

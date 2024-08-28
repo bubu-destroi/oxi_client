@@ -161,235 +161,331 @@ function Proposal() {
   }, [name, remote]);
 
   return (
-    <>
-      <h1>SUBMIT YOUR PROPOSAL</h1>
-      <h6 className='proposal-extras'>
-        Here you will provide as much detailed information as you can and, uppon
-        submit, the proposal will be sent via email and you will be contacted as
-        soon as possible
-      </h6>
-      <h3>First, create a Teacher Profile</h3>
-      <h6 className='proposal-extras'>
-        in case of multiple teachers, collective or school, input these
-        informations in the biography field.
-      </h6>
-      <form
-        className='proposal-form'
-        onSubmit={handleSubmit}>
-        <label htmlFor='name'>Name</label>
-        <br />
-        <input
-          type='text'
-          name='name'
-          id='name'
-          value={name}
-          onChange={handleName}
-        />
-        <br />
-        <label htmlFor='bio'>Biography</label>
-        <br />
-        <textarea
-          name='bio'
-          id='bio'
-          value={bio}
-          onChange={handleBio}
-        />
-        <br />
-        <label htmlFor='email'>Email</label>
-        <br />
-        <input
-          type='text'
-          name='email'
-          id='email'
-          value={email}
-          onChange={handleEmail}
-        />
-        <br />
-        <label htmlFor='socialMedia'>Social Media or linkTree</label>
-        <br />
-        <input
-          type='text'
-          name='socialMedia'
-          id='socialMedia'
-          value={socialMedia}
-          onChange={handleSocialMedia}
-        />
-        <br />
-        {/*  <button type='submit'>create</button> */}
-
-        <br />
-
-        <h3>Create a Workshop Proposal</h3>
-
-        <label htmlFor='title'>Title</label>
-        <br />
-        <input
-          type='text'
-          name='title'
-          id='title'
-          value={title}
-          onChange={handleTitle}
-        />
-        <br />
-        <label htmlFor='description'>Description</label>
-        <br />
-        <textarea
-          name='description'
-          id='description'
-          value={description}
-          onChange={handleDescription}
-        />
-        <h6 className='proposal-extras'>
-          In the description field you should provide all the information you
-          feel like adding, besides the other input fields, such as all the
-          languages you are comfortable with, availability, required resources
-          or total estimated budget. Be sure to be clear with your idea! Might
-          be a good idea to mention the WISH you are responding to...
+    <div className='flex flex-col items-center justify-center min-h-screen p-4 pt-20'>
+      <div className='w-full max-w-xl'>
+        <h1 className='text-lg font-bold mb-4 text-center pt-10'>
+          SUBMIT YOUR PROPOSAL
+        </h1>
+        <p className='text-xs sm:text-sm md:text-base mb-6 text-center'>
+          Here you will provide as much detailed information as you can, and
+          upon submission, the proposal will be sent via email, and you will be
+          contacted as soon as possible.
+        </p>
+        <h3 className='text-md font-bold mb-4 text-center'>
+          First, create a Teacher Profile
+        </h3>
+        <h6 className='text-xs sm:text-sm md:text-base mb-6 text-center'>
+          In case of multiple teachers, collective or school, input this
+          information in the biography field.
         </h6>
-        <br />
-        <label htmlFor='image'>Upload an image</label>
-        <br />
-        <input
-          type='file'
-          name='image'
-          id='image'
-          onChange={handleImage}
-        />
-        <br />
-        <label htmlFor='duration'>Duration - hours, days, weeks...?</label>
-        <br />
-        <input
-          type='text'
-          name='duration'
-          id='duration'
-          value={duration}
-          onChange={handleDuration}
-        />
-        <br />
-        <label htmlFor='price'>
-          an estimated price, in Euros, to charge per participant
-        </label>
-        <br />
-        <input
-          type='number'
-          name='price'
-          id='price'
-          value={price}
-          onChange={handlePrice}
-        />
-        <br />
-        <label htmlFor='category'>Select a category</label>
-        <br />
-        <input
-          type='text'
-          name='category'
-          id='category'
-          value={category}
-          onChange={handleCategory}
-        />
-        <br />
-        <label htmlFor='subcategory'>And a subcategory</label>
-        <br />
-        <input
-          type='text'
-          name='subcategory'
-          id='subcategory'
-          value={subcategory}
-          onChange={handleSubcategory}
-        />
-        <br />
-        <label htmlFor='date'>Select a starting date</label>
-        <br />
-        <input
-          type='date'
-          name='date'
-          id='date'
-          min={
-            new Date(new Date().setDate(new Date().getDate() + 1))
-              .toISOString()
-              .split('T')[0]
-          }
-          value={date}
-          onChange={handleDate}
-        />
-        <h6 className='proposal-extras'>
-          {' '}
-          in case you have a flexible availability, say so in the description
-          field
-        </h6>
-        <br />
-        <label htmlFor='teacher'>Teacher</label>
-        <br />
-        <input
-          name='teacher'
-          id='teacher'
-          value={name}
-          onChange={handleName}
-        />
-        <br />
-        <label htmlFor='remote'>Remote?</label>
-        <input
-          type='checkbox'
-          name='remote'
-          id='remote'
-          checked={remote}
-          onChange={(e) => setRemote(e.target.checked)}
-        />
+        <form
+          className='space-y-4'
+          onSubmit={handleSubmit}>
+          <label
+            htmlFor='name'
+            className='block text-sm font-medium'>
+            Name
+          </label>
+          <input
+            type='text'
+            name='name'
+            id='name'
+            value={name}
+            onChange={handleName}
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            placeholder='Enter your name'
+          />
 
-        <br />
-        <label htmlFor='place'>Location</label>
-        <br />
-        <input
-          type='text'
-          name='place'
-          id='place'
-          value={place}
-          onChange={handlePlace}
-        />
-        <br />
-        <label htmlFor='minimum_age'>Minimum age of participants</label>
-        <br />
-        <input
-          type='number'
-          name='minimum_age'
-          id='minimum_age'
-          value={minimum_age}
-          onChange={handleMinimum_age}
-        />
-        <br />
-        <label htmlFor='maximum_age'>Maximum age of participants</label>
-        <br />
-        <input
-          type='number'
-          name='maximum_age'
-          id='maximum_age'
-          value={maximum_age}
-          onChange={handleMaximum_age}
-        />
-        <br />
-        <label htmlFor='minParticipants'>Minimum number of participants</label>
-        <br />
-        <input
-          type='number'
-          name='minParticipants'
-          id='minParticipants'
-          value={minParticipants}
-          onChange={handleMinParticipants}
-        />
-        <br />
-        <label htmlFor='maxParticipants'>Maximum number of participants</label>
-        <br />
-        <input
-          type='number'
-          name='maxParticipants'
-          id='maxParticipants'
-          value={maxParticipants}
-          onChange={handleMaxParticipants}
-        />
-        <br />
-        <button type='submit'>create</button>
-      </form>
-    </>
+          <label
+            htmlFor='bio'
+            className='block text-sm font-medium'>
+            Biography
+          </label>
+          <textarea
+            name='bio'
+            id='bio'
+            value={bio}
+            onChange={handleBio}
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            placeholder='Enter your biography'
+            rows='4'
+          />
+
+          <label
+            htmlFor='email'
+            className='block text-sm font-medium'>
+            Email
+          </label>
+          <input
+            type='email'
+            name='email'
+            id='email'
+            value={email}
+            onChange={handleEmail}
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            placeholder='Enter your email'
+          />
+
+          <label
+            htmlFor='socialMedia'
+            className='block text-sm font-medium'>
+            Social Media or linkTree
+          </label>
+          <input
+            type='text'
+            name='socialMedia'
+            id='socialMedia'
+            value={socialMedia}
+            onChange={handleSocialMedia}
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            placeholder='Enter your social media or linkTree'
+          />
+
+          <h3 className='text-lg font-bold mb-4 text-center'>
+            Design a Workshop Proposal
+          </h3>
+
+          <label
+            htmlFor='title'
+            className='block text-sm font-medium'>
+            Title
+          </label>
+          <input
+            type='text'
+            name='title'
+            id='title'
+            value={title}
+            onChange={handleTitle}
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            placeholder='Enter the workshop title'
+          />
+
+          <label
+            htmlFor='description'
+            className='block text-sm font-medium'>
+            Description
+          </label>
+          <textarea
+            name='description'
+            id='description'
+            value={description}
+            onChange={handleDescription}
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            placeholder='Describe your workshop'
+            rows='4'
+          />
+
+          <h6 className='text-xs sm:text-sm md:text-base mb-6 text-center'>
+            Provide all necessary information including languages, availability,
+            required resources, and estimated budget. Be clear with your idea!
+            Mention the WISH you are responding to, if applicable.
+          </h6>
+
+          <label
+            htmlFor='image'
+            className='block text-sm font-medium'>
+            Upload an image
+          </label>
+          <input
+            type='file'
+            name='image'
+            id='image'
+            onChange={handleImage}
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+          />
+
+          <label
+            htmlFor='duration'
+            className='block text-sm font-medium'>
+            Duration - hours, days, weeks...?
+          </label>
+          <input
+            type='text'
+            name='duration'
+            id='duration'
+            value={duration}
+            onChange={handleDuration}
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            placeholder='Enter the duration'
+          />
+
+          <label
+            htmlFor='price'
+            className='block text-sm font-medium'>
+            Estimated price in Euros per participant
+          </label>
+          <input
+            type='number'
+            name='price'
+            id='price'
+            value={price}
+            onChange={handlePrice}
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            placeholder='Enter the price'
+          />
+
+          <label
+            htmlFor='category'
+            className='block text-sm font-medium'>
+            Select a category
+          </label>
+          <input
+            type='text'
+            name='category'
+            id='category'
+            value={category}
+            onChange={handleCategory}
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            placeholder='Enter a category'
+          />
+
+          <label
+            htmlFor='subcategory'
+            className='block text-sm font-medium'>
+            And a subcategory
+          </label>
+          <input
+            type='text'
+            name='subcategory'
+            id='subcategory'
+            value={subcategory}
+            onChange={handleSubcategory}
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            placeholder='Enter a subcategory'
+          />
+
+          <label
+            htmlFor='date'
+            className='block text-sm font-medium'>
+            Select a starting date
+          </label>
+          <input
+            type='date'
+            name='date'
+            id='date'
+            min={
+              new Date(new Date().setDate(new Date().getDate() + 1))
+                .toISOString()
+                .split('T')[0]
+            }
+            value={date}
+            onChange={handleDate}
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+          />
+          <h6 className='text-xs sm:text-sm md:text-base mb-6 text-center'>
+            If you have flexible availability, mention it in the description
+            field.
+          </h6>
+
+          <label
+            htmlFor='teacher'
+            className='block text-sm font-medium'>
+            Teacher
+          </label>
+          <input
+            type='text'
+            name='teacher'
+            id='teacher'
+            value={name}
+            onChange={handleName}
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            placeholder='Enter teacher name'
+          />
+
+          <label
+            htmlFor='remote'
+            className='block text-sm font-medium'>
+            Remote?
+          </label>
+          <input
+            type='checkbox'
+            name='remote'
+            id='remote'
+            checked={remote}
+            onChange={(e) => setRemote(e.target.checked)}
+            className='block mt-1'
+          />
+
+          <label
+            htmlFor='place'
+            className='block text-sm font-medium'>
+            Location
+          </label>
+          <input
+            type='text'
+            name='place'
+            id='place'
+            value={place}
+            onChange={handlePlace}
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            placeholder='Enter location'
+          />
+
+          <label
+            htmlFor='minimum_age'
+            className='block text-sm font-medium'>
+            Minimum age of participants
+          </label>
+          <input
+            type='number'
+            name='minimum_age'
+            id='minimum_age'
+            value={minimum_age}
+            onChange={handleMinimum_age}
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            placeholder='Enter minimum age'
+          />
+
+          <label
+            htmlFor='maximum_age'
+            className='block text-sm font-medium'>
+            Maximum age of participants
+          </label>
+          <input
+            type='number'
+            name='maximum_age'
+            id='maximum_age'
+            value={maximum_age}
+            onChange={handleMaximum_age}
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            placeholder='Enter maximum age'
+          />
+
+          <br />
+          <label htmlFor='minParticipants'>
+            Minimum number of participants
+          </label>
+          <br />
+          <input
+            type='number'
+            name='minParticipants'
+            id='minParticipants'
+            value={minParticipants}
+            onChange={handleMinParticipants}
+          />
+          <br />
+          <label htmlFor='maxParticipants'>
+            Maximum number of participants
+          </label>
+          <br />
+          <input
+            type='number'
+            name='maxParticipants'
+            id='maxParticipants'
+            value={maxParticipants}
+            onChange={handleMaxParticipants}
+          />
+          <br />
+          {/* <button type='submit'>create</button> */}
+        <button
+          type='submit'
+          className='w-full bg-red-500 text-white py-2 px-4  hover:bg-blue-600 focus:outline-none'>
+          Submit
+        </button>
+        </form>
+
+      </div>
+    </div>
   );
 }
 

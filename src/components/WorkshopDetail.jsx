@@ -45,7 +45,7 @@ function WorkshopDetail() {
     }
   };return (
     <>
-      <div className="flex flex-col items-start justify-center pt-20 p-3 md:p-6 min-h-screen place-items-center">
+      <div className="flex flex-col items-center justify-center pt-20 p-3 md:p-6 min-h-screen place-items-center">
         {singleWorkshop && (
           <div
             className="workshop-detail shadow-sm p-4 md:p-5 w-full md:w-2/3 lg:w-1/2"
@@ -58,17 +58,18 @@ function WorkshopDetail() {
               {singleWorkshop.description}
             </h4>
   
-            {/* Image positioned between description and other details */}
-            <div className="workshop-image pt-4 pb-4 mt-4 md:mt-6 mx-auto">
+           
+  
+               {/* Image positioned between description and other details */}
+            <div className=' sm:w-full object-cover  md:w-64 float-end'>
               {singleWorkshop && (
                 <img
                   src={singleWorkshop.image}
                   alt="workshop"
-                  className="w-full md:w-auto md: w-10' float-right"
+                  className=""
                 />
               )}
             </div>
-  
             {/* Additional workshop details */}
             <div className="text-xs mb-2 mt-4 md:mt-6">
               <h5 className="mb-1">Duration: {singleWorkshop.duration}</h5>

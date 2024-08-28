@@ -160,133 +160,182 @@ function AddWorkshop() {
       console.log(error);
     }
   };
-
   return (
-    <>
-      <h2>Create a Workshop</h2>
+    <div className="flex flex-col items-center justify-center min-h-screen pt-20 p-4">
+      <h2 className="text-xl sm:text-l font-bold pt-12 mb-4 text-center md:max-w-lg">
+        Create a Workshop
+      </h2>
       <form
-        className='signup-form'
-        onSubmit={handleSubmit}>
-        <label htmlFor='title'>Title</label>
-        <input
-          type='text'
-          name='title'
-          id='title'
-          value={title}
-          onChange={handleTitle}
-        />
-        <br />
-        <label htmlFor='description'>Description</label>
-        <textarea
-          name='description'
-          id='description'
-          value={description}
-          onChange={handleDescription}
-        />
-        <br />
-        <label htmlFor='image'>Upload an image</label>
-        <input
-          type='file'
-          name='image'
-          id='image'
-          onChange={handleImage}
-        />
-        <br />
-        <label htmlFor='duration'>Duration - hours, days, weeks...?</label>
-        <input
-          type='text'
-          name='duration'
-          id='duration'
-          value={duration}
-          onChange={handleDuration}
-        />
-        <br />
-        <label htmlFor='price'>
-          an estime price, in Euros, to charge per participant
+        className="w-full max-w-md p-6"
+        onSubmit={handleSubmit}
+      >
+        <label
+          htmlFor="title"
+          className="block text-xs font-medium"
+        >
+          Title
         </label>
         <input
-          type='number'
-          name='price'
-          id='price'
+          type="text"
+          name="title"
+          id="title"
+          value={title}
+          onChange={handleTitle}
+          className="block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 focus:outline-none"
+          placeholder="Enter the title"
+        />
+        
+        <label
+          htmlFor="description"
+          className="block text-xs font-medium mt-4"
+        >
+          Description
+        </label>
+        <textarea
+          name="description"
+          id="description"
+          value={description}
+          onChange={handleDescription}
+          className="block w-full h-auto mt-1 text-xs bg-[rgba(221,220,255,0.997)] py-10 px-4 focus:outline-none text-justify"
+          placeholder="Here you can tell us all the most important details, like the best location for you or what languages you are comfortable with."
+        />
+        
+        <label
+          htmlFor="image"
+          className="block text-xs font-medium mt-4"
+        >
+          Upload an image
+        </label>
+        <input
+          type="file"
+          name="image"
+          id="image"
+          onChange={handleImage}
+          className="block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 focus:outline-none"
+        />
+        
+        <label
+          htmlFor="duration"
+          className="block text-xs font-medium mt-4"
+        >
+          Duration - hours, days, weeks...?
+        </label>
+        <input
+          type="text"
+          name="duration"
+          id="duration"
+          value={duration}
+          onChange={handleDuration}
+          className="block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 focus:outline-none"
+          placeholder="Enter duration"
+        />
+        
+        <label
+          htmlFor="price"
+          className="block text-xs font-medium mt-4"
+        >
+          An estimated price, in Euros, to charge per participant
+        </label>
+        <input
+          type="number"
+          name="price"
+          id="price"
           value={price}
           onChange={handlePrice}
+          className="block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 focus:outline-none"
+          placeholder="Enter price"
         />
-        <br />
-        <label htmlFor='category'>Select a category</label>
+        
+        <label
+          htmlFor="category"
+          className="block text-xs font-medium mt-4"
+        >
+          Select a category
+        </label>
         <input
-          type='text'
-          name='category'
-          id='category'
+          type="text"
+          name="category"
+          id="category"
           value={category}
           onChange={handleCategory}
+          className="block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 focus:outline-none"
+          placeholder="Enter category"
         />
-        <br />
-        <label htmlFor='subcategory'>Type a subcategory</label>
+        
+        <label
+          htmlFor="subcategory"
+          className="block text-xs font-medium mt-4"
+        >
+          Type a subcategory
+        </label>
         <input
-          type='text'
-          name='subcategory'
-          id='subcategory'
+          type="text"
+          name="subcategory"
+          id="subcategory"
           value={subcategory}
           onChange={handleSubcategory}
+          className="block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 focus:outline-none"
+          placeholder="Enter subcategory"
         />
-        <br />
-        <label htmlFor='date'>Input a date</label>
+        
+        <label
+          htmlFor="date"
+          className="block text-xs font-medium mt-4"
+        >
+          Input a date
+        </label>
         <input
-          type='date'
-          name='date'
-          id='date'
+          type="date"
+          name="date"
+          id="date"
           value={date}
           onChange={handleDate}
+          className="block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 focus:outline-none"
         />
-        <br />
-        {/*  <label htmlFor='teachers'>Input Teachers</label>
-        <select
-          name='teachers'
-          id='teachers'
-          multiple
-          value={selectedTeachers}
-          onChange={handleTeachersChange}>
-          {teachers.map((teacher) => (
-            <option
-              key={teacher._id}
-              value={teacher._id}>
-              {teacher.name}
-            </option>
-          ))}
-        </select> */}
-        <label htmlFor='teacher'>Select a Teacher</label>
-        <select
-
-          name='teacher'
-          id='teacher'
-          value={selectedTeacher}
-          onChange={handleTeacherChange}>
-          <option value=''>Select a Teacher</option>
-          {teachers.map((teacher) => (
-            <option
-              key={teacher._id}
-              value={teacher._id}>
-              {teacher.name}
-            </option>
-          ))}
-        </select>
-        <button
-          type='button'
-          onClick={addTeacher}>
-          Add
-        </button>
-
-        <div>
-          <h4>Selected Teachers:</h4>
-          <ul>
+        
+        <label
+          htmlFor="teacher"
+          className="block text-xs font-medium mt-4"
+        >
+          Select a Teacher
+        </label>
+        <div className="flex items-center">
+          <select
+            name="teacher"
+            id="teacher"
+            value={selectedTeacher}
+            onChange={handleTeacherChange}
+            className="block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 focus:outline-none"
+          >
+            <option value="">Select a Teacher</option>
+            {teachers.map((teacher) => (
+              <option key={teacher._id} value={teacher._id}>
+                {teacher.name}
+              </option>
+            ))}
+          </select>
+          <button
+            type="button"
+            onClick={addTeacher}
+            className="ml-2 py-2 px-4 bg-red-500 text-white hover:bg-blue-600 focus:outline-none"
+          >
+            Add
+          </button>
+        </div>
+  
+        <div className="mt-4">
+          <h4 className="text-xs font-medium">Selected Teachers:</h4>
+          <ul className="list-disc pl-5 mt-2">
             {selectedTeachers.map((teacherId) => {
               const teacher = teachers.find((t) => t._id === teacherId);
               return (
-                <li key={teacherId}>
+                <li key={teacherId} className="text-xs flex justify-between items-center">
                   {teacher?.name}
                   <button
-                    type='button'
-                    onClick={() => removeTeacher(teacherId)}>
+                    type="button"
+                    onClick={() => removeTeacher(teacherId)}
+                    className="ml-2 py-1 px-2 bg-red-500 text-white hover:bg-blue-600 focus:outline-none"
+                  >
                     Remove
                   </button>
                 </li>
@@ -294,65 +343,111 @@ function AddWorkshop() {
             })}
           </ul>
         </div>
-        <br />
-        <label htmlFor='remote'>Remote?</label>
+  
+        <label
+          htmlFor="remote"
+          className="block text-xs font-medium mt-4"
+        >
+          Remote?
+        </label>
         <input
-          name='remote'
-          type='checkbox'
+          name="remote"
+          type="checkbox"
           checked={!remote}
           onChange={(e) => (setRemote(!e.target.checked), handleRemote())}
+          className="mr-2 mt-1"
         />
-
-        <br />
-        <label htmlFor='place'>Place</label>
+        
+        <label
+          htmlFor="place"
+          className="block text-xs font-medium mt-4"
+        >
+          Place
+        </label>
         <input
-          type='text'
-          name='place'
-          id='place'
+          type="text"
+          name="place"
+          id="place"
           value={place}
           onChange={handlePlace}
+          className="block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 focus:outline-none"
+          placeholder="Enter place"
         />
-        <br />
-        <label htmlFor='minimum_age'>Mininmum age of participants</label>
+        
+        <label
+          htmlFor="minimum_age"
+          className="block text-xs font-medium mt-4"
+        >
+          Minimum age of participants
+        </label>
         <input
-          type='number'
-          name='minimum_age'
-          id='minimum_age'
+          type="number"
+          name="minimum_age"
+          id="minimum_age"
           value={minimum_age}
           onChange={handleMinimum_age}
+          className="block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 focus:outline-none"
+          placeholder="Enter minimum age"
         />
-        <br />
-        <label htmlFor='maximum_age'>Maximum age of participants</label>
+        
+        <label
+          htmlFor="maximum_age"
+          className="block text-xs font-medium mt-4"
+        >
+          Maximum age of participants
+        </label>
         <input
-          type='number'
-          name='maximum_age'
-          id='maximum_age'
+          type="number"
+          name="maximum_age"
+          id="maximum_age"
           value={maximum_age}
           onChange={handleMaximum_age}
+          className="block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 focus:outline-none"
+          placeholder="Enter maximum age"
         />
-        <br />
-        <label htmlFor='minParticipants'>Minimum number of participants</label>
+        
+        <label
+          htmlFor="minParticipants"
+          className="block text-xs font-medium mt-4"
+        >
+          Minimum number of participants
+        </label>
         <input
-          type='number'
-          name='minParticipants'
-          id='minParticipants'
+          type="number"
+          name="minParticipants"
+          id="minParticipants"
           value={minParticipants}
           onChange={handleMinParticipants}
+          className="block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 focus:outline-none"
+          placeholder="Enter minimum number of participants"
         />
-        <br />
-        <label htmlFor='maxParticipants'>Maximum number of participants</label>
+        
+        <label
+          htmlFor="maxParticipants"
+          className="block text-xs font-medium mt-4"
+        >
+          Maximum number of participants
+        </label>
         <input
-          type='number'
-          name='maxParticipants'
-          id='maxParticipants'
+          type="number"
+          name="maxParticipants"
+          id="maxParticipants"
           value={maxParticipants}
           onChange={handleMaxParticipants}
+          className="block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 focus:outline-none"
+          placeholder="Enter maximum number of participants"
         />
-        <br />
-        <button type='submit'>create</button>
+        
+        <button
+          type="submit"
+          className="w-full bg-red-500 text-white py-2 px-4 mt-6 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+        >
+          Create
+        </button>
       </form>
-    </>
+    </div>
   );
+  
 }
 
 export default AddWorkshop;

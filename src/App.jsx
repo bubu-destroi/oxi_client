@@ -21,17 +21,21 @@ import AddWorkshop from './components/AddWorskshop';
 import AddWish from './components/AddWish';
 import WishDetail from './components/WishDetail';
 import WorkshopDetail from './components/WorkshopDetail';
-import Navbar from './components/Navbar';
 import Proposal from './pages/Proposal';
 import PreviousWorkshops from './components/PreviousWorkshops';
 import About from './pages/About';
 import SuggestionBox from './pages/SuggestionBox';
+import NavbarRight from './components/NavbarRigth';
+import NavbarLeft from './components/NavbarLeft';
 
 function App() {
   return (
     <>
       <Anon>
-        <Navbar />
+        <NavbarRight />
+      </Anon>
+      <Anon>
+        <NavbarLeft />
       </Anon>
       <Routes>
         <Route

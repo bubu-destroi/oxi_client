@@ -55,10 +55,10 @@ function TeacherDetail() {
                   {teacher.socialMedia}
                 </a>
               </h5>
+                    <h5 className='text-sm md:text-md font-bold p-4'>Upcoming Workshops</h5>
               <ul>
                 {teacher.previous_workshops.map((workshop) => (
                   <li key={workshop._id}>
-                    <h5 className='text-sm md:text-md font-bold p-4'>Upcoming Workshops</h5>
                     <Link  className='text-red-500 py-2 px-4 hover:text-blue-600 ' to={`/workshops/${workshop._id}`}>{workshop.title}</Link>
                   </li>
                 ))}

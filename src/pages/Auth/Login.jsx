@@ -71,6 +71,7 @@ function Login() {
   };
 
   useEffect(() => {
+    console.log(errorMessage)
     if (user && user._id) {
       navigate(`/profile/${user._id}`);
     }

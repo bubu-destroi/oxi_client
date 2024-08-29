@@ -135,7 +135,7 @@ function UserManagement() {
           {approvedUsers.length > 0 ? (
             approvedUsers.map((user) => (
               <div
-                className='hover:bg-white p-3 mb-3 shadow-sm rounded-lg max-w-sm mx-auto'
+                className='hover:bg-white p-3 mb-3 shadow-sm max-w-sm mx-auto'
                 key={user._id}>
                 <h5 className='text-xs md:text-xs mb-1'>
                   Learner Username:{' '}

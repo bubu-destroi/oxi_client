@@ -65,8 +65,8 @@ function TeacherDetail() {
                 <h5 className='text-sm md:text-md font-bold p-4'>Previous Workshops</h5>
                 <ul>
                   {previousWorkshops.map(workshop => (
-                    <li key={workshop._id}>
-                      <Link className='text-red-500 py-2 px-4 hover:text-blue-600' to={`/workshops/${workshop._id}`}>
+                    <li key={workshop._id} className='mt-2'>
+                      <Link className='text-red-500  py-2 px-4  hover:text-blue-600' to={`/workshops/${workshop._id}`}>
                         {workshop.title}
                       </Link>
                     </li>
@@ -79,10 +79,10 @@ function TeacherDetail() {
             {upcomingWorkshops.length > 0 && (
               <>
                 <h5 className='text-sm md:text-md font-bold p-4'>Upcoming Workshops</h5>
-                <ul>
+                <ul >
                   {upcomingWorkshops.map(workshop => (
-                    <li key={workshop._id}>
-                      <Link className='text-red-500 py-2 px-4 hover:text-blue-600' to={`/workshops/${workshop._id}`}>
+                    <li key={workshop._id} className='mt-2'>
+                      <Link className='text-red-500 py-2 px-4  hover:text-blue-600' to={`/workshops/${workshop._id}`}>
                         {workshop.title}
                       </Link>
                     </li>
@@ -94,7 +94,8 @@ function TeacherDetail() {
         )}
           {user?.admin && (
             <Link to={`/teachers/${teacherID}/edit`}>
-              <button type='submit'>edit</button>
+              <button type='submit' className='w-full bg-red-500 text-white py-2 px-4 mt-6 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50'>
+              edit</button>
             </Link>
           )}
         </div>

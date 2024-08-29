@@ -161,12 +161,12 @@ function Proposal() {
   }, [name, remote]);
 
   return (
-    <div className='flex flex-col items-center justify-center min-h-screen p-4 pt-20'>
+    <div className='flex flex-col items-center justify-center min-h-screen p-4 pl-6 pr-6 pt-20'>
       <div className='w-full max-w-xl'>
         <h1 className='text-lg font-bold mb-4 text-center pt-10'>
           SUBMIT YOUR PROPOSAL
         </h1>
-        <p className='text-xs sm:text-sm md:text-base mb-6 text-center'>
+        <p className='text-xs sm:text-xs md:text-base mb-6 text-center'>
           Here you will provide as much detailed information as you can, and
           upon submission, the proposal will be sent via email, and you will be
           contacted as soon as possible.
@@ -174,7 +174,7 @@ function Proposal() {
         <h3 className='text-md font-bold mb-4 text-center'>
           First, create a Teacher Profile
         </h3>
-        <h6 className='text-xs sm:text-sm md:text-base mb-6 text-center'>
+        <h6 className='text-xs sm:text-xs md:text-base mb-1 text-center pr-6 text-red-500 opacity-50'>
           In case of multiple teachers, collective or school, input this
           information in the biography field.
         </h6>
@@ -183,7 +183,7 @@ function Proposal() {
           onSubmit={handleSubmit}>
           <label
             htmlFor='name'
-            className='block text-sm font-medium'>
+            className='block text-xs font-medium'>
             Name
           </label>
           <input
@@ -192,13 +192,13 @@ function Proposal() {
             id='name'
             value={name}
             onChange={handleName}
-            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1  focus:outline-none'
             placeholder='Enter your name'
           />
 
           <label
             htmlFor='bio'
-            className='block text-sm font-medium'>
+            className='block text-xs font-medium'>
             Biography
           </label>
           <textarea
@@ -206,14 +206,14 @@ function Proposal() {
             id='bio'
             value={bio}
             onChange={handleBio}
-            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
-            placeholder='Enter your biography'
+            className='block w-full mt-1 text-xs bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1  focus:outline-none'
+            placeholder='Let me know who you are, what are your interests, why you are interested in joining this project...'
             rows='4'
           />
 
           <label
             htmlFor='email'
-            className='block text-sm font-medium'>
+            className='block text-xs font-medium'>
             Email
           </label>
           <input
@@ -222,13 +222,13 @@ function Proposal() {
             id='email'
             value={email}
             onChange={handleEmail}
-            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
-            placeholder='Enter your email'
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1  focus:outline-none'
+            placeholder='Your email'
           />
 
           <label
             htmlFor='socialMedia'
-            className='block text-sm font-medium'>
+            className='block text-xs font-medium'>
             Social Media or linkTree
           </label>
           <input
@@ -237,7 +237,7 @@ function Proposal() {
             id='socialMedia'
             value={socialMedia}
             onChange={handleSocialMedia}
-            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1  focus:outline-none'
             placeholder='Enter your social media or linkTree'
           />
 
@@ -247,7 +247,7 @@ function Proposal() {
 
           <label
             htmlFor='title'
-            className='block text-sm font-medium'>
+            className='block text-xs font-medium'>
             Title
           </label>
           <input
@@ -256,34 +256,35 @@ function Proposal() {
             id='title'
             value={title}
             onChange={handleTitle}
-            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1  focus:outline-none'
             placeholder='Enter the workshop title'
           />
 
           <label
             htmlFor='description'
-            className='block text-sm font-medium'>
+            className='block text-xs font-medium'>
             Description
           </label>
+          <h6 className='text-xs sm:text-xs md:text-base mb-6 text-center pr-6 text-red-500 opacity-50'>
+            Provide all necessary information including languages, availability,
+            required resources, and estimated budget. <br />
+            Be clear with your idea! Mention the WISH you are responding to, if
+            applicable.
+          </h6>
+
           <textarea
             name='description'
             id='description'
             value={description}
             onChange={handleDescription}
-            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1 text-xs focus:outline-none'
             placeholder='Describe your workshop'
             rows='4'
           />
 
-          <h6 className='text-xs sm:text-sm md:text-base mb-6 text-center'>
-            Provide all necessary information including languages, availability,
-            required resources, and estimated budget. Be clear with your idea!
-            Mention the WISH you are responding to, if applicable.
-          </h6>
-
           <label
             htmlFor='image'
-            className='block text-sm font-medium'>
+            className='block text-xs font-medium'>
             Upload an image
           </label>
           <input
@@ -291,27 +292,12 @@ function Proposal() {
             name='image'
             id='image'
             onChange={handleImage}
-            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
-          />
-
-          <label
-            htmlFor='duration'
-            className='block text-sm font-medium'>
-            Duration - hours, days, weeks...?
-          </label>
-          <input
-            type='text'
-            name='duration'
-            id='duration'
-            value={duration}
-            onChange={handleDuration}
-            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
-            placeholder='Enter the duration'
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1  focus:outline-none'
           />
 
           <label
             htmlFor='price'
-            className='block text-sm font-medium'>
+            className='block text-xs font-medium'>
             Estimated price in Euros per participant
           </label>
           <input
@@ -320,13 +306,13 @@ function Proposal() {
             id='price'
             value={price}
             onChange={handlePrice}
-            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1  focus:outline-none'
             placeholder='Enter the price'
           />
 
           <label
             htmlFor='category'
-            className='block text-sm font-medium'>
+            className='block text-xs font-medium'>
             Select a category
           </label>
           <input
@@ -335,13 +321,13 @@ function Proposal() {
             id='category'
             value={category}
             onChange={handleCategory}
-            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1  focus:outline-none'
             placeholder='Enter a category'
           />
 
           <label
             htmlFor='subcategory'
-            className='block text-sm font-medium'>
+            className='block text-xs font-medium'>
             And a subcategory
           </label>
           <input
@@ -350,13 +336,28 @@ function Proposal() {
             id='subcategory'
             value={subcategory}
             onChange={handleSubcategory}
-            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1  focus:outline-none'
             placeholder='Enter a subcategory'
           />
 
           <label
+            htmlFor='duration'
+            className='block text-xs font-medium'>
+            Duration - hours, days, weeks...?
+          </label>
+          <input
+            type='text'
+            name='duration'
+            id='duration'
+            value={duration}
+            onChange={handleDuration}
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1  focus:outline-none'
+            placeholder='Enter the duration'
+          />
+
+          <label
             htmlFor='date'
-            className='block text-sm font-medium'>
+            className='block text-xs font-medium'>
             Select a starting date
           </label>
           <input
@@ -370,16 +371,16 @@ function Proposal() {
             }
             value={date}
             onChange={handleDate}
-            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1  focus:outline-none'
           />
-          <h6 className='text-xs sm:text-sm md:text-base mb-6 text-center'>
+          <h6 className='text-xs sm:text-xs md:text-base mb-1 text-center pr-6 text-red-500 opacity-50'>
             If you have flexible availability, mention it in the description
             field.
           </h6>
 
           <label
             htmlFor='teacher'
-            className='block text-sm font-medium'>
+            className='block text-xs font-medium'>
             Teacher
           </label>
           <input
@@ -388,13 +389,13 @@ function Proposal() {
             id='teacher'
             value={name}
             onChange={handleName}
-            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1  focus:outline-none'
             placeholder='Enter teacher name'
           />
 
           <label
             htmlFor='remote'
-            className='block text-sm font-medium'>
+            className='block text-xs font-medium'>
             Remote?
           </label>
           <input
@@ -408,7 +409,7 @@ function Proposal() {
 
           <label
             htmlFor='place'
-            className='block text-sm font-medium'>
+            className='block text-xs font-medium'>
             Location
           </label>
           <input
@@ -417,13 +418,13 @@ function Proposal() {
             id='place'
             value={place}
             onChange={handlePlace}
-            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1  focus:outline-none'
             placeholder='Enter location'
           />
 
           <label
             htmlFor='minimum_age'
-            className='block text-sm font-medium'>
+            className='block text-xs font-medium'>
             Minimum age of participants
           </label>
           <input
@@ -432,13 +433,13 @@ function Proposal() {
             id='minimum_age'
             value={minimum_age}
             onChange={handleMinimum_age}
-            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1  focus:outline-none'
             placeholder='Enter minimum age'
           />
 
           <label
             htmlFor='maximum_age'
-            className='block text-sm font-medium'>
+            className='block text-xs font-medium'>
             Maximum age of participants
           </label>
           <input
@@ -447,7 +448,7 @@ function Proposal() {
             id='maximum_age'
             value={maximum_age}
             onChange={handleMaximum_age}
-            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1  focus:outline-none'
             placeholder='Enter maximum age'
           />
 
@@ -457,6 +458,7 @@ function Proposal() {
           </label>
           <br />
           <input
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1  focus:outline-none'
             type='number'
             name='minParticipants'
             id='minParticipants'
@@ -469,6 +471,7 @@ function Proposal() {
           </label>
           <br />
           <input
+            className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1  focus:outline-none'
             type='number'
             name='maxParticipants'
             id='maxParticipants'
@@ -477,13 +480,12 @@ function Proposal() {
           />
           <br />
           {/* <button type='submit'>create</button> */}
-        <button
-          type='submit'
-          className='w-full bg-red-500 text-white py-2 px-4  hover:bg-blue-600 focus:outline-none'>
-          Submit
-        </button>
+          <button
+            type='submit'
+            className='w-full bg-red-500 text-white py-2 px-4  hover:bg-blue-600 focus:outline-none'>
+            Submit
+          </button>
         </form>
-
       </div>
     </div>
   );

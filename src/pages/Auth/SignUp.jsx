@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import CountryCodeSelector from '../CountryCodeSelector'; 
+import CountryCodeSelector from '../CountryCodeSelector';
 
 function SignUp() {
   const [parent_name, setParent_name] = useState('');
@@ -20,7 +20,6 @@ function SignUp() {
   const userWaitingList = [];
   const courses_taken = [];
   const [loading, setLoading] = useState(false);
-
 
   const [errors, setErrors] = useState({});
 
@@ -77,7 +76,7 @@ function SignUp() {
     ) {
       ageTotal--;
     }
-    console.log(age)
+    console.log(age);
     setAge(ageTotal);
   };
   const handleDate_of_birth = (e) => {
@@ -91,7 +90,8 @@ function SignUp() {
     if (!parent_name) newErrors.parent_name = 'Parent name is required.';
     if (!address) newErrors.address = 'Address is required.';
     if (!phone_number) newErrors.phone_number = 'Phone number is required.';
-    if (!id_card_picture) newErrors.id_card_picture = 'ID card picture is required.';
+    if (!id_card_picture)
+      newErrors.id_card_picture = 'ID card picture is required.';
     if (!email) {
       newErrors.email = 'Email is required.';
     } else if (!/\S+@\S+\.\S+/.test(email)) {
@@ -99,9 +99,7 @@ function SignUp() {
     }
     if (!password) {
       newErrors.password = 'Password is required.';
-    } else if (
-      !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/.test(password)
-    ) {
+    } else if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/.test(password)) {
       newErrors.password =
         'Password must contain at least 6 characters, one number, one lowercase, and one uppercase letter.';
     }
@@ -150,11 +148,11 @@ function SignUp() {
     }
   };
 
-  useEffect(() =>{
-    handleAge()
-    console.log('mounting' ,age)
-    console.log(date_of_birth)
-  },[date_of_birth, age])
+  useEffect(() => {
+    handleAge();
+    console.log('mounting', age);
+    console.log(date_of_birth);
+  }, [date_of_birth, age]);
 
   return (
     <>
@@ -168,18 +166,26 @@ function SignUp() {
           </h3>
           <h5 className='text-xs sm:text-xs mb-4 flex flex-col items-center justify-center'>
             Do you already own an account?{' '}
-            <Link to='/login' className='text-red-500 hover:text-blue-500 mt-5'>
+            <Link
+              to='/login'
+              className='text-red-500 hover:text-blue-500 mt-5'>
               Log in here!
             </Link>
           </h5>
-          <form className='w-full max-w-md p-6' onSubmit={handleSubmit}>
+          <form
+            className='w-full max-w-md p-6'
+            onSubmit={handleSubmit}>
             <p className='text-xs mb-4 text-center'>
-              We need your parents/caretaker information! If you are an adult,
-              input your own information.
+              <strong>Important:</strong> If you are under 18, please enter your
+              parents' or caretaker's information.
+              <br />
+              If you are an adult, enter your own information.
             </p>
 
-            <label htmlFor='parent-name' className='block text-xs font-medium text-gray-700'>
-              Their name
+            <label
+              htmlFor='parent-name'
+              className='block text-xs font-medium text-gray-700'>
+              Name
             </label>
             <input
               type='text'
@@ -187,15 +193,17 @@ function SignUp() {
               id='parent-name'
               value={parent_name}
               onChange={handleParent_name}
-              className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
-              placeholder='Enter their name'
+              className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1  focus:outline-none'
+              placeholder='Enter name'
             />
             {errors.parent_name && (
               <p className='text-red-500 text-xs mt-1'>{errors.parent_name}</p>
             )}
 
-            <label htmlFor='address' className='block text-xs font-medium text-gray-700 mt-4'>
-              Their address
+            <label
+              htmlFor='address'
+              className='block text-xs font-medium text-gray-700 mt-4'>
+              Address
             </label>
             <input
               type='text'
@@ -203,15 +211,16 @@ function SignUp() {
               id='address'
               value={address}
               onChange={handleAddress}
-              className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
-              placeholder='Enter their address'
+              className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1  focus:outline-none'
+              placeholder='Enter address'
             />
             {errors.address && (
               <p className='text-red-500 text-xs mt-1'>{errors.address}</p>
             )}
-
-            <label htmlFor='phone-number' className='block text-xs font-medium text-gray-700 mt-4'>
-              Their telephone number
+            <label
+              htmlFor='phone-number'
+              className='block text-xs font-medium text-gray-700 mt-4'>
+              Phone number
             </label>
             <div className='flex items-center'>
               <CountryCodeSelector onCodeChange={handleCountryCodeChange} />
@@ -220,15 +229,17 @@ function SignUp() {
                 value={phone_number}
                 onChange={handlePhone_number}
                 placeholder='Phone number'
-                className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none ml-2'
+                className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1  focus:outline-none ml-2'
               />
             </div>
             {errors.phone_number && (
               <p className='text-red-500 text-xs mt-1'>{errors.phone_number}</p>
             )}
 
-            <label htmlFor='id_card_picture' className='block text-xs font-medium text-gray-700 mt-4'>
-              Upload their ID card picture
+            <label
+              htmlFor='id_card_picture'
+              className='block text-xs font-medium mb-2 text-gray-700 mt-4'>
+              Upload ID card picture
             </label>
             <input
               type='file'
@@ -237,11 +248,19 @@ function SignUp() {
               onChange={handleId_card_picture}
               className='block w-full mt-1'
             />
+            <p className='text-xs mb-2 m-3 text-justify text-red-500 opacity-50'>
+              We need a picture of your ID card to verify your identity and
+              ensure that kids have permission to create an account.
+            </p>
             {errors.id_card_picture && (
-              <p className='text-red-500 text-xs mt-1'>{errors.id_card_picture}</p>
+              <p className='text-red-500 text-xs mt-1'>
+                {errors.id_card_picture}
+              </p>
             )}
 
-            <label htmlFor='email' className='block text-xs font-medium text-gray-700 mt-4'>
+            <label
+              htmlFor='email'
+              className='block text-xs font-medium text-gray-700 mt-4'>
               Their email
             </label>
             <input
@@ -250,15 +269,18 @@ function SignUp() {
               id='email'
               value={email}
               onChange={handleEmail}
-              className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+              className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1  focus:outline-none'
               placeholder='Enter their email'
             />
             {errors.email && (
               <p className='text-red-500 text-xs mt-1'>{errors.email}</p>
             )}
 
-            <label htmlFor='password' className='block text-xs font-medium text-gray-700 mt-4'>
-              Create a password with at least 6 characters, one number, one lowercase and one uppercase letter
+            <label
+              htmlFor='password'
+              className='block text-xs font-medium text-gray-700 mt-4'>
+              Create a password with at least 6 characters, one number, one
+              lowercase and one uppercase letter
             </label>
             <input
               type={showPassword ? 'text' : 'password'}
@@ -266,7 +288,7 @@ function SignUp() {
               id='password'
               value={password}
               onChange={handlePassword}
-              className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+              className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1  focus:outline-none'
               placeholder='Enter your password'
             />
             {errors.password && (
@@ -281,14 +303,20 @@ function SignUp() {
                 onChange={(e) => setShowPassword(e.target.checked)}
                 className='mr-2'
               />
-              <label htmlFor='show-password' className='text-xs text-gray-600'>
+              <label
+                htmlFor='show-password'
+                className='text-xs text-gray-600'>
                 Show Password
               </label>
             </div>
 
-            <h3 className='text-lg font-semibold mt-6'>Ok! Now your information</h3>
+            <h3 className='text-lg font-semibold mt-6'>
+              Ok! Now your information
+            </h3>
 
-            <label htmlFor='learner_username' className='block text-xs font-medium text-gray-700 mt-4'>
+            <label
+              htmlFor='learner_username'
+              className='block text-xs font-medium text-gray-700 mt-4'>
               Create a username for your profile
             </label>
             <input
@@ -297,14 +325,18 @@ function SignUp() {
               id='learner_username'
               value={learner_username}
               onChange={handleLearner_username}
-              className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+              className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 p-1  focus:outline-none'
               placeholder='Enter your username'
             />
             {errors.learner_username && (
-              <p className='text-red-500 text-xs mt-1'>{errors.learner_username}</p>
+              <p className='text-red-500 text-xs mt-1'>
+                {errors.learner_username}
+              </p>
             )}
 
-            <label htmlFor='date_of_birth' className='block text-xs font-medium text-gray-700 mt-4'>
+            <label
+              htmlFor='date_of_birth'
+              className='block text-xs font-medium text-gray-700 mt-4'>
               What is your date of birth?
             </label>
             <input
@@ -313,10 +345,12 @@ function SignUp() {
               id='date_of_birth'
               value={date_of_birth}
               onChange={handleDate_of_birth}
-              className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3 rounded-md focus:outline-none'
+              className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] py-2 px-3  focus:outline-none'
             />
             {errors.date_of_birth && (
-              <p className='text-red-500 text-xs mt-1'>{errors.date_of_birth}</p>
+              <p className='text-red-500 text-xs mt-1'>
+                {errors.date_of_birth}
+              </p>
             )}
 
             <button

@@ -160,7 +160,9 @@ function ProfilePage() {
             user.admin === true &&
             proposals.length > 0 &&
             proposals.map((proposal) => (
-              <div className=' bg-white p-2 m-4' key={proposal._id}>
+              <div
+                className=' bg-white p-2 m-4'
+                key={proposal._id}>
                 <Link to={`/proposals/${proposal._id}`}>
                   <h5 className='text-xs p-3 w-full hover:text-red-500'>
                     {proposal.title}
@@ -176,7 +178,11 @@ function ProfilePage() {
             ))}
         </div>
         <br />
-        <button className="bg-red-500 text-white py-2 px-4 hover:bg-blue-600" onClick={logout}>Logout</button>
+        <button
+          className='bg-red-500 text-white py-2 px-4 hover:bg-blue-600'
+          onClick={logout}>
+          Logout
+        </button>
       </div>
     </>
   );

@@ -11,7 +11,8 @@ function Login() {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
 
-  const { storeToken, authenticateUser, updatedUser, user } = useContext(AuthContext);
+  const { storeToken, authenticateUser, updatedUser, user } =
+    useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -59,8 +60,13 @@ function Login() {
       await authenticateUser();
       console.log('this is the updatedUser', updatedUser);
     } catch (error) {
-      console.log('Login error:', error.response?.data?.message || error.message);
-      setErrorMessage(error.response?.data?.message || 'An error occurred during login.');
+      console.log(
+        'Login error:',
+        error.response?.data?.message || error.message
+      );
+      setErrorMessage(
+        error.response?.data?.message || 'An error occurred during login.'
+      );
     }
   };
 
@@ -86,7 +92,7 @@ function Login() {
               Your email
             </label>
             <input
-              className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] rounded-md py-2 px-3 focus:outline-none'
+              className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] p-1  py-2 px-3 focus:outline-none'
               type='email'
               name='email'
               id='email'
@@ -94,7 +100,9 @@ function Login() {
               onChange={handleEmail}
               placeholder='Enter your email'
             />
-            {emailError && <p className='text-red-500 text-sm mt-1'>{emailError}</p>}
+            {emailError && (
+              <p className='text-red-500 text-sm mt-1'>{emailError}</p>
+            )}
           </div>
           <div>
             <label
@@ -103,7 +111,7 @@ function Login() {
               Your password
             </label>
             <input
-              className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] rounded-md py-2 px-3 focus:outline-none'
+              className='block w-full mt-1 bg-[rgba(221,220,255,0.997)] p-1  py-2 px-3 focus:outline-none'
               type={showPassword ? 'text' : 'password'}
               name='password'
               id='password'
@@ -111,7 +119,9 @@ function Login() {
               onChange={handlePassword}
               placeholder='Enter your password'
             />
-            {passwordError && <p className='text-red-500 text-sm mt-1'>{passwordError}</p>}
+            {passwordError && (
+              <p className='text-red-500 text-sm mt-1'>{passwordError}</p>
+            )}
           </div>
           <div className='flex items-center'>
             <input
@@ -127,7 +137,11 @@ function Login() {
               Show Password
             </label>
           </div>
-        {errorMessage && <p className='mt-4 flex justify-center text-center text-red-500'>{errorMessage}</p>}
+          {errorMessage && (
+            <p className='mt-4 flex justify-center text-center text-red-500'>
+              {errorMessage}
+            </p>
+          )}
           <div className='flex justify-center'>
             <br />
             <button

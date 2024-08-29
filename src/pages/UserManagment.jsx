@@ -1,5 +1,5 @@
-import { useState, useContext, useEffect } from 'react';
-import { AuthContext } from '../context/auth.context';
+import { useState,  useEffect } from 'react';
+//import { AuthContext } from '../context/auth.context';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -9,8 +9,6 @@ function UserManagement() {
   const [approvedUsers, setApprovedUsers] = useState([]);
 
   const [proposals, setProposals] = useState([]);
-
-  const { user } = useContext(AuthContext);
 
   const fetchProposals = async () => {
     try {
@@ -80,8 +78,8 @@ function UserManagement() {
     setApprovedUsers(approvedUsersList);
   }, [allUsers]);
   return (
-    <div className='container mx-auto p-4 pt-16 md:pt-20 md:px-28 lg:px-36'>
-      <h2 className='text-base md:text-lg text-center font-semibold mb-4'>
+    <div className='container mx-auto p-4 pt-20 md:pt-20 md:px-28 lg:px-36'>
+      <h2 className='text-base pt-12 md:text-lg text-center font-semibold mb-4'>
         User Management
       </h2>
 

@@ -51,13 +51,14 @@ function SuggestionBox() {
               allSuggestions.map((suggestion) => {
                 return (
                   <div
-                    className='wishes-div p-4 shadow-sm hover:bg-gray-100'
+                    className= 'p-4 shadow-sm hover:bg-gray-100 min-h-fit max-h-80 overflow-y-auto pl-10 pr-10 pt-10 mt-10'
+                    style={{ minHeight: 'auto' }}
                     key={suggestion._id}>
-                    <h6 className='text-xs sm:text-xs md:text-xs mb-2 text-justify'>
+                    <h6 className='text-xs sm:text-xs md:text-xs mb-4 text-justify'>
                       A <span className='text-red-500'>{suggestion.age}</span>
                       -year-old person says:
                     </h6>
-                    <h5 className='text-xs sm:text-xs md:text-xs mb-2 text-justify'>
+                    <h5 className='text-xs sm:text-xs md:text-xs mb-2 text-justify pl-4 pr-4'>
                       {suggestion.comment}
                     </h5>
                     {user && user.admin === true && (

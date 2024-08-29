@@ -124,7 +124,7 @@ function Workshops() {
           </Link>
         </div>
         <div className='flex justify-center mb-6'>
-          <div className='grid gap-4 grid-cols-1 md:grid-cols-2'>
+          <div className='grid gap-auto grid-cols-1 sm:grid-cols-2 md:grid-cols-fit md:grid-flow-row-dense'>
             {filteredWorkshops.length > 0
               ? filteredWorkshops.map((workshop) => (
                   <div

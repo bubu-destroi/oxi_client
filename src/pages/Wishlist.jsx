@@ -45,16 +45,16 @@ function Wishlist() {
   return (
     <>
       <div className='big-container mx-auto p-4 pt-20 px-4 sm:px-6 md:px-8 '>
-        <h1 className='text-2xl font-bold mb-4 text-center pt-10'>
-          WISHLIST
-        </h1>
+        <h1 className='text-2xl font-bold mb-4 text-center pt-10'>WISHLIST</h1>
         <h5 className='text-xs sm:text-xs md:text-xs lg:text-xs xl:text-xs mb-6 text-center about-wishes'>
-          These are the subjects our users want to learn about. <br /> If you are
-          interested in designing a workshop in response to one of these requests,
-          click the button -I Can Teach You!- and submit the form.
+          These are the subjects our users want to learn about. <br /> If you
+          are interested in designing a workshop in response to one of these
+          requests, click the button -I Can Teach You!- and submit the form.
         </h5>
         <div className='text-center mb-4'>
-          <Link to='/create-wish' className=''>
+          <Link
+            to='/create-wish'
+            className=''>
             <h3 className='text-sm sm:text-sm md:text-sm lg:text-xs xl:text-xs font-semibold text-red-500'>
               Place your WISH here
             </h3>
@@ -77,36 +77,45 @@ function Wishlist() {
                   <div
                     className='wishes-div p-4 shadow-sm hover:bg-gray-100'
                     key={wish._id}>
-                    <Link to={`/wishlist/${wish._id}`} className='text-black'>
-  <h2 className='text-s sm:text-xs md:text-xs font-bold mb-2 text-red-500 text-center'>
-    {wish.title}
-  </h2>
-  <h5 className='text-xs sm:text-xs md:text-xs mb-2 text-justify'>
-    {wish.description}
-  </h5>
-  <h6 className='text-xs sm:text-xs md:text-xs '>
-    Age of the wisher: <span className='text-red-500'>{wish.age_of_wisher}</span>
-  </h6>
-  {wish.interested_users.length > 0 && (
-    <h6 className='text-xs sm:text-xs md:text-xs lg:text-xs xl:text-xs '>
-      Number of interested users: <span className='text-red-500'>{wish.interested_users.length}</span>
-    </h6>
-  )}
-</Link>
+                    <Link
+                      to={`/wishlist/${wish._id}`}
+                      className='text-black'>
+                      <h2 className='text-s sm:text-xs md:text-xs font-bold mb-2 text-red-500 text-center'>
+                        {wish.title}
+                      </h2>
+                      <h5 className='text-xs sm:text-xs md:text-xs mb-2 text-justify'>
+                        {wish.description}
+                      </h5>
+                      <h6 className='text-xs sm:text-xs md:text-xs '>
+                        Age of the wisher:{' '}
+                        <span className='text-red-500'>
+                          {wish.age_of_wisher}
+                        </span>
+                      </h6>
+                      {wish.interested_users.length > 0 && (
+                        <h6 className='text-xs sm:text-xs md:text-xs lg:text-xs xl:text-xs '>
+                          Number of interested users:{' '}
+                          <span className='text-red-500'>
+                            {wish.interested_users.length}
+                          </span>
+                        </h6>
+                      )}
+                    </Link>
                   </div>
                 ))
               : filteredWishes.length === 0 && (
-                  <p className='text-sm sm:text-xs md:text-xs lg:text-xs xl:text-xs text-center'>
-                    No wishes found, but you can still send a proposal for the
-                    workshop you have in mind.
-                  </p>
+                  <div className='flex justify-center items-center w-full'>
+                    <p className='text-sm sm:text-xs md:text-xs lg:text-xs xl:text-xs text-center'>
+                      No wishes found, but you can still send a proposal for the
+                      workshop you have in mind.
+                    </p>
+                  </div>
                 )}
           </div>
         </div>
       </div>
     </>
   );
-
 }
 
 export default Wishlist;

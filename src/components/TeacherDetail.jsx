@@ -62,11 +62,11 @@ function TeacherDetail() {
               </h5>
               {previousWorkshops.length > 0 && (
               <>
-                <h5 className='text-sm md:text-md font-bold p-4'>Previous Workshops</h5>
+                <h5 className='text-xs md:text-xs text-center text-red-500 font-bold p-4'>Previous Workshops</h5>
                 <ul>
                   {previousWorkshops.map(workshop => (
                     <li key={workshop._id} className='mt-2'>
-                      <Link className='text-red-500  py-2 px-4  hover:text-blue-600' to={`/workshops/${workshop._id}`}>
+                      <Link className=' text-xs py-2 px-4 text-center hover:text-red-600' to={`/workshops/${workshop._id}`}>
                         {workshop.title}
                       </Link>
                     </li>
@@ -78,11 +78,11 @@ function TeacherDetail() {
             {/* Conditionally render Upcoming Workshops */}
             {upcomingWorkshops.length > 0 && (
               <>
-                <h5 className='text-sm md:text-md font-bold p-4'>Upcoming Workshops</h5>
+                <h5 className='text-xs md:text-xs text-center text-red-500 font-bold p-4'>Upcoming Workshops</h5>
                 <ul >
                   {upcomingWorkshops.map(workshop => (
                     <li key={workshop._id} className='mt-2'>
-                      <Link className='text-red-500 py-2 px-4  hover:text-blue-600' to={`/workshops/${workshop._id}`}>
+                      <Link className='text-xs py-2 px-4 text-center hover:text-red-600' to={`/workshops/${workshop._id}`}>
                         {workshop.title}
                       </Link>
                     </li>

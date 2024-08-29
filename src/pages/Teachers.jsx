@@ -83,7 +83,7 @@ function Teachers() {
                     <h3 className='text-s sm:text-xs md:text-xs font-bold mb-2 p-4 text-red-500 text-center'>
                       {teacher.name}
                     </h3>
-                    <h5 className='text-xs sm:text-xs md:text-xs mb-2 text-justify'>
+                    <h5 className='text-xs sm:text-xs md:text-xs mb-2 text-justify pl-4 pr-4'>
                       {teacher.bio}
                     </h5>
                   </Link>

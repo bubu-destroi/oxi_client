@@ -124,11 +124,11 @@ function Workshops() {
           </Link>
         </div>
         <div className='flex justify-center mb-6'>
-          <div className='grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-fit'>
+          <div className='grid gap-4 grid-cols-1 md:grid-cols-2'>
             {filteredWorkshops.length > 0
               ? filteredWorkshops.map((workshop) => (
                   <div
-                    className='p-4 shadow-sm hover:bg-gray-100 h-fit'
+                    className='p-4 shadow-sm hover:bg-gray-100 h-80 overflow-y-auto pl-10 pr-10 pt-10 mt-10'
                     key={workshop._id}>
                     <Link to={`/workshops/${workshop._id}`} className='text-black'>
                       <h3 className='text-s sm:text-xs md:text-xs font-bold mb-2 text-red-500 text-center'>

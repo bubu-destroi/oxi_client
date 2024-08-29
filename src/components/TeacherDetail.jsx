@@ -28,6 +28,11 @@ function TeacherDetail() {
     getSingleTeacher(teacherID);
   }, [teacherID]);
 
+  const today = new Date();
+  const previousWorkshops = teacher?.previous_workshops.filter(workshop => new Date(workshop.date) < today) || [];
+  const upcomingWorkshops = teacher?.previous_workshops.filter(workshop => new Date(workshop.date) >= today) || [];
+
+
   return (
     <>
        <div className='big-container mx-auto pt-20 px-4 sm:px-6 md:px-8 lg:w-4/5 xl:w-3/5 p-4'>
@@ -55,16 +60,38 @@ function TeacherDetail() {
                   {teacher.socialMedia}
                 </a>
               </h5>
-                    <h5 className='text-sm md:text-md font-bold p-4'>Upcoming Workshops</h5>
-              <ul>
-                {teacher.previous_workshops.map((workshop) => (
-                  <li key={workshop._id}>
-                    <Link  className='text-red-500 py-2 px-4 hover:text-blue-600 ' to={`/workshops/${workshop._id}`}>{workshop.title}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+              {previousWorkshops.length > 0 && (
+              <>
+                <h5 className='text-sm md:text-md font-bold p-4'>Previous Workshops</h5>
+                <ul>
+                  {previousWorkshops.map(workshop => (
+                    <li key={workshop._id}>
+                      <Link className='text-red-500 py-2 px-4 hover:text-blue-600' to={`/workshops/${workshop._id}`}>
+                        {workshop.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+
+            {/* Conditionally render Upcoming Workshops */}
+            {upcomingWorkshops.length > 0 && (
+              <>
+                <h5 className='text-sm md:text-md font-bold p-4'>Upcoming Workshops</h5>
+                <ul>
+                  {upcomingWorkshops.map(workshop => (
+                    <li key={workshop._id}>
+                      <Link className='text-red-500 py-2 px-4 hover:text-blue-600' to={`/workshops/${workshop._id}`}>
+                        {workshop.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
+        )}
           {user?.admin && (
             <Link to={`/teachers/${teacherID}/edit`}>
               <button type='submit'>edit</button>

@@ -87,7 +87,7 @@ function UserManagement() {
         {/* New Users Section */}
         <div className='p-2'>
           <h3 className='text-sm md:text-md text-red-500 font-medium text-center mb-2'>
-            New Users
+            New Users {newUsers.length > 0 && newUsers.length}
           </h3>
           {newUsers.length > 0 ? (
             newUsers.map((user) => (
@@ -130,7 +130,7 @@ function UserManagement() {
         {/* Approved Users Section */}
         <div className='p-2'>
           <h3 className='text-sm md:text-md text-red-500 font-medium text-center mb-2'>
-            Approved Users
+            Approved Users {approvedUsers.length > 0 && approvedUsers.length}
           </h3>
           {approvedUsers.length > 0 ? (
             approvedUsers.map((user) => (

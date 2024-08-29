@@ -29,6 +29,7 @@ import NavbarRight from './components/NavbarRigth';
 import NavbarLeft from './components/NavbarLeft';
 import EditWorkshop from './components/EditWorkshop';
 import ProposalDetail from './components/ProposalDetail';
+import UserManagment from './pages/UserManagment';
 
 function App() {
   return (
@@ -112,6 +113,16 @@ function App() {
             <Admin>
               <Anon>
                 <ProposalDetail />
+              </Anon>
+            </Admin>
+          }
+        />
+        <Route
+          path='/user-management'
+          element={
+            <Admin>
+              <Anon>
+                <UserManagment />
               </Anon>
             </Admin>
           }

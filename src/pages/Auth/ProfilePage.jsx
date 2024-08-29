@@ -1,16 +1,16 @@
 import { useEffect, useContext, useState } from 'react';
 import { AuthContext } from '../../context/auth.context';
-import { Link, useParams } from 'react-router-dom';
+import { Link,  useParams } from 'react-router-dom';
 import axios from 'axios';
 
 function ProfilePage() {
   const { user, logout, updateUser } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
   const { userID } = useParams();
-  const [proposals, setProposals] = useState([]);
+  //const [proposals, setProposals] = useState([]);
   /* const [singleProposal, setSingleProposal] = useState(null); */
 
-  const fetchProposals = async () => {
+ /*  const fetchProposals = async () => {
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/proposals`
@@ -20,7 +20,7 @@ function ProfilePage() {
       console.log('error fetching all proposals', error);
     }
   };
-
+ */
   /* const fetchSingleProposal = async (id) => {
     try {
       const response = await axios.get(
@@ -32,7 +32,7 @@ function ProfilePage() {
     }
   }; */
 
-  const handleDeleteProposal = async (id) => {
+/*   const handleDeleteProposal = async (id) => {
     try {
       await axios.delete(`${import.meta.env.VITE_API_URL}/api/proposals/${id}`);
       fetchProposals();
@@ -40,7 +40,7 @@ function ProfilePage() {
       console.log('error deleting proposal', error);
     }
   };
-
+ */
   useEffect(() => {
     const fetchUserData = async () => {
       if (user) {
@@ -59,7 +59,7 @@ function ProfilePage() {
     };
     fetchUserData();
     console.log(userID);
-    fetchProposals();
+    //fetchProposals();
 
     //ESTA DEPENDENCY PODE DAR PROBLEMAS, EU TIREI AS ANTERIORES PORQUE ESTAVA MOUNTING NONSTOP
   }, []);
@@ -150,12 +150,20 @@ function ProfilePage() {
             </h5>
           )}
         </div>
-        {user && user.admin === true && proposals.length > 0 && (
+       {/*  {user && user.admin === true && proposals.length > 0 && (
           <h3 className=' font-bold text-red-500 text-left md:text-center '>
             The proposals submited, yet to be approved
           </h3>
-        )}
-        <div className='text-center mt-2 mb-4 md:grid grid-cols-4 gap-4 '>
+        )} */}
+        <div className='text-center  '>
+
+        {user && user.admin=== true &&  <Link to={`/user-management`}>
+                  <h5 className='text-lg font-bold mb-4 text-center pt-12 pb-12 md:text-3xl hover:bg-red-300'>
+                    USER / PROPOSAL MANAGEMENT
+                  </h5>
+                </Link>  
+        }
+        {/* 
           {user &&
             user.admin === true &&
             proposals.length > 0 &&
@@ -175,7 +183,7 @@ function ProfilePage() {
                   delete
                 </button>
               </div>
-            ))}
+            ))} */}
         </div>
         <br />
         <button

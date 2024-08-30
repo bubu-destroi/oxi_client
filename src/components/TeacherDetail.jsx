@@ -48,7 +48,7 @@ function TeacherDetail() {
               <h5 className='text-xs md:text-sm mb-3 text-justify'>
                 {teacher.bio}
               </h5>
-              <h5 className='text-red-500 py-2 px-4 hover:text-blue-600 '>
+              <h5 className='text-red-500 py-2 px-4 text-center hover:text-blue-600 '>
                 <a
                   href={
                     teacher.socialMedia.startsWith('http')
@@ -63,7 +63,7 @@ function TeacherDetail() {
               {previousWorkshops.length > 0 && (
               <>
                 <h5 className='text-xs md:text-xs text-center text-red-500 font-bold p-4'>Previous Workshops</h5>
-                <ul>
+                <ul className='text-center'>
                   {previousWorkshops.map(workshop => (
                     <li key={workshop._id} className='mt-2'>
                       <Link className=' text-xs py-2 px-4 text-center hover:text-red-600' to={`/workshops/${workshop._id}`}>
@@ -79,7 +79,7 @@ function TeacherDetail() {
             {upcomingWorkshops.length > 0 && (
               <>
                 <h5 className='text-xs md:text-xs text-center text-red-500 font-bold p-4'>Upcoming Workshops</h5>
-                <ul >
+                <ul className='text-center'>
                   {upcomingWorkshops.map(workshop => (
                     <li key={workshop._id} className='mt-2'>
                       <Link className='text-xs py-2 px-4 text-center hover:text-red-600' to={`/workshops/${workshop._id}`}>

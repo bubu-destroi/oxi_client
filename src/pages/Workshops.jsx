@@ -27,8 +27,8 @@ function Workshops() {
       console.log('error', error);
     }
   };
- 
-/*   const getPastWorkshops = async () => {
+
+  /*   const getPastWorkshops = async () => {
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/workshops`
@@ -110,14 +110,18 @@ function Workshops() {
             </button>
           </div> */}
         <div className='text-center mb-4'>
-          <Link to='/previous-workshops' className=''>
+          <Link
+            to='/previous-workshops'
+            className=''>
             <h4 className='text-sm sm:text-xs md:text-xs  hover:text-red-500'>
               -See previous Workshops-
             </h4>
           </Link>
         </div>
         <div className='text-center mb-4'>
-          <Link to='/new-proposal' className=''>
+          <Link
+            to='/new-proposal'
+            className=''>
             <h4 className='text-sm sm:text-xs md:text-xs  hover:text-red-500'>
               Send us your workshop idea
             </h4>
@@ -128,19 +132,23 @@ function Workshops() {
             {filteredWorkshops.length > 0
               ? filteredWorkshops.map((workshop) => (
                   <div
-                    className='p-4 shadow-sm hover:bg-gray-100 h-80 overflow-y-auto pl-10 pr-10 pt-10 mt-10'
+                    className='p-4 shadow-sm hover:bg-gray-100 h-auto overflow-y-auto pl-10 pr-10 pt-10 mt-10'
                     key={workshop._id}>
-                    <Link to={`/workshops/${workshop._id}`} className='text-black'>
+                    <Link
+                      to={`/workshops/${workshop._id}`}
+                      className='text-black'>
                       <h3 className='text-s sm:text-xs md:text-xs font-bold mb-2 text-red-500 text-center'>
                         {workshop.title}
                       </h3>
-                      <h5 className='text-xs sm:text-xs md:text-xs mb-2 text-justify'>
-                        {workshop.description}
-                      </h5>
+                      <div className='h-80 overflow-y-auto'>
+                        <h5 className='text-xs sm:text-xs md:text-xs mb-2 text-justify'>
+                          {workshop.description}
+                        </h5>
+                      </div>
                       <h6 className='text-xs sm:text-xs md:text-xs lg:text-xs xl:text-xs pt-5'>
-                        lectured by{' '}<span className='text-red-500'>
-
-                        {workshop.teachers.map((t) => t.name).join(', ')}
+                        lectured by{' '}
+                        <span className='text-red-500'>
+                          {workshop.teachers.map((t) => t.name).join(', ')}
                         </span>
                       </h6>
                     </Link>
@@ -156,7 +164,6 @@ function Workshops() {
       </div>
     </>
   );
-  
 }
 
 export default Workshops;

@@ -156,7 +156,7 @@ function UserManagement() {
                       {user.wishes.map((wish, index) => (
                         <li key={wish._id}>
                           <Link
-                            to={`/wishes/${wish._id}`}
+                            to={`/wishlist/${wish._id}`}
                             className='text-blue-500 hover:underline'>
                             {wish.title}
                           </Link>
@@ -201,7 +201,7 @@ function UserManagement() {
                       {user.courses_taken.map((course, index) => (
                         <li key={course._id}>
                           <Link
-                            to={`/courses/${course._id}`}
+                            to={`/workshops/${course._id}`}
                             className='text-blue-500 hover:underline'>
                             {course.title}
                           </Link>

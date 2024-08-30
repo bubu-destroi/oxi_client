@@ -138,68 +138,77 @@ function UserManagement() {
             {approvedUsers.length > 0 ? (
               approvedUsers.map((user) => (
                 <div
-                  className='hover:bg-white p-3 mb-3 shadow-sm max-w-sm mx-auto'
+                  className='hover:bg-white p-3 mb-3 h-auto shadow-sm max-w-sm mx-auto'
                   key={user._id}>
                   <h5 className='text-xs md:text-xs mb-1'>
                     Learner Username:{' '}
-                    <span className='text-red-500'>
-                      {user.learner_username}
-                    </span>
                   </h5>
-                  <h5 className='text-xs md:text-xs mb-1'>
-                    Age: <span className='text-red-500'>{user.age}</span>
+                  <h5 className='text-xs text-end md:text-xs text-red-500'>
+                    {user.learner_username}
                   </h5>
-                  <h5 className='text-xs md:text-xs text-gray-600 mb-1'>
+                  <h5 className='text-xs md:text-xs '>Age:</h5>
+                  <h5 className='text-xs text-end md:text-xs text-red-500'>
+                    {user.age}
+                  </h5>
+                  <h5 className='text-xs md:text-xs t mb-1'>
                     Wishes:{' '}
-                    {user.wishes.map((wish, index) => (
-                      <span key={wish._id} >
-                        <Link
-                          to={`/wishes/${wish._id}`}
-                          className='text-blue-500 hover:underline'>
-                          {wish.title}
-                        </Link>
-                        {index < user.wishes.length - 1 && ', '}
-                      </span>
-                    ))}
+                    <ul className='text-xs text-end md:text-xs text-red-500'>
+                      {user.wishes.map((wish, index) => (
+                        <li key={wish._id}>
+                          <Link
+                            to={`/wishes/${wish._id}`}
+                            className='text-blue-500 hover:underline'>
+                            {wish.title}
+                          </Link>
+                          {index < user.wishes.length - 1 && ', '}
+                        </li>
+                      ))}
+                    </ul>
                   </h5>
-                  <h5 className='text-xs md:text-xs text-gray-600 mb-1'>
+                  <h5 className='text-xs md:text-xs  mb-1'>
                     Signed Up Workshops:{' '}
-                    {user.signedUp_workshops.map((workshop, index) => (
-                      <span key={workshop._id}>
-                        <Link
-                          to={`/workshops/${workshop._id}`}
-                          className='text-blue-500 hover:underline'>
-                          {workshop.title}
-                        </Link>
-                        {index < user.signedUp_workshops.length - 1 && ', '}
-                      </span>
-                    ))}{' '}
+                    <ul className='text-xs text-end md:text-xs text-red-500'>
+                      {user.signedUp_workshops.map((workshop, index) => (
+                        <li key={workshop._id}>
+                          <Link
+                            to={`/workshops/${workshop._id}`}
+                            className='text-blue-500 hover:underline'>
+                            {workshop.title}
+                          </Link>
+                          {index < user.signedUp_workshops.length - 1 && ', '}
+                        </li>
+                      ))}{' '}
+                    </ul>
                   </h5>
-                  <h5 className='text-xs md:text-xs text-gray-600 mb-1'>
+                  <h5 className='text-xs md:text-xs  mb-1'>
                     Waiting List:{' '}
-                    {user.userWaitingList.map((workshop, index) => (
-                      <span key={workshop._id}>
-                        <Link
-                          to={`/workshops/${workshop._id}`}
-                          className='text-blue-500 hover:underline'>
-                          {workshop.title}
-                        </Link>
-                        {index < user.userWaitingList.length - 1 && ', '}
-                      </span>
-                    ))}{' '}
+                    <ul className='text-xs text-end md:text-xs text-red-500'>
+                      {user.userWaitingList.map((workshop, index) => (
+                        <li key={workshop._id}>
+                          <Link
+                            to={`/workshops/${workshop._id}`}
+                            className='text-blue-500 hover:underline'>
+                            {workshop.title}
+                          </Link>
+                          {index < user.userWaitingList.length - 1 && ', '}
+                        </li>
+                      ))}{' '}
+                    </ul>
                   </h5>
-                  <h5 className='text-xs md:text-xs text-gray-600 mb-1'>
+                  <h5 className='text-xs md:text-xs  mb-1'>
                     Courses Taken:{' '}
-                    {user.courses_taken.map((course, index) => (
-                      <span key={course._id}>
-                        <Link
-                          to={`/courses/${course._id}`}
-                          className='text-blue-500 hover:underline'>
-                          {course.title}
-                        </Link>
-                        {index < user.courses_taken.length - 1 && ', '}
-                      </span>
-                    ))}{' '}
+                    <ul className='text-xs text-end md:text-xs text-red-500'>
+                      {user.courses_taken.map((course, index) => (
+                        <li key={course._id}>
+                          <Link
+                            to={`/courses/${course._id}`}
+                            className='text-blue-500 hover:underline'>
+                            {course.title}
+                          </Link>
+                          {index < user.courses_taken.length - 1 && ', '}
+                        </li>
+                      ))}{' '}
+                    </ul>
                   </h5>
                 </div>
               ))
@@ -212,77 +221,79 @@ function UserManagement() {
         </div>
       </div>
       <div>
-      <h3 className='text-sm text-center pt-10 pb-5 md:text-lg font-medium text-red-500 md:text-center mb-2'>
-        The proposals submitted, yet to be approved: {proposals.length}
-      </h3>
-      {proposals.length > 0 && (
-        <div className='relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 h-80 overflow-y-auto '>
-          {proposals.map((proposal) => (
-            <div
-              className='proposal-detail shadow-white pl-3 pr3 p-6 md:p-6 w-full border border-red-200 hover:bg-white'
-              key={proposal._id}
-            >
-              <h3 className='text-xs  font-bold mb-2 text-center'>Teachers:</h3>
-              <h3 className='text-xs  mb-2 text-center'>{proposal.name}</h3>
-              <h3 className='text-xs  font-bold mb-2 text-center'>Bio:</h3>
-              <h3 className='text-xs  mb-2 text-center'>{proposal.bio}</h3>
-              <h3 className='text-xs  font-bold mb-2 text-center'>Social Media:</h3>
-              <h3 className='text-xs  mb-2 text-center'>{proposal.socialMedia}</h3>
-              <h3 className='text-xs  font-bold mb-2 text-center'>Email:</h3>
-              <h3 className='text-xs  mb-2 text-center'>{proposal.email}</h3>
-              <h3 className='text-xs  font-bold mb-2 text-center text-red-500'>
-                {proposal.title}
-              </h3>
-              <h4 className='text-xs md:text-sm mb-3 text-justify'>
-                {proposal.description}
-              </h4>
-              <div className='w-full flex justify-center py-4'>
-                <img
-                  src={proposal.image}
-                  alt='proposal'
-                  className='w-32 h-32 object-cover'
-                />
+        <h3 className='text-sm text-center pt-10 pb-5 md:text-lg font-medium text-red-500 md:text-center mb-2'>
+          The proposals submitted, yet to be approved: {proposals.length}
+        </h3>
+        {proposals.length > 0 && (
+          <div className='relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 h-80 overflow-y-auto '>
+            {proposals.map((proposal) => (
+              <div
+                className='proposal-detail shadow-white pl-3 pr3 p-6 md:p-6 w-full border border-red-200 hover:bg-white'
+                key={proposal._id}>
+                <h3 className='text-xs  font-bold mb-2 text-center'>
+                  Teachers:
+                </h3>
+                <h3 className='text-xs  mb-2 text-center'>{proposal.name}</h3>
+                <h3 className='text-xs  font-bold mb-2 text-center'>Bio:</h3>
+                <h3 className='text-xs  mb-2 text-center'>{proposal.bio}</h3>
+                <h3 className='text-xs  font-bold mb-2 text-center'>
+                  Social Media:
+                </h3>
+                <h3 className='text-xs  mb-2 text-center'>
+                  {proposal.socialMedia}
+                </h3>
+                <h3 className='text-xs  font-bold mb-2 text-center'>Email:</h3>
+                <h3 className='text-xs  mb-2 text-center'>{proposal.email}</h3>
+                <h3 className='text-xs  font-bold mb-2 text-center text-red-500'>
+                  {proposal.title}
+                </h3>
+                <h4 className='text-xs md:text-sm mb-3 text-justify'>
+                  {proposal.description}
+                </h4>
+                <div className='w-full flex justify-center py-4'>
+                  <img
+                    src={proposal.image}
+                    alt='proposal'
+                    className='w-32 h-32 object-cover'
+                  />
+                </div>
+                <div className='text-xs mb-2 mt-4 md:mt-6'>
+                  <h5 className='mb-1'>Duration: {proposal.duration}</h5>
+                  <h5 className='mb-1'>{proposal.price}€</h5>
+                  <h5 className='mb-1'>
+                    {proposal.category}, {proposal.subcategory}
+                  </h5>
+                  <h5 className='mb-1'>
+                    Remote: {proposal.remote ? 'Yes' : 'No'}
+                  </h5>
+                  <h5 className='mb-1'>Location: {proposal.place}</h5>
+                  <h5 className='mb-1'>Date: {proposal.date.split('T')[0]}</h5>
+                  <h5 className='mb-1'>
+                    Minimum age required: {proposal.minimum_age}
+                  </h5>
+                  <h5 className='mb-1'>
+                    Maximum age suggested: {proposal.maximum_age}
+                  </h5>
+                  <h5 className='mb-1'>
+                    Minimum number of participants: {proposal.minParticipants}
+                  </h5>
+                  <h5 className='mb-1'>
+                    Maximum number of participants: {proposal.maxParticipants}
+                  </h5>
+                </div>
+                <div className='flex justify-center mt-4'>
+                  <button
+                    className='bg-red-500 text-white py-2 px-4 text-xs md:text-sm hover:bg-blue-600'
+                    type='button'
+                    onClick={() => handleDeleteProposal(proposal._id)}>
+                    Delete
+                  </button>
+                </div>
               </div>
-              <div className='text-xs mb-2 mt-4 md:mt-6'>
-                <h5 className='mb-1'>Duration: {proposal.duration}</h5>
-                <h5 className='mb-1'>{proposal.price}€</h5>
-                <h5 className='mb-1'>
-                  {proposal.category}, {proposal.subcategory}
-                </h5>
-                <h5 className='mb-1'>
-                  Remote: {proposal.remote ? 'Yes' : 'No'}
-                </h5>
-                <h5 className='mb-1'>Location: {proposal.place}</h5>
-                <h5 className='mb-1'>
-                  Date: {proposal.date.split('T')[0]}
-                </h5>
-                <h5 className='mb-1'>
-                  Minimum age required: {proposal.minimum_age}
-                </h5>
-                <h5 className='mb-1'>
-                  Maximum age suggested: {proposal.maximum_age}
-                </h5>
-                <h5 className='mb-1'>
-                  Minimum number of participants: {proposal.minParticipants}
-                </h5>
-                <h5 className='mb-1'>
-                  Maximum number of participants: {proposal.maxParticipants}
-                </h5>
-              </div>
-              <div className='flex justify-center mt-4'>
-                <button
-                  className='bg-red-500 text-white py-2 px-4 text-xs md:text-sm hover:bg-blue-600'
-                  type='button'
-                  onClick={() => handleDeleteProposal(proposal._id)}
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

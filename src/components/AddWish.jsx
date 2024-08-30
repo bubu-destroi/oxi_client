@@ -64,7 +64,7 @@ function AddWish() {
         <label
           htmlFor='title'
           className='block text-xs font-medium '>
-          Title
+          Title * 
         </label>
         <input
           type='text'
@@ -78,7 +78,7 @@ function AddWish() {
         <label
           htmlFor='description'
           className='block text-xs font-medium  mt-4'>
-          Description
+          Description *
         </label>
        {/*  <h5 className='text-xs mb-4 p-4 text-gray-700  text-justify'>
           Here you can tell us all the most important details, like the best

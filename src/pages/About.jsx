@@ -44,7 +44,7 @@ function About() {
         </h1>
         <p className='text-xs sm:text-sm  md:text-s mb-6 text-justify'>
           {' '}
-          Hi, I'm Carolina. I created Oxitoficina (combining Oxytocin and
+          Hi, I'm Zarolina. I created Oxitoficina (combining Oxytocin and
           Oficina) from a place of deep affection and concern for future
           generations. Throughout my own experience of the traditional education
           system, both as student and as teacher, I've witnessed how the current
@@ -123,6 +123,11 @@ function About() {
           </button>
         </form>
       </div>
+      <a href='mailto:hello@zarolina.com'>
+        <div className='p-6   hover:text-red-500 cursor-pointer text-center'>
+         - Contact me -
+        </div>
+      </a>
     </div>
   );
 }

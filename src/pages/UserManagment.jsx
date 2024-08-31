@@ -111,9 +111,9 @@ function UserManagement() {
                       className='w-full max-w-xs h-auto shadow-sm'
                     />
                   </div>
-                  <div className='flex justify-center'>
+                  <div className='flex justify-center pb-9'>
                     <button
-                      className='bg-red-500 text-white py-1 px-3 text-xs md:text-xs hover:bg-blue-600'
+                      className='bg-red-500 text-white py-1 px-3 pb-10text-xs md:text-xs hover:bg-blue-600'
                       type='button'
                       onClick={() => handleApproveUser(user._id)}>
                       APPROVE
